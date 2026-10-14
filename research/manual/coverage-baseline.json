@@ -1,0 +1,1705 @@
+{
+  "manualSource": "SimTower_-_Manual_-_PC_OCR.pdf (local source; not tracked)",
+  "baselineDate": "2026-10-14",
+  "features": [
+    {
+      "id": "F01",
+      "feature": "Journey routing and transport choice",
+      "manualPages": "46,48,54-56",
+      "priority": "P0",
+      "evidence": "simulation.route; IDA 34C04,34A52,34B12,34E0E,346B3",
+      "checks": [
+        {
+          "behavior": "Reach destination through transport that actually serves each floor",
+          "status": "partial"
+        },
+        {
+          "behavior": "Bound stairs passage to native reachable span",
+          "status": "missing"
+        },
+        {
+          "behavior": "Bound escalator passage to native reachable span",
+          "status": "missing"
+        },
+        {
+          "behavior": "Prefer usable escalators over waiting local lifts",
+          "status": "missing"
+        },
+        {
+          "behavior": "Choose access near the traveller, using lateral distance",
+          "status": "missing"
+        },
+        {
+          "behavior": "Allow at most one elevator change in a journey",
+          "status": "missing"
+        },
+        {
+          "behavior": "Use designated lobby transfer connections",
+          "status": "missing"
+        },
+        {
+          "behavior": "Consider directional congestion when selecting alternatives",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "feature": "Occupancy, stress and tenant retention",
+      "manualPages": "23,48,56-60",
+      "priority": "P0",
+      "evidence": "simulation.updateRooms/tenantStress/settleQuarter; original-people; IDA 28B7B,28F04,29200,293AD",
+      "checks": [
+        {
+          "behavior": "Cap per-trip elevator waiting stress at 300",
+          "status": "covered"
+        },
+        {
+          "behavior": "Average inhabitants independently for room evaluation",
+          "status": "covered"
+        },
+        {
+          "behavior": "Count walking, searching, travel and service waiting stress",
+          "status": "partial"
+        },
+        {
+          "behavior": "Apply price and noise to acceptance and retention",
+          "status": "partial"
+        },
+        {
+          "behavior": "Remove dissatisfied office and condo tenants at native evaluation boundaries",
+          "status": "partial"
+        },
+        {
+          "behavior": "Good inhabitants attract additional tenants into empty space",
+          "status": "missing"
+        },
+        {
+          "behavior": "Commercial patron recommendations and boycotts affect later demand",
+          "status": "missing"
+        },
+        {
+          "behavior": "Population reflects native resident/visitor acceptance rather than all occupied capacity",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "feature": "Sales, rents and tenancy contracts",
+      "manualPages": "40,48-49,59-60",
+      "priority": "P0",
+      "evidence": "simulation.updateRooms/settleQuarter/demolish; original-economy; IDA 2D71E,2DA4D,28C0F",
+      "checks": [
+        {
+          "behavior": "Charge offices and shops quarterly; hotels at checkout",
+          "status": "covered"
+        },
+        {
+          "behavior": "Sell connected condos once rather than collecting condo rent",
+          "status": "covered"
+        },
+        {
+          "behavior": "Return the recorded condo sale payment when residents leave",
+          "status": "missing"
+        },
+        {
+          "behavior": "Return condo payment on demolition using the actual purchase price",
+          "status": "partial"
+        },
+        {
+          "behavior": "Lock condo sale price while occupied",
+          "status": "missing"
+        },
+        {
+          "behavior": "Respect office minimum lease, tenure and native re-letting state",
+          "status": "partial"
+        },
+        {
+          "behavior": "Apply four price tiers to income and stress",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "feature": "Star progression and facility unlocks",
+      "manualPages": "16,22,24-26,33-34,53",
+      "priority": "P0",
+      "evidence": "catalog; checkRating; original-toolbar; IDA 29B9D,29F8D,2A0FE",
+      "checks": [
+        {
+          "behavior": "Start at one star and unlock native catalog groups by rating",
+          "status": "covered"
+        },
+        {
+          "behavior": "Require 300 population for two stars",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply higher-rating population/facility/time gates",
+          "status": "partial"
+        },
+        {
+          "behavior": "Make VIP satisfaction a real progression gate",
+          "status": "partial"
+        },
+        {
+          "behavior": "Use actual clinic demand/satisfaction for medical progression gate",
+          "status": "missing"
+        },
+        {
+          "behavior": "Use native occupied/accepted population counters",
+          "status": "partial"
+        },
+        {
+          "behavior": "Show promotion message and grow the construction toolbar",
+          "status": "covered"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "feature": "Lobby, floors and structural support",
+      "manualPages": "10,15,24,30,43,45-46",
+      "priority": "P0",
+      "evidence": "simulation.plan/build/resizeShaft; renderer.lobby; IDA 3B91B,274D7",
+      "checks": [
+        {
+          "behavior": "Require a ground lobby before other construction",
+          "status": "covered"
+        },
+        {
+          "behavior": "Merge adjacent extensions and keep tower within lobby support width",
+          "status": "covered"
+        },
+        {
+          "behavior": "Automatically charge/build supporting floor when placing a facility",
+          "status": "covered"
+        },
+        {
+          "behavior": "Extend floor to clicked edge within supporting floor width",
+          "status": "covered"
+        },
+        {
+          "behavior": "Create sky lobbies every fifteenth floor",
+          "status": "covered"
+        },
+        {
+          "behavior": "Keep structure after facility demolition/elevator retraction",
+          "status": "covered"
+        },
+        {
+          "behavior": "Assemble complete original lobby canopies/overhangs and double/triple lobbies",
+          "status": "partial"
+        },
+        {
+          "behavior": "Support documented 100 storeys/10 basements and multi-level cathedral exception",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "feature": "Elevator construction and limits",
+      "manualPages": "13,15,37,44,47-48",
+      "priority": "P0",
+      "evidence": "simulation.plan/addCar/resizeShaft; IDA 39904,150B9,15427,390FC",
+      "checks": [
+        {
+          "behavior": "Create shaft with one car and add cars at a clicked waiting floor",
+          "status": "covered"
+        },
+        {
+          "behavior": "Enforce 24 total shafts, eight-car maximum and standard 30-floor span",
+          "status": "covered"
+        },
+        {
+          "behavior": "Extend/retract independently at both machinery ends",
+          "status": "covered"
+        },
+        {
+          "behavior": "Create structural floors while extending and retain them when retracting",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply rating-dependent car/construction limits",
+          "status": "partial"
+        },
+        {
+          "behavior": "Handle occupied-car/queue capping and warnings exactly",
+          "status": "partial"
+        },
+        {
+          "behavior": "Use original Finger tool for end controls as well as construction tool",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "feature": "Directional elevator dispatch and programs",
+      "manualPages": "16,34-38,54-56",
+      "priority": "P0",
+      "evidence": "original-elevators; elevator-dispatch tests; IDA 103EC,1079C,10EF3,1009B",
+      "checks": [
+        {
+          "behavior": "Assign up/down hall calls to individual cars",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply Local, Express to Top and Express to Bottom sweeps",
+          "status": "covered"
+        },
+        {
+          "behavior": "Keep weekday/weekend phase programs independent",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use native response-distance comparison and default five",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply standard-floor departure wait and full-car bypass",
+          "status": "covered"
+        },
+        {
+          "behavior": "Unload and board on the native door ticks",
+          "status": "covered"
+        },
+        {
+          "behavior": "Keep directional queues at forty and cap boarding to native car capacities",
+          "status": "covered"
+        },
+        {
+          "behavior": "Reproduce exact route-to-car destination handoff and clock-wrap delay accounting",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F08",
+      "feature": "Stairs",
+      "manualPages": "10-11,44,46,56",
+      "priority": "P0",
+      "evidence": "simulation.plan/route/updatePeople; renderer; IDA 3E2A0,34B12,35128",
+      "checks": [
+        {
+          "behavior": "Place two-level original stair artwork",
+          "status": "covered"
+        },
+        {
+          "behavior": "Allow staircase placement over room interiors and forbid elevator overlap",
+          "status": "partial"
+        },
+        {
+          "behavior": "Apply bounded passage and native stair travel stress",
+          "status": "missing"
+        },
+        {
+          "behavior": "Maintain visible stair occupants and traversal timing",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F09",
+      "feature": "Escalators",
+      "manualPages": "46,54-56",
+      "priority": "P0",
+      "evidence": "simulation.plan/route; IDA 34A52,3507B,3E2A0",
+      "checks": [
+        {
+          "behavior": "Unlock and place two-level original escalator artwork",
+          "status": "covered"
+        },
+        {
+          "behavior": "Restrict placement to commercial/public areas",
+          "status": "missing"
+        },
+        {
+          "behavior": "Apply native reach limit and transport preference",
+          "status": "missing"
+        },
+        {
+          "behavior": "Apply stress/travel timing and share customers across connected commercial areas",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F10",
+      "feature": "Office daily lifecycle",
+      "manualPages": "12,14,48,58",
+      "priority": "P1",
+      "evidence": "original-people; IDA 42495,42811",
+      "checks": [
+        {
+          "behavior": "Keep six persistent identities and weekday morning arrivals",
+          "status": "covered"
+        },
+        {
+          "behavior": "Run business outing, lunch/clinic, return and evening departure states",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use exact food/clinic admission and destination demand",
+          "status": "partial"
+        },
+        {
+          "behavior": "Render working/dark states from native occupancy/activity records",
+          "status": "partial"
+        },
+        {
+          "behavior": "Keep original acceptance, lease and emergency-reset bitfields",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "feature": "Condo family lifecycle",
+      "manualPages": "49,60",
+      "priority": "P1",
+      "evidence": "original-people; IDA 43D28,44050",
+      "checks": [
+        {
+          "behavior": "Keep three persistent resident identities",
+          "status": "covered"
+        },
+        {
+          "behavior": "Distinguish family outing, earlier child return, homebody and sleep roles",
+          "status": "covered"
+        },
+        {
+          "behavior": "Visit native nearby shop/food lists and count all service waiting",
+          "status": "partial"
+        },
+        {
+          "behavior": "Implement referrals, purchase acceptance and move-in transitions",
+          "status": "missing"
+        },
+        {
+          "behavior": "Maintain sale/eviction lifecycle and refund",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "feature": "Hotel singles, twins and suites",
+      "manualPages": "18-20,48-49",
+      "priority": "P1",
+      "evidence": "catalog; original-people; IDA 432CC,4358E,2D914",
+      "checks": [
+        {
+          "behavior": "Use one/two/two guest capacities and original room art",
+          "status": "covered"
+        },
+        {
+          "behavior": "Check in evenings, stay overnight, check out mornings and post income",
+          "status": "covered"
+        },
+        {
+          "behavior": "Require suite guests to have an actual reserved parking space",
+          "status": "covered"
+        },
+        {
+          "behavior": "Make noise, pricing and dirt affect acceptance exactly",
+          "status": "partial"
+        },
+        {
+          "behavior": "Implement hotel evening dining/shopping states",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render actual guest/housekeeper interior animations",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F13",
+      "feature": "Food businesses and daily patron demand",
+      "manualPages": "12,49,54-55,58-59",
+      "priority": "P1",
+      "evidence": "original-people/ original-economy; IDA 44E4D,45031,32024,320F0",
+      "checks": [
+        {
+          "behavior": "Use original fast-food and restaurant artwork and receipts tables",
+          "status": "covered"
+        },
+        {
+          "behavior": "Select resident visits by lobby band and native 60-tick service duration",
+          "status": "covered"
+        },
+        {
+          "behavior": "Cap concurrent persistent venue admissions at forty",
+          "status": "covered"
+        },
+        {
+          "behavior": "Distinguish snack/lunch and evening restaurant demand",
+          "status": "partial"
+        },
+        {
+          "behavior": "Implement persistent outside patrons, referrals and boycotts",
+          "status": "missing"
+        },
+        {
+          "behavior": "Apply native rolling daily demand and rating thresholds",
+          "status": "partial"
+        },
+        {
+          "behavior": "Display real patronage/profit instead of prototype random traffic",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F14",
+      "feature": "Retail shops",
+      "manualPages": "49,55,59",
+      "priority": "P1",
+      "evidence": "simulation.updateRooms/settleQuarter; IDA 446B9,448A0,32192",
+      "checks": [
+        {
+          "behavior": "Construct native shop variants and charge quarterly rent",
+          "status": "covered"
+        },
+        {
+          "behavior": "Provide rent tiers and shop inspection",
+          "status": "partial"
+        },
+        {
+          "behavior": "Rate shop success by native daily patron totals",
+          "status": "missing"
+        },
+        {
+          "behavior": "Implement rolling customers, referrals and tenant departure",
+          "status": "missing"
+        },
+        {
+          "behavior": "Attract cinema/metro/adjacent escalator customers",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F15",
+      "feature": "Housekeeping and dirty rooms",
+      "manualPages": "19-20,32,51",
+      "priority": "P1",
+      "evidence": "original-people; simulation.status; IDA 46719,4680B,2A410",
+      "checks": [
+        {
+          "behavior": "Keep six persistent housekeepers and use service transport",
+          "status": "covered"
+        },
+        {
+          "behavior": "Assign floors by native residue and scan above before below",
+          "status": "covered"
+        },
+        {
+          "behavior": "Clean after native three-cohort service countdown",
+          "status": "covered"
+        },
+        {
+          "behavior": "Mark dirty rooms after checkout and refuse unclean arrivals",
+          "status": "partial"
+        },
+        {
+          "behavior": "Allow untreated dirt to become irreversible cockroach infestation",
+          "status": "missing"
+        },
+        {
+          "behavior": "Draw dirty/cleaning room states and report housekeeping demand",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F16",
+      "feature": "Parking spaces",
+      "manualPages": "49-50,53",
+      "priority": "P1",
+      "evidence": "simulation.parkingSpaces/bookParking/releaseParking; IDA 300BB,30162,3022A,305F7",
+      "checks": [
+        {
+          "behavior": "Place only underground and enforce native pool limit",
+          "status": "covered"
+        },
+        {
+          "behavior": "Reserve and release a space per persistent actor",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show thirteen original car variants",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply category allowances and selected-worker/suite requirements",
+          "status": "covered"
+        },
+        {
+          "behavior": "Drag horizontally to construct repeated parking spaces",
+          "status": "missing"
+        },
+        {
+          "behavior": "Require ramp plus pedestrian transit for usable spaces",
+          "status": "partial"
+        },
+        {
+          "behavior": "Match exact native cell-map quotas and car entry/exit animations",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F17",
+      "feature": "Parking ramps",
+      "manualPages": "50",
+      "priority": "P1",
+      "evidence": "simulation.plan/rampConnected; catalog; IDA 390FC,3B91B",
+      "checks": [
+        {
+          "behavior": "Use original ramp texture and width",
+          "status": "covered"
+        },
+        {
+          "behavior": "Connect underground ramps vertically to ground lobby",
+          "status": "covered"
+        },
+        {
+          "behavior": "Drag down to construct a column across multiple floors",
+          "status": "missing"
+        },
+        {
+          "behavior": "Enforce one ramp column/one ramp per floor",
+          "status": "missing"
+        },
+        {
+          "behavior": "Match native entire parking-network reach validation",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F18",
+      "feature": "Medical service and demand",
+      "manualPages": "52",
+      "priority": "P1",
+      "evidence": "original-people; checkRating; IDA 2C3BF,2C531,2C6B4,2C80F,4553B",
+      "checks": [
+        {
+          "behavior": "Construct original clinics with native pool limits",
+          "status": "covered"
+        },
+        {
+          "behavior": "Route office patients through nearby-lobby/fallback clinic lists",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use forty-patient admission and sixteen-tick treatment",
+          "status": "covered"
+        },
+        {
+          "behavior": "Warn on missing clinic and maintain real clinic demand counters",
+          "status": "missing"
+        },
+        {
+          "behavior": "Implement dedicated medical patron/staff states",
+          "status": "missing"
+        },
+        {
+          "behavior": "Feed actual service demand into progression",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F19",
+      "feature": "Recycling",
+      "manualPages": "51",
+      "priority": "P1",
+      "evidence": "simulation.updateGarbage; original-systems; IDA F530,F60E,F701,F780",
+      "checks": [
+        {
+          "behavior": "Construct native two-level recycling artwork",
+          "status": "covered"
+        },
+        {
+          "behavior": "Stage nightly processing and capacity per population/center",
+          "status": "covered"
+        },
+        {
+          "behavior": "Require operating service elevator at processing level",
+          "status": "partial"
+        },
+        {
+          "behavior": "Report refuse-service needs",
+          "status": "partial"
+        },
+        {
+          "behavior": "Enforce adjacent-center operating rule from native layout logic",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render truck collection, ventilation and lower emptying sequence",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F20",
+      "feature": "Movie theatre gameplay",
+      "manualPages": "42,50,60",
+      "priority": "P1",
+      "evidence": "simulation.startShows/finishShows/changeMovie; IDA 2E95E,2E9ED,45B8D",
+      "checks": [
+        {
+          "behavior": "Use original two-level footprint, booth and movie titles",
+          "status": "covered"
+        },
+        {
+          "behavior": "Charge/classify latest movies versus classics and age audience demand",
+          "status": "covered"
+        },
+        {
+          "behavior": "Run two native arrival/show/receipt batches",
+          "status": "covered"
+        },
+        {
+          "behavior": "Have audience enter upper level and leave lower level",
+          "status": "missing"
+        },
+        {
+          "behavior": "Keep persistent audience identities and native after-show visits",
+          "status": "missing"
+        },
+        {
+          "behavior": "Send departing audience to commercial venues within five floors",
+          "status": "missing"
+        },
+        {
+          "behavior": "Prevent demolition under native protected-theatre rule",
+          "status": "partial"
+        },
+        {
+          "behavior": "Render real projection and audience phases",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F21",
+      "feature": "Party halls",
+      "manualPages": "50",
+      "priority": "P1",
+      "evidence": "simulation.startShows/finishShows; IDA 2E3CF,45A11,45B8D",
+      "checks": [
+        {
+          "behavior": "Use original two-level facility and fifty-person daily allowance",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply afternoon arrival/close/receipt times",
+          "status": "covered"
+        },
+        {
+          "behavior": "Require sufficient hotel support before party demand",
+          "status": "missing"
+        },
+        {
+          "behavior": "Implement persistent booked guests and their trips",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F22",
+      "feature": "Metro/tube station",
+      "manualPages": "51",
+      "priority": "P1",
+      "evidence": "simulation.plan/tick; IDA 384F3,390FC",
+      "checks": [
+        {
+          "behavior": "Limit to one underground three-level station with nothing below it",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show original trains/art and native train-state switching",
+          "status": "partial"
+        },
+        {
+          "behavior": "Create native outside arrivals to offices/residences",
+          "status": "missing"
+        },
+        {
+          "behavior": "Restrict metro-origin shopping/dining to underground venues",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render station passenger entry/exit",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F23",
+      "feature": "Facility inspection",
+      "manualPages": "11-12,17,39-40,45",
+      "priority": "P1",
+      "evidence": "main.roomDialog; original-dialogs; IDA 1FD89,204E8",
+      "checks": [
+        {
+          "behavior": "Open category-specific original dialogs with facility snapshot",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show leasing state, tenure and exact condition messages",
+          "status": "partial"
+        },
+        {
+          "behavior": "Draw native Eval colored gauge and numeric patronage",
+          "status": "partial"
+        },
+        {
+          "behavior": "Offer four rent tiers and open persistent occupants",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show only actual occupants present rather than all identities",
+          "status": "partial"
+        },
+        {
+          "behavior": "Play appropriate facility background sounds during active business",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F24",
+      "feature": "Person/tenant inspection",
+      "manualPages": "17-18,40-41",
+      "priority": "P1",
+      "evidence": "main.personDialog/actorPortrait; IDA 1FA10,1FAF3",
+      "checks": [
+        {
+          "behavior": "Show persistent home, destination and stress and allow rename",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use original gender/occupation portraits and labels",
+          "status": "partial"
+        },
+        {
+          "behavior": "Show room Eval separately from individual Stress in native gauges",
+          "status": "missing"
+        },
+        {
+          "behavior": "Open service-specific dialog 764 where required",
+          "status": "missing"
+        },
+        {
+          "behavior": "Inspect walking/queued people directly in the tower",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F25",
+      "feature": "Elevator/stair passenger inspection",
+      "manualPages": "40,43-45",
+      "priority": "P1",
+      "evidence": "main.inspect; IDA 20B9D,20ED5; DTMP 761/762",
+      "checks": [
+        {
+          "behavior": "Click a moving car to show car occupants rather than schedule",
+          "status": "missing"
+        },
+        {
+          "behavior": "Show native capacity/passenger grid and click through to people",
+          "status": "missing"
+        },
+        {
+          "behavior": "Show stair/escalator occupants and click through to people",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F26",
+      "feature": "Names and Find Person tracking",
+      "manualPages": "18,40-42",
+      "priority": "P1",
+      "evidence": "main.renameDialog/findPersonDialog; IDA 236E9,1C680,1C6EF",
+      "checks": [
+        {
+          "behavior": "Name/remove names with native fifteen-character/twenty-person limits",
+          "status": "covered"
+        },
+        {
+          "behavior": "Keep names attached to persistent identities and search list",
+          "status": "covered"
+        },
+        {
+          "behavior": "Center view on actual current person/room/car location",
+          "status": "partial"
+        },
+        {
+          "behavior": "Show native red location arrow",
+          "status": "missing"
+        },
+        {
+          "behavior": "Highlight named people blue in tower and occupant grids",
+          "status": "missing"
+        },
+        {
+          "behavior": "Report when a named person is outside the tower",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F27",
+      "feature": "Pricing and evaluation map modes",
+      "manualPages": "17,31-32,56",
+      "priority": "P1",
+      "evidence": "renderer.map/render; main set map mode; IDA 36570,367C4,368D3",
+      "checks": [
+        {
+          "behavior": "Pause on Eval/Pricing modes and resume on Edit",
+          "status": "covered"
+        },
+        {
+          "behavior": "Render native color-coded statuses in map with legends",
+          "status": "partial"
+        },
+        {
+          "behavior": "Replace full Edit-window appearance with matching evaluation/pricing colors",
+          "status": "missing"
+        },
+        {
+          "behavior": "Navigate to a selected map position",
+          "status": "covered"
+        },
+        {
+          "behavior": "Apply exact native evaluation/price metrics to all facility types",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F28",
+      "feature": "Hotel diagnostic map mode",
+      "manualPages": "32,51",
+      "priority": "P1",
+      "evidence": "renderer.map; main; IDA 368D3",
+      "checks": [
+        {
+          "behavior": "Unlock Hotel mode only when hotel placement is available",
+          "status": "partial"
+        },
+        {
+          "behavior": "Pause and identify dirty hotels in the map",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show matching red dirty/infested areas in the Edit view",
+          "status": "missing"
+        },
+        {
+          "behavior": "Distinguish delayed cleaning from irreversible infestation",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F29",
+      "feature": "Elevator stop and waiting-floor controls",
+      "manualPages": "15,36-37",
+      "priority": "P1",
+      "evidence": "main.elevatorDialog; original-elevators; IDA 14ED6,20B9D",
+      "checks": [
+        {
+          "behavior": "Set per-car waiting floor and return idle car there",
+          "status": "covered"
+        },
+        {
+          "behavior": "Toggle shaft-wide floor service from schedule grid",
+          "status": "partial"
+        },
+        {
+          "behavior": "Protect every car waiting floor from service deactivation",
+          "status": "missing"
+        },
+        {
+          "behavior": "Disable express stop/waiting-floor edits according to original rules",
+          "status": "missing"
+        },
+        {
+          "behavior": "Toggle stops with Finger on shaft floor numbers",
+          "status": "missing"
+        },
+        {
+          "behavior": "Draw native red waiting-floor numbers and blank disabled stops",
+          "status": "missing"
+        },
+        {
+          "behavior": "Issue native connectivity warnings when changes isolate travellers",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F30",
+      "feature": "Elevator live schedule display",
+      "manualPages": "34,37-38",
+      "priority": "P1",
+      "evidence": "main.elevatorDialog; DTMP 400; IDA 20B9D",
+      "checks": [
+        {
+          "behavior": "Display original control artwork and weekday/weekend time buttons",
+          "status": "covered"
+        },
+        {
+          "behavior": "Let simulation run while schedule dialog is open",
+          "status": "missing"
+        },
+        {
+          "behavior": "Animate direction, full, destination, idle and turnaround grid symbols",
+          "status": "missing"
+        },
+        {
+          "behavior": "Show original stop/waiting-floor symbols and machinery focus",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F31",
+      "feature": "Elevator Show toggle",
+      "manualPages": "38",
+      "priority": "P1",
+      "evidence": "main.elevatorDialog; renderer shaft loop; IDA 20B9D",
+      "checks": [
+        {
+          "behavior": "Provide and preserve Show toggle",
+          "status": "covered"
+        },
+        {
+          "behavior": "Hide shaft body but retain two boundary lines and moving cars",
+          "status": "missing"
+        },
+        {
+          "behavior": "Reveal underlying facilities and retain clickable machinery",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F32",
+      "feature": "Elevator Simulate preview",
+      "manualPages": "38",
+      "priority": "P1",
+      "evidence": "disabled main.elevatorDialog control; native Simulate handlers",
+      "checks": [
+        {
+          "behavior": "Snapshot and isolate selected shaft/people to preview near-future traffic",
+          "status": "missing"
+        },
+        {
+          "behavior": "Toggle Resume to restore untouched whole-tower state",
+          "status": "missing"
+        },
+        {
+          "behavior": "Show meaningful future behavior for selected programs",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F33",
+      "feature": "Pause, scrolling and tool availability",
+      "manualPages": "24,30,43-44",
+      "priority": "P1",
+      "evidence": "main.attachEvents/frame/setSpeed; IDA C6E1,EDF9,CB0D",
+      "checks": [
+        {
+          "behavior": "Use original full-width pause/resume artwork and freeze clock",
+          "status": "covered"
+        },
+        {
+          "behavior": "Allow only magnifier while explicitly paused",
+          "status": "missing"
+        },
+        {
+          "behavior": "Pause during scrolling and restore prior running state",
+          "status": "missing"
+        },
+        {
+          "behavior": "Allow inspection and map diagnosis while paused",
+          "status": "covered"
+        },
+        {
+          "behavior": "Restore correct prior speed/state after modal operations",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F34",
+      "feature": "Construction gestures and placement feedback",
+      "manualPages": "10,15,43-46,50",
+      "priority": "P1",
+      "evidence": "main.attachEvents/updatePreview; simulation.plan",
+      "checks": [
+        {
+          "behavior": "Display footprint preview and reject unaffordable/overlapping placement",
+          "status": "covered"
+        },
+        {
+          "behavior": "Drag lobby/floor and extend elevator ends",
+          "status": "covered"
+        },
+        {
+          "behavior": "Shift-replace an existing facility atomically",
+          "status": "missing"
+        },
+        {
+          "behavior": "Batch parking/ramp drag placement",
+          "status": "missing"
+        },
+        {
+          "behavior": "Distinguish insufficient facility budget from insufficient supporting floor budget",
+          "status": "partial"
+        },
+        {
+          "behavior": "Show native construction item/price messages and gestures",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F35",
+      "feature": "Bulldozer and protected structure",
+      "manualPages": "44-46,50",
+      "priority": "P1",
+      "evidence": "simulation.demolish; IDA 3BD44,3BF6D",
+      "checks": [
+        {
+          "behavior": "Demolish ordinary facilities free and retain floor support",
+          "status": "covered"
+        },
+        {
+          "behavior": "Remove affected resident/passenger identities from active population",
+          "status": "covered"
+        },
+        {
+          "behavior": "Preserve all native protected facilities (including cinema)",
+          "status": "partial"
+        },
+        {
+          "behavior": "Keep lobby non-removable",
+          "status": "covered"
+        },
+        {
+          "behavior": "Repay occupied condominium at actual sale value",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F36",
+      "feature": "People colors and animation",
+      "manualPages": "15,18,27,47,57",
+      "priority": "P1",
+      "evidence": "people-sprites; renderer; IDA 163BA,1699C",
+      "checks": [
+        {
+          "behavior": "Use original whole sprite frames and stable identity walk pairs",
+          "status": "covered"
+        },
+        {
+          "behavior": "Hide/show people through animation option",
+          "status": "covered"
+        },
+        {
+          "behavior": "Put ascending queues left and descending queues right of shaft",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render current native stress pink/red rather than original appearance only",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render named people blue and location selection arrow",
+          "status": "missing"
+        },
+        {
+          "behavior": "Animate actual inhabitants inside hotels/offices/service rooms",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F37",
+      "feature": "Finance window",
+      "manualPages": "13,29,38-39",
+      "priority": "P1",
+      "evidence": "main finance dialog; original-economy; IDA CD73,D119,CCDA",
+      "checks": [
+        {
+          "behavior": "Display original window bitmap and ten income/maintenance categories",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show net, other income, construction, prior quarter and total balance",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use native monetary scaling and quarterly boundaries",
+          "status": "covered"
+        },
+        {
+          "behavior": "Show correct population and receipts from all actor/demand systems",
+          "status": "partial"
+        },
+        {
+          "behavior": "Match native fonts/gauges and dialog focus",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F38",
+      "feature": "Toolbar growth and grouped catalog",
+      "manualPages": "10,18-19,29,43,45",
+      "priority": "P1",
+      "evidence": "original-toolbar; main.renderCatalog; IDA 29DA8,29F74,CAA2",
+      "checks": [
+        {
+          "behavior": "Grow toolbar at native rating boundaries",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use original icons, ordering and grouped submenus",
+          "status": "covered"
+        },
+        {
+          "behavior": "Match exact hold/release menu selection and cursor states",
+          "status": "partial"
+        },
+        {
+          "behavior": "Move/hide/restore toolbar through window controls",
+          "status": "covered"
+        }
+      ]
+    },
+    {
+      "id": "F39",
+      "feature": "Info Bar, clock and calendar",
+      "manualPages": "8-10,24,29-30,33-34",
+      "priority": "P1",
+      "evidence": "original-clock; main.updateUI; IDA 3D2ED,263C6,26872",
+      "checks": [
+        {
+          "behavior": "Use recovered nonuniform clock periods and hand endpoints",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use two weekdays/one weekend per quarter and four quarters/year",
+          "status": "covered"
+        },
+        {
+          "behavior": "Update cash, rating, messages and population display",
+          "status": "covered"
+        },
+        {
+          "behavior": "Move/hide/restore floating bar",
+          "status": "covered"
+        },
+        {
+          "behavior": "Match initial positions, native date strings and exact fonts",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F40",
+      "feature": "Map navigation and overview",
+      "manualPages": "9,30-31",
+      "priority": "P1",
+      "evidence": "renderer.map; main minimap handlers; IDA 2BEC0,2C17E",
+      "checks": [
+        {
+          "behavior": "Show full-world tower silhouette, shaft types and viewport rectangle",
+          "status": "covered"
+        },
+        {
+          "behavior": "Click map to navigate Edit view",
+          "status": "covered"
+        },
+        {
+          "behavior": "Drag highlighted viewport rectangle to navigate continuously",
+          "status": "missing"
+        },
+        {
+          "behavior": "Move/hide/restore map window",
+          "status": "covered"
+        },
+        {
+          "behavior": "Match native shaft colors, hatch patterns and initial placement",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F41",
+      "feature": "Security staff and emergency movement",
+      "manualPages": "24,28,51-53",
+      "priority": "P2",
+      "evidence": "original-people security identities; IDA 416CE,46BEC,46C60",
+      "checks": [
+        {
+          "behavior": "Build native security offices and keep six staff identities",
+          "status": "covered"
+        },
+        {
+          "behavior": "Dispatch through exterior emergency stairs, independent of lifts",
+          "status": "missing"
+        },
+        {
+          "behavior": "Search bombs and fight fires by location/travel time",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render native security/firefighter movement and service states",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F42",
+      "feature": "Fire and helicopter rescue",
+      "manualPages": "28-29,53",
+      "priority": "P2",
+      "evidence": "IDA 1D819-1DFC8,1F493; disabled Call Fire Rescue",
+      "checks": [
+        {
+          "behavior": "Trigger original event under native date/security/rating checks",
+          "status": "missing"
+        },
+        {
+          "behavior": "Warn and offer $500k rescue; activate menu only during fire",
+          "status": "missing"
+        },
+        {
+          "behavior": "Spread fire and damage facilities/occupants",
+          "status": "missing"
+        },
+        {
+          "behavior": "Let security reach and extinguish fire through exterior stairs",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render helicopter and extinguishing sequence",
+          "status": "missing"
+        },
+        {
+          "behavior": "Evacuate/reset actors and allow rebuilding damaged spaces",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F43",
+      "feature": "Terrorist bomb event",
+      "manualPages": "52-53",
+      "priority": "P2",
+      "evidence": "IDA 1983E,197D0,19994,199C7,19A24,1EFC1",
+      "checks": [
+        {
+          "behavior": "Trigger native demand with rating-dependent ransom",
+          "status": "missing"
+        },
+        {
+          "behavior": "Allow pay/refuse and deduct authorized in-game payment",
+          "status": "missing"
+        },
+        {
+          "behavior": "Run security search using exterior stairs and native deadline",
+          "status": "missing"
+        },
+        {
+          "behavior": "Explode unresolved bomb and apply damage/evacuation",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render original notices, search and aftermath",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F44",
+      "feature": "VIP visit",
+      "manualPages": "53",
+      "priority": "P2",
+      "evidence": "simulation reserveVIP/arriveVIP/checkoutVIP; IDA 48E00-48FC3",
+      "checks": [
+        {
+          "behavior": "Reserve native eligible suite guest/date/rating with parking",
+          "status": "covered"
+        },
+        {
+          "behavior": "Announce/name same persistent VIP on arrival",
+          "status": "covered"
+        },
+        {
+          "behavior": "Pass/fail checkout at recovered average delay boundary",
+          "status": "covered"
+        },
+        {
+          "behavior": "Make housekeeping, room condition and every travel delay match original satisfaction",
+          "status": "partial"
+        },
+        {
+          "behavior": "Highlight VIP suite yellow and native event tracking",
+          "status": "missing"
+        },
+        {
+          "behavior": "Use actual success flag in rating progression",
+          "status": "covered"
+        }
+      ]
+    },
+    {
+      "id": "F45",
+      "feature": "Cockroach infestation",
+      "manualPages": "32,51,56",
+      "priority": "P2",
+      "evidence": "room dirt approximation; IDA 2A6F2,2A8F2,hotel condition handlers",
+      "checks": [
+        {
+          "behavior": "Trigger native infestation after untreated dirty-room duration",
+          "status": "missing"
+        },
+        {
+          "behavior": "Prevent normal cleaning/reletting from curing infestation",
+          "status": "missing"
+        },
+        {
+          "behavior": "Render original cockroaches and diagnostic states",
+          "status": "missing"
+        },
+        {
+          "behavior": "Require demolition/rebuild to restore usable room",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F46",
+      "feature": "Cathedral, worship and Tower milestone",
+      "manualPages": "26,52",
+      "priority": "P2",
+      "evidence": "simulation.plan; IDA AB30-AEEB,4633A,464B2,29C1F",
+      "checks": [
+        {
+          "behavior": "Place native five-level cathedral at 100F only after five stars",
+          "status": "covered"
+        },
+        {
+          "behavior": "Run weekend worshipper arrivals through appropriate local transfer",
+          "status": "missing"
+        },
+        {
+          "behavior": "Apply native congregation/population gate to Tower promotion",
+          "status": "missing"
+        },
+        {
+          "behavior": "Run original wedding/ceremony and angel sound",
+          "status": "missing"
+        },
+        {
+          "behavior": "Display original state-dependent cathedral artwork",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F47",
+      "feature": "Hidden treasure",
+      "manualPages": "38,54",
+      "priority": "P2",
+      "evidence": "simulation.checkTreasure; IDA 2A1E7,2A22C,2A293",
+      "checks": [
+        {
+          "behavior": "Trigger recovered basement/width/rating eligibility once",
+          "status": "covered"
+        },
+        {
+          "behavior": "Credit original rating-dependent cash and show native dialog/sound",
+          "status": "covered"
+        },
+        {
+          "behavior": "Recompute eligibility on rating change",
+          "status": "covered"
+        }
+      ]
+    },
+    {
+      "id": "F48",
+      "feature": "Scene, facilities and original artwork",
+      "manualPages": "8-10,24,30,45-52",
+      "priority": "P2",
+      "evidence": "extraction tools; renderer; CGPk/CLUT/BITMAP assets",
+      "checks": [
+        {
+          "behavior": "Use supplied original scene/facility art without generated replacement textures",
+          "status": "covered"
+        },
+        {
+          "behavior": "Assemble all original facade/roof/lobby variants exactly",
+          "status": "partial"
+        },
+        {
+          "behavior": "Render original left/right edge scaffolding",
+          "status": "covered"
+        },
+        {
+          "behavior": "Render original sky/cloud palette and day/night appearance",
+          "status": "partial"
+        },
+        {
+          "behavior": "Match original layout/fonts/pixel positions against running game reference",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F49",
+      "feature": "Effects and facility animation",
+      "manualPages": "27-28,42",
+      "priority": "P2",
+      "evidence": "main options; renderer; IDA 56CB,63CD,640D",
+      "checks": [
+        {
+          "behavior": "Animate elevator machinery through original palette/state mechanism",
+          "status": "missing"
+        },
+        {
+          "behavior": "Animate recycling ventilation and collection stages",
+          "status": "missing"
+        },
+        {
+          "behavior": "Animate active office/hotel/cinema/party interiors by actual state",
+          "status": "partial"
+        },
+        {
+          "behavior": "Wire Effects toggle to all relevant native effects without changing simulation",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F50",
+      "feature": "Sound options and ambient audio",
+      "manualPages": "14,27-28,39",
+      "priority": "P2",
+      "evidence": "main.playSound/options; original WAV; IDA 35BB7-36042",
+      "checks": [
+        {
+          "behavior": "Provide independent Elevators/Background/Events toggles",
+          "status": "covered"
+        },
+        {
+          "behavior": "Use original elevator departure/arrival and event cues",
+          "status": "covered"
+        },
+        {
+          "behavior": "Play dawn/rain/metro/background samples at native times",
+          "status": "partial"
+        },
+        {
+          "behavior": "Play location-specific active facility audio on inspection",
+          "status": "missing"
+        },
+        {
+          "behavior": "Match original channel priority, looping and ambient scheduling",
+          "status": "missing"
+        }
+      ]
+    },
+    {
+      "id": "F51",
+      "feature": "Edit window and scrolling UI",
+      "manualPages": "9,24,30",
+      "priority": "P2",
+      "evidence": "main pan/wheel/arrows; renderer camera; index.html",
+      "checks": [
+        {
+          "behavior": "Present interactive tower cutaway with movable viewport",
+          "status": "covered"
+        },
+        {
+          "behavior": "Provide native scrollbars/arrows, window zoom/maximize and sizing",
+          "status": "partial"
+        },
+        {
+          "behavior": "Pause correctly during scrolling and prevent unintended construction",
+          "status": "partial"
+        },
+        {
+          "behavior": "Retain native Win3.1 window chrome/focus behavior",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F52",
+      "feature": "Fast Mode",
+      "manualPages": "28",
+      "priority": "P2",
+      "evidence": "main.setSpeed/frame; IDA 3CEF6,4A256",
+      "checks": [
+        {
+          "behavior": "Provide selectable accelerated gameplay",
+          "status": "covered"
+        },
+        {
+          "behavior": "Implement native ungated simulation speed rather than fixed 8x",
+          "status": "missing"
+        },
+        {
+          "behavior": "Keep responsiveness/rendering independent of simulation rate",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F53",
+      "feature": "File/startup/new/open/save/quit",
+      "manualPages": "7-8,27",
+      "priority": "P3",
+      "evidence": "main titleDialog/newTowerDialog/downloadSave; native file handlers",
+      "checks": [
+        {
+          "behavior": "Load original title artwork and create a new tower",
+          "status": "covered"
+        },
+        {
+          "behavior": "Open/continue/export deterministic browser JSON save",
+          "status": "partial"
+        },
+        {
+          "behavior": "Provide original New Tower/Open startup prompt and unsaved-change guard",
+          "status": "missing"
+        },
+        {
+          "behavior": "Import/export native TDT files and original file-dialog semantics",
+          "status": "deferred"
+        },
+        {
+          "behavior": "Save As and quit behavior suitable for browser with explicit state preservation",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F54",
+      "feature": "Menus, shortcuts and window visibility",
+      "manualPages": "26-30",
+      "priority": "P3",
+      "evidence": "index.html; main.attachEvents; IDA 2B13A",
+      "checks": [
+        {
+          "behavior": "Match original File/Options/Windows/Help menu content and disabled Edit commands",
+          "status": "partial"
+        },
+        {
+          "behavior": "Provide original keyboard equivalents and mouse hold/release commands",
+          "status": "partial"
+        },
+        {
+          "behavior": "Hide/restore Info Bar, Tool Bar and Map through Windows menu",
+          "status": "covered"
+        },
+        {
+          "behavior": "Match minimize/maximize/system-menu and native modal focus",
+          "status": "partial"
+        }
+      ]
+    },
+    {
+      "id": "F55",
+      "feature": "Help and manual access",
+      "manualPages": "reference/index",
+      "priority": "P3",
+      "evidence": "main help overlay; original SIMTOWER.HLP",
+      "checks": [
+        {
+          "behavior": "Provide usable browser controls/help",
+          "status": "partial"
+        },
+        {
+          "behavior": "Expose original help topics or equivalent manual lookup",
+          "status": "missing"
+        },
+        {
+          "behavior": "Preserve contextual help/navigation for each feature",
+          "status": "missing"
+        }
+      ]
+    }
+  ],
+  "discrepancies": [
+    {
+      "topic": "Car capacity",
+      "manualPages": "47-48",
+      "note": "Manual states 17 standard/service and 36 express. Supplied executable initializes 21/42 (390FC/39904). Keep executable values; rendered manual page 47 confirms this is not an OCR error."
+    },
+    {
+      "topic": "Stair/escalator limits",
+      "manualPages": "46",
+      "note": "Manual describes four/seven sets; native reach validators 34B12/34A52 allow spans of three/six floor transitions (four/seven floor levels). Treat executable comparisons as authority and retain the counting distinction in tests."
+    },
+    {
+      "topic": "Bomb deadline and randomness",
+      "manualPages": "52-53",
+      "note": "Manual says random day and 13:00 explosion; supplied binary uses recovered date moduli and 15:00 deadline. Implementation must follow the binary event dispatcher."
+    },
+    {
+      "topic": "Stress, patron numbers and periods",
+      "manualPages": "57-60",
+      "note": "Manual explicitly says its formulas/numbers are illustrative, not precise release formulas. Use PART resources and IDA callers for numeric rules; keep manual qualitative lifecycle requirements."
+    },
+    {
+      "topic": "Noise and treasure wording",
+      "manualPages": "25,54",
+      "note": "Manual describes radial noise and underground residences for treasure; supplied native caller scans horizontal cell distances and tests basement width/rating. Do not overwrite recovered checks with prose simplifications."
+    },
+    {
+      "topic": "Window chrome and target platform",
+      "manualPages": "9,30,34-38",
+      "note": "Manual illustrations show platform-specific window conventions. Target remains the supplied Win16 executable and original resources; browser/OS file dialogs are not exact Windows shells."
+    }
+  ],
+  "workLog": [
+    "2026-10-14: Inventory completed before implementation: manual tutorial, reference, strategy, simulation appendix and index were compared with source and prior IDA audit. Baseline is retained in coverage-baseline.json."
+  ],
+  "nextWork": [
+    "F01 first: bounded native transport reach, lateral/queue-aware choice and transfer constraints; use IDA rather than generic BFS.",
+    "F02/F03 next: exact stress/acceptance and tenancy contracts, including condo sale refund and occupied price lock.",
+    "F04 next: real clinic-demand and native population gates so progression is earned.",
+    "Then proceed in table order, keeping simulation dependencies ahead of UI polish and rare events. Native TDT work stays deferred."
+  ],
+  "executableOnlyExtras": [
+    "SECOM early warning service",
+    "Santa annual event",
+    "Find Tenant and tenant names",
+    "About credits",
+    "Hidden AquaZone export"
+  ]
+}

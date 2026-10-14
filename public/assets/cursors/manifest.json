@@ -1,0 +1,38 @@
+{
+  "1002": {
+    "width": 32,
+    "height": 32,
+    "hotspot": [
+      7,
+      7
+    ],
+    "resource": 1
+  },
+  "1003": {
+    "width": 32,
+    "height": 32,
+    "hotspot": [
+      6,
+      6
+    ],
+    "resource": 2
+  },
+  "1004": {
+    "width": 32,
+    "height": 32,
+    "hotspot": [
+      6,
+      0
+    ],
+    "resource": 3
+  },
+  "1005": {
+    "width": 32,
+    "height": 32,
+    "hotspot": [
+      6,
+      6
+    ],
+    "resource": 4
+  }
+}

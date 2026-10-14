@@ -1,0 +1,4026 @@
+{
+  "source": "SimTowerDOS/SIMTOWER.EXE",
+  "sha256": "2825a3c53f77945c63b6d72e26faa7dde5ddd56c31ca668e67a12576d7feca96",
+  "resources": [
+    {
+      "type": 15,
+      "id": 1,
+      "offset": 2569728,
+      "size": 2560,
+      "path": "research/resources/15-1.bin"
+    },
+    {
+      "type": 1,
+      "id": 1,
+      "offset": 474624,
+      "size": 512,
+      "path": "research/resources/1-1.bin"
+    },
+    {
+      "type": 1,
+      "id": 2,
+      "offset": 475136,
+      "size": 512,
+      "path": "research/resources/1-2.bin"
+    },
+    {
+      "type": 1,
+      "id": 3,
+      "offset": 475648,
+      "size": 512,
+      "path": "research/resources/1-3.bin"
+    },
+    {
+      "type": 1,
+      "id": 4,
+      "offset": 476160,
+      "size": 512,
+      "path": "research/resources/1-4.bin"
+    },
+    {
+      "type": 2,
+      "id": 128,
+      "offset": 2572288,
+      "size": 48128,
+      "width": 236,
+      "height": 198,
+      "path": "public/assets/bitmaps/128.png"
+    },
+    {
+      "type": 2,
+      "id": 256,
+      "offset": 2620416,
+      "size": 308736,
+      "width": 640,
+      "height": 480,
+      "path": "public/assets/bitmaps/256.png"
+    },
+    {
+      "type": 2,
+      "id": 257,
+      "offset": 2929152,
+      "size": 92160,
+      "width": 334,
+      "height": 270,
+      "path": "public/assets/bitmaps/257.png"
+    },
+    {
+      "type": 2,
+      "id": 300,
+      "offset": 3021312,
+      "size": 34304,
+      "width": 256,
+      "height": 128,
+      "path": "public/assets/bitmaps/300.png"
+    },
+    {
+      "type": 2,
+      "id": 301,
+      "offset": 3055616,
+      "size": 34304,
+      "width": 256,
+      "height": 128,
+      "path": "public/assets/bitmaps/301.png"
+    },
+    {
+      "type": 2,
+      "id": 302,
+      "offset": 3089920,
+      "size": 34304,
+      "width": 256,
+      "height": 128,
+      "path": "public/assets/bitmaps/302.png"
+    },
+    {
+      "type": 2,
+      "id": 310,
+      "offset": 3124224,
+      "size": 5120,
+      "width": 200,
+      "height": 18,
+      "path": "public/assets/bitmaps/310.png"
+    },
+    {
+      "type": 2,
+      "id": 311,
+      "offset": 3129344,
+      "size": 5120,
+      "width": 200,
+      "height": 18,
+      "path": "public/assets/bitmaps/311.png"
+    },
+    {
+      "type": 2,
+      "id": 312,
+      "offset": 3134464,
+      "size": 5120,
+      "width": 200,
+      "height": 18,
+      "path": "public/assets/bitmaps/312.png"
+    },
+    {
+      "type": 2,
+      "id": 313,
+      "offset": 3139584,
+      "size": 5120,
+      "width": 200,
+      "height": 20,
+      "path": "public/assets/bitmaps/313.png"
+    },
+    {
+      "type": 2,
+      "id": 314,
+      "offset": 3144704,
+      "size": 5120,
+      "width": 200,
+      "height": 20,
+      "path": "public/assets/bitmaps/314.png"
+    },
+    {
+      "type": 2,
+      "id": 315,
+      "offset": 3149824,
+      "size": 3072,
+      "width": 81,
+      "height": 20,
+      "path": "public/assets/bitmaps/315.png"
+    },
+    {
+      "type": 2,
+      "id": 320,
+      "offset": 3152896,
+      "size": 18944,
+      "width": 431,
+      "height": 41,
+      "path": "public/assets/bitmaps/320.png"
+    },
+    {
+      "type": 2,
+      "id": 321,
+      "offset": 3171840,
+      "size": 2560,
+      "width": 32,
+      "height": 31,
+      "path": "public/assets/bitmaps/321.png"
+    },
+    {
+      "type": 2,
+      "id": 322,
+      "offset": 3174400,
+      "size": 1536,
+      "width": 24,
+      "height": 19,
+      "path": "public/assets/bitmaps/322.png"
+    },
+    {
+      "type": 2,
+      "id": 323,
+      "offset": 3175936,
+      "size": 1536,
+      "width": 24,
+      "height": 19,
+      "path": "public/assets/bitmaps/323.png"
+    },
+    {
+      "type": 2,
+      "id": 327,
+      "offset": 3177472,
+      "size": 3584,
+      "width": 108,
+      "height": 22,
+      "path": "public/assets/bitmaps/327.png"
+    },
+    {
+      "type": 2,
+      "id": 352,
+      "offset": 3181056,
+      "size": 58880,
+      "width": 200,
+      "height": 288,
+      "path": "public/assets/bitmaps/352.png"
+    },
+    {
+      "type": 2,
+      "id": 400,
+      "offset": 3239936,
+      "size": 87040,
+      "width": 200,
+      "height": 428,
+      "path": "public/assets/bitmaps/400.png"
+    },
+    {
+      "type": 2,
+      "id": 401,
+      "offset": 3326976,
+      "size": 87040,
+      "width": 200,
+      "height": 428,
+      "path": "public/assets/bitmaps/401.png"
+    },
+    {
+      "type": 2,
+      "id": 402,
+      "offset": 3414016,
+      "size": 2048,
+      "width": 24,
+      "height": 21,
+      "path": "public/assets/bitmaps/402.png"
+    },
+    {
+      "type": 2,
+      "id": 403,
+      "offset": 3416064,
+      "size": 2048,
+      "width": 24,
+      "height": 21,
+      "path": "public/assets/bitmaps/403.png"
+    },
+    {
+      "type": 2,
+      "id": 404,
+      "offset": 3418112,
+      "size": 2048,
+      "width": 24,
+      "height": 21,
+      "path": "public/assets/bitmaps/404.png"
+    },
+    {
+      "type": 2,
+      "id": 405,
+      "offset": 3420160,
+      "size": 7168,
+      "width": 82,
+      "height": 67,
+      "path": "public/assets/bitmaps/405.png"
+    },
+    {
+      "type": 2,
+      "id": 406,
+      "offset": 3427328,
+      "size": 7168,
+      "width": 82,
+      "height": 67,
+      "path": "public/assets/bitmaps/406.png"
+    },
+    {
+      "type": 2,
+      "id": 407,
+      "offset": 3434496,
+      "size": 1536,
+      "width": 12,
+      "height": 21,
+      "path": "public/assets/bitmaps/407.png"
+    },
+    {
+      "type": 2,
+      "id": 408,
+      "offset": 3436032,
+      "size": 1536,
+      "width": 12,
+      "height": 21,
+      "path": "public/assets/bitmaps/408.png"
+    },
+    {
+      "type": 2,
+      "id": 410,
+      "offset": 3437568,
+      "size": 87040,
+      "width": 200,
+      "height": 428,
+      "path": "public/assets/bitmaps/410.png"
+    },
+    {
+      "type": 2,
+      "id": 411,
+      "offset": 3524608,
+      "size": 87040,
+      "width": 200,
+      "height": 428,
+      "path": "public/assets/bitmaps/411.png"
+    },
+    {
+      "type": 2,
+      "id": 450,
+      "offset": 3611648,
+      "size": 72704,
+      "width": 200,
+      "height": 357,
+      "path": "public/assets/bitmaps/450.png"
+    },
+    {
+      "type": 2,
+      "id": 451,
+      "offset": 3684352,
+      "size": 72704,
+      "width": 200,
+      "height": 357,
+      "path": "public/assets/bitmaps/451.png"
+    },
+    {
+      "type": 2,
+      "id": 460,
+      "offset": 3757056,
+      "size": 72704,
+      "width": 200,
+      "height": 357,
+      "path": "public/assets/bitmaps/460.png"
+    },
+    {
+      "type": 2,
+      "id": 461,
+      "offset": 3829760,
+      "size": 72704,
+      "width": 200,
+      "height": 357,
+      "path": "public/assets/bitmaps/461.png"
+    },
+    {
+      "type": 2,
+      "id": 500,
+      "offset": 3902464,
+      "size": 126464,
+      "width": 343,
+      "height": 364,
+      "path": "public/assets/bitmaps/500.png"
+    },
+    {
+      "type": 2,
+      "id": 501,
+      "offset": 4028928,
+      "size": 126464,
+      "width": 343,
+      "height": 364,
+      "path": "public/assets/bitmaps/501.png"
+    },
+    {
+      "type": 2,
+      "id": 510,
+      "offset": 4155392,
+      "size": 64512,
+      "width": 300,
+      "height": 211,
+      "path": "public/assets/bitmaps/510.png"
+    },
+    {
+      "type": 2,
+      "id": 511,
+      "offset": 4219904,
+      "size": 64512,
+      "width": 300,
+      "height": 211,
+      "path": "public/assets/bitmaps/511.png"
+    },
+    {
+      "type": 2,
+      "id": 512,
+      "offset": 4284416,
+      "size": 64512,
+      "width": 300,
+      "height": 211,
+      "path": "public/assets/bitmaps/512.png"
+    },
+    {
+      "type": 2,
+      "id": 600,
+      "offset": 4348928,
+      "size": 3584,
+      "width": 64,
+      "height": 32,
+      "path": "public/assets/bitmaps/600.png"
+    },
+    {
+      "type": 2,
+      "id": 601,
+      "offset": 4352512,
+      "size": 3584,
+      "width": 64,
+      "height": 32,
+      "path": "public/assets/bitmaps/601.png"
+    },
+    {
+      "type": 2,
+      "id": 602,
+      "offset": 4356096,
+      "size": 3584,
+      "width": 64,
+      "height": 32,
+      "path": "public/assets/bitmaps/602.png"
+    },
+    {
+      "type": 2,
+      "id": 603,
+      "offset": 4359680,
+      "size": 3584,
+      "width": 64,
+      "height": 32,
+      "path": "public/assets/bitmaps/603.png"
+    },
+    {
+      "type": 2,
+      "id": 604,
+      "offset": 4363264,
+      "size": 2560,
+      "width": 64,
+      "height": 21,
+      "path": "public/assets/bitmaps/604.png"
+    },
+    {
+      "type": 2,
+      "id": 605,
+      "offset": 4365824,
+      "size": 2560,
+      "width": 64,
+      "height": 21,
+      "path": "public/assets/bitmaps/605.png"
+    },
+    {
+      "type": 2,
+      "id": 606,
+      "offset": 4368384,
+      "size": 2560,
+      "width": 64,
+      "height": 21,
+      "path": "public/assets/bitmaps/606.png"
+    },
+    {
+      "type": 2,
+      "id": 700,
+      "offset": 4370944,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/700.png"
+    },
+    {
+      "type": 2,
+      "id": 701,
+      "offset": 4374528,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/701.png"
+    },
+    {
+      "type": 2,
+      "id": 702,
+      "offset": 4378112,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/702.png"
+    },
+    {
+      "type": 2,
+      "id": 703,
+      "offset": 4381696,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/703.png"
+    },
+    {
+      "type": 2,
+      "id": 849,
+      "offset": 4385280,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/849.png"
+    },
+    {
+      "type": 2,
+      "id": 850,
+      "offset": 4398080,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/850.png"
+    },
+    {
+      "type": 2,
+      "id": 851,
+      "offset": 4410880,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/851.png"
+    },
+    {
+      "type": 2,
+      "id": 852,
+      "offset": 4423680,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/852.png"
+    },
+    {
+      "type": 2,
+      "id": 853,
+      "offset": 4436480,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/853.png"
+    },
+    {
+      "type": 2,
+      "id": 854,
+      "offset": 4449280,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/854.png"
+    },
+    {
+      "type": 2,
+      "id": 855,
+      "offset": 4462080,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/855.png"
+    },
+    {
+      "type": 2,
+      "id": 856,
+      "offset": 4474880,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/856.png"
+    },
+    {
+      "type": 2,
+      "id": 857,
+      "offset": 4487680,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/857.png"
+    },
+    {
+      "type": 2,
+      "id": 858,
+      "offset": 4500480,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/858.png"
+    },
+    {
+      "type": 2,
+      "id": 859,
+      "offset": 4513280,
+      "size": 12800,
+      "width": 32,
+      "height": 360,
+      "path": "public/assets/bitmaps/859.png"
+    },
+    {
+      "type": 2,
+      "id": 900,
+      "offset": 4526080,
+      "size": 5120,
+      "width": 96,
+      "height": 41,
+      "path": "public/assets/bitmaps/900.png"
+    },
+    {
+      "type": 2,
+      "id": 901,
+      "offset": 4531200,
+      "size": 5120,
+      "width": 192,
+      "height": 19,
+      "path": "public/assets/bitmaps/901.png"
+    },
+    {
+      "type": 2,
+      "id": 902,
+      "offset": 4536320,
+      "size": 12288,
+      "width": 292,
+      "height": 38,
+      "path": "public/assets/bitmaps/902.png"
+    },
+    {
+      "type": 2,
+      "id": 903,
+      "offset": 4548608,
+      "size": 10752,
+      "width": 216,
+      "height": 43,
+      "path": "public/assets/bitmaps/903.png"
+    },
+    {
+      "type": 2,
+      "id": 904,
+      "offset": 4559360,
+      "size": 8192,
+      "width": 140,
+      "height": 48,
+      "path": "public/assets/bitmaps/904.png"
+    },
+    {
+      "type": 2,
+      "id": 905,
+      "offset": 4567552,
+      "size": 6656,
+      "width": 96,
+      "height": 55,
+      "path": "public/assets/bitmaps/905.png"
+    },
+    {
+      "type": 2,
+      "id": 1000,
+      "offset": 4574208,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/1000.png"
+    },
+    {
+      "type": 2,
+      "id": 1001,
+      "offset": 4578816,
+      "size": 5120,
+      "width": 112,
+      "height": 36,
+      "path": "public/assets/bitmaps/1001.png"
+    },
+    {
+      "type": 2,
+      "id": 1002,
+      "offset": 4583936,
+      "size": 2560,
+      "width": 36,
+      "height": 36,
+      "path": "public/assets/bitmaps/1002.png"
+    },
+    {
+      "type": 2,
+      "id": 1003,
+      "offset": 4586496,
+      "size": 2560,
+      "width": 32,
+      "height": 36,
+      "path": "public/assets/bitmaps/1003.png"
+    },
+    {
+      "type": 2,
+      "id": 1064,
+      "offset": 4589056,
+      "size": 2560,
+      "width": 32,
+      "height": 36,
+      "path": "public/assets/bitmaps/1064.png"
+    },
+    {
+      "type": 2,
+      "id": 1065,
+      "offset": 4591616,
+      "size": 8192,
+      "width": 192,
+      "height": 36,
+      "path": "public/assets/bitmaps/1065.png"
+    },
+    {
+      "type": 2,
+      "id": 1066,
+      "offset": 4599808,
+      "size": 7168,
+      "width": 160,
+      "height": 36,
+      "path": "public/assets/bitmaps/1066.png"
+    },
+    {
+      "type": 2,
+      "id": 1067,
+      "offset": 4606976,
+      "size": 13312,
+      "width": 336,
+      "height": 36,
+      "path": "public/assets/bitmaps/1067.png"
+    },
+    {
+      "type": 2,
+      "id": 1068,
+      "offset": 4620288,
+      "size": 2048,
+      "width": 16,
+      "height": 36,
+      "path": "public/assets/bitmaps/1068.png"
+    },
+    {
+      "type": 2,
+      "id": 1069,
+      "offset": 4622336,
+      "size": 3072,
+      "width": 48,
+      "height": 36,
+      "path": "public/assets/bitmaps/1069.png"
+    },
+    {
+      "type": 2,
+      "id": 1128,
+      "offset": 4625408,
+      "size": 24576,
+      "width": 640,
+      "height": 36,
+      "path": "public/assets/bitmaps/1128.png"
+    },
+    {
+      "type": 2,
+      "id": 1129,
+      "offset": 4649984,
+      "size": 7168,
+      "width": 160,
+      "height": 36,
+      "path": "public/assets/bitmaps/1129.png"
+    },
+    {
+      "type": 2,
+      "id": 1192,
+      "offset": 4657152,
+      "size": 2048,
+      "width": 32,
+      "height": 24,
+      "path": "public/assets/bitmaps/1192.png"
+    },
+    {
+      "type": 2,
+      "id": 1193,
+      "offset": 4659200,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1193.png"
+    },
+    {
+      "type": 2,
+      "id": 1194,
+      "offset": 4666880,
+      "size": 2048,
+      "width": 32,
+      "height": 24,
+      "path": "public/assets/bitmaps/1194.png"
+    },
+    {
+      "type": 2,
+      "id": 1195,
+      "offset": 4668928,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1195.png"
+    },
+    {
+      "type": 2,
+      "id": 1256,
+      "offset": 4676608,
+      "size": 2560,
+      "width": 48,
+      "height": 24,
+      "path": "public/assets/bitmaps/1256.png"
+    },
+    {
+      "type": 2,
+      "id": 1257,
+      "offset": 4679168,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1257.png"
+    },
+    {
+      "type": 2,
+      "id": 1258,
+      "offset": 4689920,
+      "size": 2560,
+      "width": 48,
+      "height": 24,
+      "path": "public/assets/bitmaps/1258.png"
+    },
+    {
+      "type": 2,
+      "id": 1259,
+      "offset": 4692480,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1259.png"
+    },
+    {
+      "type": 2,
+      "id": 1260,
+      "offset": 4703232,
+      "size": 2560,
+      "width": 48,
+      "height": 24,
+      "path": "public/assets/bitmaps/1260.png"
+    },
+    {
+      "type": 2,
+      "id": 1261,
+      "offset": 4705792,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1261.png"
+    },
+    {
+      "type": 2,
+      "id": 1262,
+      "offset": 4716544,
+      "size": 2560,
+      "width": 48,
+      "height": 24,
+      "path": "public/assets/bitmaps/1262.png"
+    },
+    {
+      "type": 2,
+      "id": 1263,
+      "offset": 4719104,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1263.png"
+    },
+    {
+      "type": 2,
+      "id": 1320,
+      "offset": 4729856,
+      "size": 3072,
+      "width": 80,
+      "height": 24,
+      "path": "public/assets/bitmaps/1320.png"
+    },
+    {
+      "type": 2,
+      "id": 1321,
+      "offset": 4732928,
+      "size": 16896,
+      "width": 640,
+      "height": 24,
+      "path": "public/assets/bitmaps/1321.png"
+    },
+    {
+      "type": 2,
+      "id": 1322,
+      "offset": 4749824,
+      "size": 3072,
+      "width": 80,
+      "height": 24,
+      "path": "public/assets/bitmaps/1322.png"
+    },
+    {
+      "type": 2,
+      "id": 1323,
+      "offset": 4752896,
+      "size": 16896,
+      "width": 640,
+      "height": 24,
+      "path": "public/assets/bitmaps/1323.png"
+    },
+    {
+      "type": 2,
+      "id": 1384,
+      "offset": 4769792,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1384.png"
+    },
+    {
+      "type": 2,
+      "id": 1385,
+      "offset": 4780544,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1385.png"
+    },
+    {
+      "type": 2,
+      "id": 1386,
+      "offset": 4791296,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1386.png"
+    },
+    {
+      "type": 2,
+      "id": 1387,
+      "offset": 4802048,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1387.png"
+    },
+    {
+      "type": 2,
+      "id": 1388,
+      "offset": 4812800,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1388.png"
+    },
+    {
+      "type": 2,
+      "id": 1389,
+      "offset": 4823552,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1389.png"
+    },
+    {
+      "type": 2,
+      "id": 1390,
+      "offset": 4834304,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1390.png"
+    },
+    {
+      "type": 2,
+      "id": 1391,
+      "offset": 4845056,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1391.png"
+    },
+    {
+      "type": 2,
+      "id": 1392,
+      "offset": 4855808,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1392.png"
+    },
+    {
+      "type": 2,
+      "id": 1393,
+      "offset": 4866560,
+      "size": 10752,
+      "width": 384,
+      "height": 24,
+      "path": "public/assets/bitmaps/1393.png"
+    },
+    {
+      "type": 2,
+      "id": 1448,
+      "offset": 4877312,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1448.png"
+    },
+    {
+      "type": 2,
+      "id": 1449,
+      "offset": 4885504,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1449.png"
+    },
+    {
+      "type": 2,
+      "id": 1450,
+      "offset": 4893696,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1450.png"
+    },
+    {
+      "type": 2,
+      "id": 1451,
+      "offset": 4901888,
+      "size": 4608,
+      "width": 144,
+      "height": 24,
+      "path": "public/assets/bitmaps/1451.png"
+    },
+    {
+      "type": 2,
+      "id": 1512,
+      "offset": 4906496,
+      "size": 12800,
+      "width": 480,
+      "height": 24,
+      "path": "public/assets/bitmaps/1512.png"
+    },
+    {
+      "type": 2,
+      "id": 1513,
+      "offset": 4919296,
+      "size": 11776,
+      "width": 432,
+      "height": 24,
+      "path": "public/assets/bitmaps/1513.png"
+    },
+    {
+      "type": 2,
+      "id": 1514,
+      "offset": 4931072,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/1514.png"
+    },
+    {
+      "type": 2,
+      "id": 1515,
+      "offset": 4934656,
+      "size": 5120,
+      "width": 160,
+      "height": 24,
+      "path": "public/assets/bitmaps/1515.png"
+    },
+    {
+      "type": 2,
+      "id": 1516,
+      "offset": 4939776,
+      "size": 4096,
+      "width": 112,
+      "height": 24,
+      "path": "public/assets/bitmaps/1516.png"
+    },
+    {
+      "type": 2,
+      "id": 1517,
+      "offset": 4943872,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1517.png"
+    },
+    {
+      "type": 2,
+      "id": 1518,
+      "offset": 4951552,
+      "size": 2560,
+      "width": 48,
+      "height": 24,
+      "path": "public/assets/bitmaps/1518.png"
+    },
+    {
+      "type": 2,
+      "id": 1576,
+      "offset": 4954112,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1576.png"
+    },
+    {
+      "type": 2,
+      "id": 1577,
+      "offset": 4958720,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1577.png"
+    },
+    {
+      "type": 2,
+      "id": 1578,
+      "offset": 4963328,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1578.png"
+    },
+    {
+      "type": 2,
+      "id": 1579,
+      "offset": 4967936,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1579.png"
+    },
+    {
+      "type": 2,
+      "id": 1580,
+      "offset": 4972544,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1580.png"
+    },
+    {
+      "type": 2,
+      "id": 1581,
+      "offset": 4977152,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1581.png"
+    },
+    {
+      "type": 2,
+      "id": 1582,
+      "offset": 4981760,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1582.png"
+    },
+    {
+      "type": 2,
+      "id": 1583,
+      "offset": 4986368,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1583.png"
+    },
+    {
+      "type": 2,
+      "id": 1584,
+      "offset": 4990976,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1584.png"
+    },
+    {
+      "type": 2,
+      "id": 1585,
+      "offset": 4995584,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1585.png"
+    },
+    {
+      "type": 2,
+      "id": 1586,
+      "offset": 5000192,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1586.png"
+    },
+    {
+      "type": 2,
+      "id": 1587,
+      "offset": 5004800,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1587.png"
+    },
+    {
+      "type": 2,
+      "id": 1588,
+      "offset": 5009408,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1588.png"
+    },
+    {
+      "type": 2,
+      "id": 1589,
+      "offset": 5014016,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1589.png"
+    },
+    {
+      "type": 2,
+      "id": 1590,
+      "offset": 5018624,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1590.png"
+    },
+    {
+      "type": 2,
+      "id": 1640,
+      "offset": 5023232,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1640.png"
+    },
+    {
+      "type": 2,
+      "id": 1641,
+      "offset": 5031424,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1641.png"
+    },
+    {
+      "type": 2,
+      "id": 1642,
+      "offset": 5039616,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1642.png"
+    },
+    {
+      "type": 2,
+      "id": 1643,
+      "offset": 5047808,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1643.png"
+    },
+    {
+      "type": 2,
+      "id": 1644,
+      "offset": 5056000,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1644.png"
+    },
+    {
+      "type": 2,
+      "id": 1645,
+      "offset": 5064192,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1645.png"
+    },
+    {
+      "type": 2,
+      "id": 1646,
+      "offset": 5072384,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1646.png"
+    },
+    {
+      "type": 2,
+      "id": 1647,
+      "offset": 5080576,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1647.png"
+    },
+    {
+      "type": 2,
+      "id": 1648,
+      "offset": 5088768,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1648.png"
+    },
+    {
+      "type": 2,
+      "id": 1649,
+      "offset": 5096960,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1649.png"
+    },
+    {
+      "type": 2,
+      "id": 1650,
+      "offset": 5105152,
+      "size": 8192,
+      "width": 288,
+      "height": 24,
+      "path": "public/assets/bitmaps/1650.png"
+    },
+    {
+      "type": 2,
+      "id": 1651,
+      "offset": 5113344,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/1651.png"
+    },
+    {
+      "type": 2,
+      "id": 1652,
+      "offset": 5116928,
+      "size": 3584,
+      "width": 96,
+      "height": 24,
+      "path": "public/assets/bitmaps/1652.png"
+    },
+    {
+      "type": 2,
+      "id": 1704,
+      "offset": 5120512,
+      "size": 2048,
+      "width": 32,
+      "height": 24,
+      "path": "public/assets/bitmaps/1704.png"
+    },
+    {
+      "type": 2,
+      "id": 1705,
+      "offset": 5122560,
+      "size": 12288,
+      "width": 448,
+      "height": 24,
+      "path": "public/assets/bitmaps/1705.png"
+    },
+    {
+      "type": 2,
+      "id": 1768,
+      "offset": 5134848,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1768.png"
+    },
+    {
+      "type": 2,
+      "id": 1769,
+      "offset": 5142528,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1769.png"
+    },
+    {
+      "type": 2,
+      "id": 1770,
+      "offset": 5150208,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1770.png"
+    },
+    {
+      "type": 2,
+      "id": 1771,
+      "offset": 5157888,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1771.png"
+    },
+    {
+      "type": 2,
+      "id": 1772,
+      "offset": 5165568,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1772.png"
+    },
+    {
+      "type": 2,
+      "id": 1773,
+      "offset": 5173248,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1773.png"
+    },
+    {
+      "type": 2,
+      "id": 1774,
+      "offset": 5180928,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1774.png"
+    },
+    {
+      "type": 2,
+      "id": 1775,
+      "offset": 5188608,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1775.png"
+    },
+    {
+      "type": 2,
+      "id": 1776,
+      "offset": 5196288,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1776.png"
+    },
+    {
+      "type": 2,
+      "id": 1777,
+      "offset": 5203968,
+      "size": 7680,
+      "width": 256,
+      "height": 24,
+      "path": "public/assets/bitmaps/1777.png"
+    },
+    {
+      "type": 2,
+      "id": 1832,
+      "offset": 5211648,
+      "size": 6144,
+      "width": 208,
+      "height": 24,
+      "path": "public/assets/bitmaps/1832.png"
+    },
+    {
+      "type": 2,
+      "id": 1833,
+      "offset": 5217792,
+      "size": 6144,
+      "width": 208,
+      "height": 24,
+      "path": "public/assets/bitmaps/1833.png"
+    },
+    {
+      "type": 2,
+      "id": 1834,
+      "offset": 5223936,
+      "size": 6144,
+      "width": 208,
+      "height": 24,
+      "path": "public/assets/bitmaps/1834.png"
+    },
+    {
+      "type": 2,
+      "id": 1896,
+      "offset": 5230080,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/1896.png"
+    },
+    {
+      "type": 2,
+      "id": 1960,
+      "offset": 5234688,
+      "size": 4096,
+      "width": 120,
+      "height": 24,
+      "path": "public/assets/bitmaps/1960.png"
+    },
+    {
+      "type": 2,
+      "id": 2024,
+      "offset": 5238784,
+      "size": 13824,
+      "width": 352,
+      "height": 36,
+      "path": "public/assets/bitmaps/2024.png"
+    },
+    {
+      "type": 2,
+      "id": 2025,
+      "offset": 5252608,
+      "size": 7168,
+      "width": 160,
+      "height": 36,
+      "path": "public/assets/bitmaps/2025.png"
+    },
+    {
+      "type": 2,
+      "id": 2026,
+      "offset": 5259776,
+      "size": 8192,
+      "width": 192,
+      "height": 36,
+      "path": "public/assets/bitmaps/2026.png"
+    },
+    {
+      "type": 2,
+      "id": 2027,
+      "offset": 5267968,
+      "size": 13824,
+      "width": 352,
+      "height": 36,
+      "path": "public/assets/bitmaps/2027.png"
+    },
+    {
+      "type": 2,
+      "id": 2028,
+      "offset": 5281792,
+      "size": 7168,
+      "width": 160,
+      "height": 36,
+      "path": "public/assets/bitmaps/2028.png"
+    },
+    {
+      "type": 2,
+      "id": 2029,
+      "offset": 5288960,
+      "size": 8192,
+      "width": 192,
+      "height": 36,
+      "path": "public/assets/bitmaps/2029.png"
+    },
+    {
+      "type": 2,
+      "id": 2088,
+      "offset": 5297152,
+      "size": 6144,
+      "width": 128,
+      "height": 36,
+      "path": "public/assets/bitmaps/2088.png"
+    },
+    {
+      "type": 2,
+      "id": 2152,
+      "offset": 5303296,
+      "size": 19968,
+      "width": 768,
+      "height": 24,
+      "path": "public/assets/bitmaps/2152.png"
+    },
+    {
+      "type": 2,
+      "id": 2216,
+      "offset": 5323264,
+      "size": 29184,
+      "width": 768,
+      "height": 36,
+      "path": "public/assets/bitmaps/2216.png"
+    },
+    {
+      "type": 2,
+      "id": 2280,
+      "offset": 5352448,
+      "size": 13312,
+      "width": 200,
+      "height": 60,
+      "path": "public/assets/bitmaps/2280.png"
+    },
+    {
+      "type": 2,
+      "id": 2281,
+      "offset": 5365760,
+      "size": 6144,
+      "width": 200,
+      "height": 24,
+      "path": "public/assets/bitmaps/2281.png"
+    },
+    {
+      "type": 2,
+      "id": 2282,
+      "offset": 5371904,
+      "size": 6144,
+      "width": 200,
+      "height": 24,
+      "path": "public/assets/bitmaps/2282.png"
+    },
+    {
+      "type": 2,
+      "id": 2283,
+      "offset": 5378048,
+      "size": 6144,
+      "width": 200,
+      "height": 24,
+      "path": "public/assets/bitmaps/2283.png"
+    },
+    {
+      "type": 2,
+      "id": 2284,
+      "offset": 5384192,
+      "size": 6144,
+      "width": 200,
+      "height": 24,
+      "path": "public/assets/bitmaps/2284.png"
+    },
+    {
+      "type": 2,
+      "id": 2285,
+      "offset": 5390336,
+      "size": 6144,
+      "width": 200,
+      "height": 24,
+      "path": "public/assets/bitmaps/2285.png"
+    },
+    {
+      "type": 2,
+      "id": 2344,
+      "offset": 5396480,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2344.png"
+    },
+    {
+      "type": 2,
+      "id": 2345,
+      "offset": 5405184,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2345.png"
+    },
+    {
+      "type": 2,
+      "id": 2346,
+      "offset": 5413888,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2346.png"
+    },
+    {
+      "type": 2,
+      "id": 2347,
+      "offset": 5422592,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2347.png"
+    },
+    {
+      "type": 2,
+      "id": 2348,
+      "offset": 5431296,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2348.png"
+    },
+    {
+      "type": 2,
+      "id": 2349,
+      "offset": 5440000,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2349.png"
+    },
+    {
+      "type": 2,
+      "id": 2350,
+      "offset": 5448704,
+      "size": 8704,
+      "width": 200,
+      "height": 36,
+      "path": "public/assets/bitmaps/2350.png"
+    },
+    {
+      "type": 2,
+      "id": 2408,
+      "offset": 5457408,
+      "size": 12288,
+      "width": 448,
+      "height": 24,
+      "path": "public/assets/bitmaps/2408.png"
+    },
+    {
+      "type": 2,
+      "id": 2409,
+      "offset": 5469696,
+      "size": 12288,
+      "width": 448,
+      "height": 24,
+      "path": "public/assets/bitmaps/2409.png"
+    },
+    {
+      "type": 2,
+      "id": 2472,
+      "offset": 5481984,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/2472.png"
+    },
+    {
+      "type": 2,
+      "id": 2473,
+      "offset": 5499392,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/2473.png"
+    },
+    {
+      "type": 2,
+      "id": 2728,
+      "offset": 5516800,
+      "size": 19968,
+      "width": 512,
+      "height": 36,
+      "path": "public/assets/bitmaps/2728.png"
+    },
+    {
+      "type": 2,
+      "id": 2792,
+      "offset": 5536768,
+      "size": 19968,
+      "width": 512,
+      "height": 36,
+      "path": "public/assets/bitmaps/2792.png"
+    },
+    {
+      "type": 2,
+      "id": 2856,
+      "offset": 5556736,
+      "size": 15360,
+      "width": 576,
+      "height": 24,
+      "path": "public/assets/bitmaps/2856.png"
+    },
+    {
+      "type": 2,
+      "id": 2920,
+      "offset": 5572096,
+      "size": 22016,
+      "width": 576,
+      "height": 36,
+      "path": "public/assets/bitmaps/2920.png"
+    },
+    {
+      "type": 2,
+      "id": 2984,
+      "offset": 5594112,
+      "size": 12800,
+      "width": 480,
+      "height": 24,
+      "path": "public/assets/bitmaps/2984.png"
+    },
+    {
+      "type": 2,
+      "id": 2985,
+      "offset": 5606912,
+      "size": 7168,
+      "width": 240,
+      "height": 24,
+      "path": "public/assets/bitmaps/2985.png"
+    },
+    {
+      "type": 2,
+      "id": 3048,
+      "offset": 5614080,
+      "size": 18432,
+      "width": 480,
+      "height": 36,
+      "path": "public/assets/bitmaps/3048.png"
+    },
+    {
+      "type": 2,
+      "id": 3049,
+      "offset": 5632512,
+      "size": 9728,
+      "width": 240,
+      "height": 36,
+      "path": "public/assets/bitmaps/3049.png"
+    },
+    {
+      "type": 2,
+      "id": 3112,
+      "offset": 5642240,
+      "size": 18432,
+      "width": 480,
+      "height": 36,
+      "path": "public/assets/bitmaps/3112.png"
+    },
+    {
+      "type": 2,
+      "id": 3113,
+      "offset": 5660672,
+      "size": 9728,
+      "width": 240,
+      "height": 36,
+      "path": "public/assets/bitmaps/3113.png"
+    },
+    {
+      "type": 2,
+      "id": 3176,
+      "offset": 5670400,
+      "size": 14848,
+      "width": 560,
+      "height": 24,
+      "path": "public/assets/bitmaps/3176.png"
+    },
+    {
+      "type": 2,
+      "id": 3177,
+      "offset": 5685248,
+      "size": 12288,
+      "width": 448,
+      "height": 24,
+      "path": "public/assets/bitmaps/3177.png"
+    },
+    {
+      "type": 2,
+      "id": 3240,
+      "offset": 5697536,
+      "size": 21504,
+      "width": 560,
+      "height": 36,
+      "path": "public/assets/bitmaps/3240.png"
+    },
+    {
+      "type": 2,
+      "id": 3241,
+      "offset": 5719040,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3241.png"
+    },
+    {
+      "type": 2,
+      "id": 3304,
+      "offset": 5736448,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3304.png"
+    },
+    {
+      "type": 2,
+      "id": 3305,
+      "offset": 5753856,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3305.png"
+    },
+    {
+      "type": 2,
+      "id": 3368,
+      "offset": 5763072,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3368.png"
+    },
+    {
+      "type": 2,
+      "id": 3369,
+      "offset": 5780480,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3369.png"
+    },
+    {
+      "type": 2,
+      "id": 3432,
+      "offset": 5789696,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3432.png"
+    },
+    {
+      "type": 2,
+      "id": 3433,
+      "offset": 5807104,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3433.png"
+    },
+    {
+      "type": 2,
+      "id": 3496,
+      "offset": 5816320,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3496.png"
+    },
+    {
+      "type": 2,
+      "id": 3497,
+      "offset": 5833728,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3497.png"
+    },
+    {
+      "type": 2,
+      "id": 3560,
+      "offset": 5842944,
+      "size": 17408,
+      "width": 448,
+      "height": 36,
+      "path": "public/assets/bitmaps/3560.png"
+    },
+    {
+      "type": 2,
+      "id": 3561,
+      "offset": 5860352,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3561.png"
+    },
+    {
+      "type": 2,
+      "id": 3562,
+      "offset": 5869568,
+      "size": 9216,
+      "width": 224,
+      "height": 36,
+      "path": "public/assets/bitmaps/3562.png"
+    },
+    {
+      "type": 2,
+      "id": 3624,
+      "offset": 5878784,
+      "size": 13312,
+      "width": 328,
+      "height": 36,
+      "path": "public/assets/bitmaps/3624.png"
+    },
+    {
+      "type": 2,
+      "id": 3625,
+      "offset": 5892096,
+      "size": 9216,
+      "width": 328,
+      "height": 24,
+      "path": "public/assets/bitmaps/3625.png"
+    },
+    {
+      "type": 2,
+      "id": 3816,
+      "offset": 5901312,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/3816.png"
+    },
+    {
+      "type": 2,
+      "id": 3817,
+      "offset": 5905920,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/3817.png"
+    },
+    {
+      "type": 2,
+      "id": 3818,
+      "offset": 5910528,
+      "size": 4608,
+      "width": 128,
+      "height": 24,
+      "path": "public/assets/bitmaps/3818.png"
+    },
+    {
+      "type": 2,
+      "id": 3880,
+      "offset": 5915136,
+      "size": 2560,
+      "width": 32,
+      "height": 36,
+      "path": "public/assets/bitmaps/3880.png"
+    },
+    {
+      "type": 2,
+      "id": 3944,
+      "offset": 5917696,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/3944.png"
+    },
+    {
+      "type": 2,
+      "id": 3945,
+      "offset": 5922304,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/3945.png"
+    },
+    {
+      "type": 2,
+      "id": 3946,
+      "offset": 5926912,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/3946.png"
+    },
+    {
+      "type": 2,
+      "id": 3947,
+      "offset": 5931520,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/3947.png"
+    },
+    {
+      "type": 2,
+      "id": 3948,
+      "offset": 5936128,
+      "size": 15360,
+      "width": 384,
+      "height": 36,
+      "path": "public/assets/bitmaps/3948.png"
+    },
+    {
+      "type": 2,
+      "id": 3949,
+      "offset": 5951488,
+      "size": 4608,
+      "width": 96,
+      "height": 36,
+      "path": "public/assets/bitmaps/3949.png"
+    },
+    {
+      "type": 2,
+      "id": 4008,
+      "offset": 5956096,
+      "size": 7168,
+      "width": 248,
+      "height": 24,
+      "path": "public/assets/bitmaps/4008.png"
+    },
+    {
+      "type": 2,
+      "id": 5000,
+      "offset": 5963264,
+      "size": 3072,
+      "width": 128,
+      "height": 12,
+      "path": "public/assets/bitmaps/5000.png"
+    },
+    {
+      "type": 2,
+      "id": 10000,
+      "offset": 5966336,
+      "size": 6656,
+      "width": 76,
+      "height": 67,
+      "path": "public/assets/bitmaps/10000.png"
+    },
+    {
+      "type": 2,
+      "id": 10001,
+      "offset": 5972992,
+      "size": 9728,
+      "width": 124,
+      "height": 67,
+      "path": "public/assets/bitmaps/10001.png"
+    },
+    {
+      "type": 2,
+      "id": 10002,
+      "offset": 5982720,
+      "size": 5632,
+      "width": 100,
+      "height": 41,
+      "path": "public/assets/bitmaps/10002.png"
+    },
+    {
+      "type": 2,
+      "id": 10003,
+      "offset": 5988352,
+      "size": 8192,
+      "width": 84,
+      "height": 80,
+      "path": "public/assets/bitmaps/10003.png"
+    },
+    {
+      "type": 2,
+      "id": 10004,
+      "offset": 5996544,
+      "size": 5632,
+      "width": 76,
+      "height": 60,
+      "path": "public/assets/bitmaps/10004.png"
+    },
+    {
+      "type": 2,
+      "id": 10005,
+      "offset": 6002176,
+      "size": 4608,
+      "width": 76,
+      "height": 40,
+      "path": "public/assets/bitmaps/10005.png"
+    },
+    {
+      "type": 2,
+      "id": 10006,
+      "offset": 6006784,
+      "size": 11264,
+      "width": 100,
+      "height": 100,
+      "path": "public/assets/bitmaps/10006.png"
+    },
+    {
+      "type": 2,
+      "id": 20256,
+      "offset": 6018048,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20256.png"
+    },
+    {
+      "type": 2,
+      "id": 20257,
+      "offset": 6019584,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20257.png"
+    },
+    {
+      "type": 2,
+      "id": 20258,
+      "offset": 6021120,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20258.png"
+    },
+    {
+      "type": 2,
+      "id": 20259,
+      "offset": 6022656,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20259.png"
+    },
+    {
+      "type": 2,
+      "id": 20260,
+      "offset": 6024192,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20260.png"
+    },
+    {
+      "type": 2,
+      "id": 20261,
+      "offset": 6025728,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20261.png"
+    },
+    {
+      "type": 2,
+      "id": 20262,
+      "offset": 6027264,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20262.png"
+    },
+    {
+      "type": 2,
+      "id": 20263,
+      "offset": 6028800,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20263.png"
+    },
+    {
+      "type": 2,
+      "id": 20264,
+      "offset": 6030336,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20264.png"
+    },
+    {
+      "type": 2,
+      "id": 20265,
+      "offset": 6031872,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/20265.png"
+    },
+    {
+      "type": 2,
+      "id": 21256,
+      "offset": 6033408,
+      "size": 1536,
+      "width": 16,
+      "height": 16,
+      "path": "public/assets/bitmaps/21256.png"
+    },
+    {
+      "type": 2,
+      "id": 30000,
+      "offset": 6034944,
+      "size": 60416,
+      "width": 269,
+      "height": 218,
+      "path": "public/assets/bitmaps/30000.png"
+    },
+    {
+      "type": 2,
+      "id": 30001,
+      "offset": 6095360,
+      "size": 59904,
+      "width": 268,
+      "height": 218,
+      "path": "public/assets/bitmaps/30001.png"
+    },
+    {
+      "type": 2,
+      "id": 30012,
+      "offset": 6155264,
+      "size": 2048,
+      "width": 96,
+      "height": 9,
+      "path": "public/assets/bitmaps/30012.png"
+    },
+    {
+      "type": 2,
+      "id": 30100,
+      "offset": 6157312,
+      "size": 9728,
+      "width": 90,
+      "height": 90,
+      "path": "public/assets/bitmaps/30100.png"
+    },
+    {
+      "type": 2,
+      "id": 30101,
+      "offset": 6167040,
+      "size": 7168,
+      "width": 89,
+      "height": 65,
+      "path": "public/assets/bitmaps/30101.png"
+    },
+    {
+      "type": 2,
+      "id": 31000,
+      "offset": 6174208,
+      "size": 9728,
+      "width": 92,
+      "height": 90,
+      "path": "public/assets/bitmaps/31000.png"
+    },
+    {
+      "type": 2,
+      "id": 31001,
+      "offset": 6183936,
+      "size": 7168,
+      "width": 92,
+      "height": 65,
+      "path": "public/assets/bitmaps/31001.png"
+    },
+    {
+      "type": 3,
+      "id": 1,
+      "offset": 6191104,
+      "size": 1024,
+      "path": "research/resources/3-1.bin"
+    },
+    {
+      "type": 3,
+      "id": 2,
+      "offset": 6192128,
+      "size": 1024,
+      "path": "research/resources/3-2.bin"
+    },
+    {
+      "type": 4,
+      "id": 1,
+      "offset": 6193152,
+      "size": 512,
+      "path": "research/resources/4-1.bin"
+    },
+    {
+      "type": 5,
+      "id": 123,
+      "offset": 476672,
+      "size": 512,
+      "path": "research/resources/5-123.bin"
+    },
+    {
+      "type": 5,
+      "id": 124,
+      "offset": 477184,
+      "size": 512,
+      "path": "research/resources/5-124.bin"
+    },
+    {
+      "type": 5,
+      "id": 400,
+      "offset": 477696,
+      "size": 512,
+      "path": "research/resources/5-400.bin"
+    },
+    {
+      "type": 5,
+      "id": 500,
+      "offset": 478208,
+      "size": 512,
+      "path": "research/resources/5-500.bin"
+    },
+    {
+      "type": 5,
+      "id": 510,
+      "offset": 478720,
+      "size": 512,
+      "path": "research/resources/5-510.bin"
+    },
+    {
+      "type": 5,
+      "id": 520,
+      "offset": 479232,
+      "size": 512,
+      "path": "research/resources/5-520.bin"
+    },
+    {
+      "type": 5,
+      "id": 730,
+      "offset": 479744,
+      "size": 512,
+      "path": "research/resources/5-730.bin"
+    },
+    {
+      "type": 5,
+      "id": 731,
+      "offset": 480256,
+      "size": 512,
+      "path": "research/resources/5-731.bin"
+    },
+    {
+      "type": 5,
+      "id": 732,
+      "offset": 480768,
+      "size": 512,
+      "path": "research/resources/5-732.bin"
+    },
+    {
+      "type": 5,
+      "id": 748,
+      "offset": 481280,
+      "size": 512,
+      "path": "research/resources/5-748.bin"
+    },
+    {
+      "type": 5,
+      "id": 749,
+      "offset": 481792,
+      "size": 512,
+      "path": "research/resources/5-749.bin"
+    },
+    {
+      "type": 5,
+      "id": 750,
+      "offset": 482304,
+      "size": 512,
+      "path": "research/resources/5-750.bin"
+    },
+    {
+      "type": 5,
+      "id": 751,
+      "offset": 482816,
+      "size": 512,
+      "path": "research/resources/5-751.bin"
+    },
+    {
+      "type": 5,
+      "id": 752,
+      "offset": 483328,
+      "size": 512,
+      "path": "research/resources/5-752.bin"
+    },
+    {
+      "type": 5,
+      "id": 753,
+      "offset": 483840,
+      "size": 512,
+      "path": "research/resources/5-753.bin"
+    },
+    {
+      "type": 5,
+      "id": 754,
+      "offset": 484352,
+      "size": 512,
+      "path": "research/resources/5-754.bin"
+    },
+    {
+      "type": 5,
+      "id": 755,
+      "offset": 484864,
+      "size": 512,
+      "path": "research/resources/5-755.bin"
+    },
+    {
+      "type": 5,
+      "id": 756,
+      "offset": 485376,
+      "size": 512,
+      "path": "research/resources/5-756.bin"
+    },
+    {
+      "type": 5,
+      "id": 757,
+      "offset": 485888,
+      "size": 512,
+      "path": "research/resources/5-757.bin"
+    },
+    {
+      "type": 5,
+      "id": 758,
+      "offset": 486400,
+      "size": 512,
+      "path": "research/resources/5-758.bin"
+    },
+    {
+      "type": 5,
+      "id": 759,
+      "offset": 486912,
+      "size": 512,
+      "path": "research/resources/5-759.bin"
+    },
+    {
+      "type": 5,
+      "id": 760,
+      "offset": 487424,
+      "size": 512,
+      "path": "research/resources/5-760.bin"
+    },
+    {
+      "type": 5,
+      "id": 761,
+      "offset": 487936,
+      "size": 512,
+      "path": "research/resources/5-761.bin"
+    },
+    {
+      "type": 5,
+      "id": 762,
+      "offset": 488448,
+      "size": 512,
+      "path": "research/resources/5-762.bin"
+    },
+    {
+      "type": 5,
+      "id": 763,
+      "offset": 488960,
+      "size": 512,
+      "path": "research/resources/5-763.bin"
+    },
+    {
+      "type": 5,
+      "id": 764,
+      "offset": 489472,
+      "size": 512,
+      "path": "research/resources/5-764.bin"
+    },
+    {
+      "type": 5,
+      "id": 3000,
+      "offset": 489984,
+      "size": 512,
+      "path": "research/resources/5-3000.bin"
+    },
+    {
+      "type": 5,
+      "id": 3001,
+      "offset": 490496,
+      "size": 512,
+      "path": "research/resources/5-3001.bin"
+    },
+    {
+      "type": 5,
+      "id": 3002,
+      "offset": 491008,
+      "size": 512,
+      "path": "research/resources/5-3002.bin"
+    },
+    {
+      "type": 5,
+      "id": 3003,
+      "offset": 491520,
+      "size": 512,
+      "path": "research/resources/5-3003.bin"
+    },
+    {
+      "type": 5,
+      "id": 3010,
+      "offset": 492032,
+      "size": 512,
+      "path": "research/resources/5-3010.bin"
+    },
+    {
+      "type": 5,
+      "id": 3011,
+      "offset": 492544,
+      "size": 512,
+      "path": "research/resources/5-3011.bin"
+    },
+    {
+      "type": 5,
+      "id": 3012,
+      "offset": 493056,
+      "size": 512,
+      "path": "research/resources/5-3012.bin"
+    },
+    {
+      "type": 5,
+      "id": 3013,
+      "offset": 493568,
+      "size": 512,
+      "path": "research/resources/5-3013.bin"
+    },
+    {
+      "type": 5,
+      "id": 3014,
+      "offset": 494080,
+      "size": 512,
+      "path": "research/resources/5-3014.bin"
+    },
+    {
+      "type": 5,
+      "id": 3020,
+      "offset": 494592,
+      "size": 512,
+      "path": "research/resources/5-3020.bin"
+    },
+    {
+      "type": 5,
+      "id": 3021,
+      "offset": 495104,
+      "size": 512,
+      "path": "research/resources/5-3021.bin"
+    },
+    {
+      "type": 5,
+      "id": 3022,
+      "offset": 495616,
+      "size": 512,
+      "path": "research/resources/5-3022.bin"
+    },
+    {
+      "type": 5,
+      "id": 3023,
+      "offset": 496128,
+      "size": 512,
+      "path": "research/resources/5-3023.bin"
+    },
+    {
+      "type": 5,
+      "id": 3024,
+      "offset": 496640,
+      "size": 512,
+      "path": "research/resources/5-3024.bin"
+    },
+    {
+      "type": 5,
+      "id": 3030,
+      "offset": 497152,
+      "size": 512,
+      "path": "research/resources/5-3030.bin"
+    },
+    {
+      "type": 5,
+      "id": 3031,
+      "offset": 497664,
+      "size": 512,
+      "path": "research/resources/5-3031.bin"
+    },
+    {
+      "type": 5,
+      "id": 3032,
+      "offset": 498176,
+      "size": 512,
+      "path": "research/resources/5-3032.bin"
+    },
+    {
+      "type": 5,
+      "id": 3033,
+      "offset": 498688,
+      "size": 512,
+      "path": "research/resources/5-3033.bin"
+    },
+    {
+      "type": 5,
+      "id": 3034,
+      "offset": 499200,
+      "size": 512,
+      "path": "research/resources/5-3034.bin"
+    },
+    {
+      "type": 5,
+      "id": 3040,
+      "offset": 499712,
+      "size": 512,
+      "path": "research/resources/5-3040.bin"
+    },
+    {
+      "type": 5,
+      "id": 4000,
+      "offset": 500224,
+      "size": 512,
+      "path": "research/resources/5-4000.bin"
+    },
+    {
+      "type": 5,
+      "id": 4001,
+      "offset": 500736,
+      "size": 512,
+      "path": "research/resources/5-4001.bin"
+    },
+    {
+      "type": 5,
+      "id": 4002,
+      "offset": 501248,
+      "size": 512,
+      "path": "research/resources/5-4002.bin"
+    },
+    {
+      "type": 5,
+      "id": 10000,
+      "offset": 501760,
+      "size": 512,
+      "path": "research/resources/5-10000.bin"
+    },
+    {
+      "type": 5,
+      "id": 1,
+      "offset": 502272,
+      "size": 512,
+      "path": "research/resources/5-1.bin"
+    },
+    {
+      "type": 9,
+      "id": 1,
+      "offset": 6193664,
+      "size": 512,
+      "path": "research/resources/9-1.bin"
+    },
+    {
+      "type": 12,
+      "id": 1002,
+      "offset": 502784,
+      "size": 512,
+      "path": "research/resources/12-1002.bin"
+    },
+    {
+      "type": 12,
+      "id": 1003,
+      "offset": 503296,
+      "size": 512,
+      "path": "research/resources/12-1003.bin"
+    },
+    {
+      "type": 12,
+      "id": 1004,
+      "offset": 503808,
+      "size": 512,
+      "path": "research/resources/12-1004.bin"
+    },
+    {
+      "type": 12,
+      "id": 1005,
+      "offset": 504320,
+      "size": 512,
+      "path": "research/resources/12-1005.bin"
+    },
+    {
+      "type": 14,
+      "id": 1,
+      "offset": 6194176,
+      "size": 512,
+      "path": "research/resources/14-1.bin"
+    },
+    {
+      "type": 14,
+      "id": 2,
+      "offset": 6194688,
+      "size": 512,
+      "path": "research/resources/14-2.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1000,
+      "offset": 504832,
+      "size": 512,
+      "path": "research/resources/32513-1000.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1001,
+      "offset": 505344,
+      "size": 512,
+      "path": "research/resources/32513-1001.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1002,
+      "offset": 505856,
+      "size": 512,
+      "path": "research/resources/32513-1002.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1003,
+      "offset": 506368,
+      "size": 512,
+      "path": "research/resources/32513-1003.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1004,
+      "offset": 506880,
+      "size": 512,
+      "path": "research/resources/32513-1004.bin"
+    },
+    {
+      "type": 32513,
+      "id": 1005,
+      "offset": 507392,
+      "size": 512,
+      "path": "research/resources/32513-1005.bin"
+    },
+    {
+      "type": 32514,
+      "id": 2536,
+      "offset": 507904,
+      "size": 35840,
+      "width": 992,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2536.png"
+    },
+    {
+      "type": 32514,
+      "id": 2537,
+      "offset": 543744,
+      "size": 35840,
+      "width": 992,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2537.png"
+    },
+    {
+      "type": 32514,
+      "id": 2538,
+      "offset": 579584,
+      "size": 35840,
+      "width": 992,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2538.png"
+    },
+    {
+      "type": 32514,
+      "id": 2600,
+      "offset": 615424,
+      "size": 24064,
+      "width": 664,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2600.png"
+    },
+    {
+      "type": 32514,
+      "id": 2601,
+      "offset": 639488,
+      "size": 24064,
+      "width": 664,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2601.png"
+    },
+    {
+      "type": 32514,
+      "id": 2602,
+      "offset": 663552,
+      "size": 24064,
+      "width": 664,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2602.png"
+    },
+    {
+      "type": 32514,
+      "id": 2664,
+      "offset": 687616,
+      "size": 12288,
+      "width": 336,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2664.png"
+    },
+    {
+      "type": 32514,
+      "id": 2665,
+      "offset": 699904,
+      "size": 12288,
+      "width": 336,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2665.png"
+    },
+    {
+      "type": 32514,
+      "id": 2666,
+      "offset": 712192,
+      "size": 12288,
+      "width": 336,
+      "height": 36,
+      "format": "CGPk",
+      "path": "public/assets/graphics/2666.png"
+    },
+    {
+      "type": 32514,
+      "id": 4073,
+      "offset": 6195200,
+      "size": 159232,
+      "path": "research/resources/32514-4073.bin"
+    },
+    {
+      "type": 32514,
+      "id": 4074,
+      "offset": 6354432,
+      "size": 211968,
+      "path": "research/resources/32514-4074.bin"
+    },
+    {
+      "type": 32515,
+      "id": 1000,
+      "offset": 724480,
+      "size": 2048,
+      "path": "research/resources/32515-1000.bin"
+    },
+    {
+      "type": 32515,
+      "id": 1001,
+      "offset": 727040,
+      "size": 2048,
+      "path": "research/resources/32515-1001.bin"
+    },
+    {
+      "type": 32515,
+      "id": 1002,
+      "offset": 729600,
+      "size": 2048,
+      "path": "research/resources/32515-1002.bin"
+    },
+    {
+      "type": 32515,
+      "id": 1003,
+      "offset": 732160,
+      "size": 2048,
+      "path": "research/resources/32515-1003.bin"
+    },
+    {
+      "type": 32516,
+      "id": 400,
+      "offset": 734720,
+      "size": 512,
+      "path": "research/resources/32516-400.bin"
+    },
+    {
+      "type": 32516,
+      "id": 500,
+      "offset": 735232,
+      "size": 512,
+      "path": "research/resources/32516-500.bin"
+    },
+    {
+      "type": 32516,
+      "id": 510,
+      "offset": 735744,
+      "size": 512,
+      "path": "research/resources/32516-510.bin"
+    },
+    {
+      "type": 32516,
+      "id": 520,
+      "offset": 736256,
+      "size": 512,
+      "path": "research/resources/32516-520.bin"
+    },
+    {
+      "type": 32516,
+      "id": 730,
+      "offset": 736768,
+      "size": 512,
+      "path": "research/resources/32516-730.bin"
+    },
+    {
+      "type": 32516,
+      "id": 731,
+      "offset": 737280,
+      "size": 512,
+      "path": "research/resources/32516-731.bin"
+    },
+    {
+      "type": 32516,
+      "id": 732,
+      "offset": 737792,
+      "size": 512,
+      "path": "research/resources/32516-732.bin"
+    },
+    {
+      "type": 32516,
+      "id": 748,
+      "offset": 738304,
+      "size": 512,
+      "path": "research/resources/32516-748.bin"
+    },
+    {
+      "type": 32516,
+      "id": 749,
+      "offset": 738816,
+      "size": 512,
+      "path": "research/resources/32516-749.bin"
+    },
+    {
+      "type": 32516,
+      "id": 750,
+      "offset": 739328,
+      "size": 512,
+      "path": "research/resources/32516-750.bin"
+    },
+    {
+      "type": 32516,
+      "id": 751,
+      "offset": 739840,
+      "size": 512,
+      "path": "research/resources/32516-751.bin"
+    },
+    {
+      "type": 32516,
+      "id": 752,
+      "offset": 740352,
+      "size": 512,
+      "path": "research/resources/32516-752.bin"
+    },
+    {
+      "type": 32516,
+      "id": 753,
+      "offset": 740864,
+      "size": 512,
+      "path": "research/resources/32516-753.bin"
+    },
+    {
+      "type": 32516,
+      "id": 754,
+      "offset": 741376,
+      "size": 512,
+      "path": "research/resources/32516-754.bin"
+    },
+    {
+      "type": 32516,
+      "id": 755,
+      "offset": 741888,
+      "size": 512,
+      "path": "research/resources/32516-755.bin"
+    },
+    {
+      "type": 32516,
+      "id": 756,
+      "offset": 742400,
+      "size": 512,
+      "path": "research/resources/32516-756.bin"
+    },
+    {
+      "type": 32516,
+      "id": 757,
+      "offset": 742912,
+      "size": 512,
+      "path": "research/resources/32516-757.bin"
+    },
+    {
+      "type": 32516,
+      "id": 758,
+      "offset": 743424,
+      "size": 512,
+      "path": "research/resources/32516-758.bin"
+    },
+    {
+      "type": 32516,
+      "id": 759,
+      "offset": 743936,
+      "size": 512,
+      "path": "research/resources/32516-759.bin"
+    },
+    {
+      "type": 32516,
+      "id": 760,
+      "offset": 744448,
+      "size": 512,
+      "path": "research/resources/32516-760.bin"
+    },
+    {
+      "type": 32516,
+      "id": 761,
+      "offset": 744960,
+      "size": 512,
+      "path": "research/resources/32516-761.bin"
+    },
+    {
+      "type": 32516,
+      "id": 762,
+      "offset": 745472,
+      "size": 512,
+      "path": "research/resources/32516-762.bin"
+    },
+    {
+      "type": 32516,
+      "id": 763,
+      "offset": 745984,
+      "size": 512,
+      "path": "research/resources/32516-763.bin"
+    },
+    {
+      "type": 32516,
+      "id": 764,
+      "offset": 746496,
+      "size": 512,
+      "path": "research/resources/32516-764.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3000,
+      "offset": 747008,
+      "size": 512,
+      "path": "research/resources/32516-3000.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3001,
+      "offset": 747520,
+      "size": 512,
+      "path": "research/resources/32516-3001.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3002,
+      "offset": 748032,
+      "size": 512,
+      "path": "research/resources/32516-3002.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3003,
+      "offset": 748544,
+      "size": 512,
+      "path": "research/resources/32516-3003.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3010,
+      "offset": 749056,
+      "size": 512,
+      "path": "research/resources/32516-3010.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3011,
+      "offset": 749568,
+      "size": 512,
+      "path": "research/resources/32516-3011.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3012,
+      "offset": 750080,
+      "size": 512,
+      "path": "research/resources/32516-3012.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3013,
+      "offset": 750592,
+      "size": 512,
+      "path": "research/resources/32516-3013.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3014,
+      "offset": 751104,
+      "size": 512,
+      "path": "research/resources/32516-3014.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3020,
+      "offset": 751616,
+      "size": 512,
+      "path": "research/resources/32516-3020.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3021,
+      "offset": 752128,
+      "size": 512,
+      "path": "research/resources/32516-3021.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3022,
+      "offset": 752640,
+      "size": 512,
+      "path": "research/resources/32516-3022.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3023,
+      "offset": 753152,
+      "size": 512,
+      "path": "research/resources/32516-3023.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3024,
+      "offset": 753664,
+      "size": 512,
+      "path": "research/resources/32516-3024.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3030,
+      "offset": 754176,
+      "size": 512,
+      "path": "research/resources/32516-3030.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3031,
+      "offset": 754688,
+      "size": 512,
+      "path": "research/resources/32516-3031.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3032,
+      "offset": 755200,
+      "size": 512,
+      "path": "research/resources/32516-3032.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3033,
+      "offset": 755712,
+      "size": 512,
+      "path": "research/resources/32516-3033.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3034,
+      "offset": 756224,
+      "size": 512,
+      "path": "research/resources/32516-3034.bin"
+    },
+    {
+      "type": 32516,
+      "id": 3040,
+      "offset": 756736,
+      "size": 512,
+      "path": "research/resources/32516-3040.bin"
+    },
+    {
+      "type": 32516,
+      "id": 4000,
+      "offset": 757248,
+      "size": 512,
+      "path": "research/resources/32516-4000.bin"
+    },
+    {
+      "type": 32516,
+      "id": 4001,
+      "offset": 757760,
+      "size": 512,
+      "path": "research/resources/32516-4001.bin"
+    },
+    {
+      "type": 32516,
+      "id": 4002,
+      "offset": 758272,
+      "size": 512,
+      "path": "research/resources/32516-4002.bin"
+    },
+    {
+      "type": 32516,
+      "id": 10000,
+      "offset": 758784,
+      "size": 512,
+      "path": "research/resources/32516-10000.bin"
+    },
+    {
+      "type": 32517,
+      "id": 1000,
+      "offset": 759296,
+      "size": 512,
+      "path": "research/resources/32517-1000.bin"
+    },
+    {
+      "type": 32518,
+      "id": 400,
+      "offset": 759808,
+      "size": 512,
+      "path": "research/resources/32518-400.bin"
+    },
+    {
+      "type": 32518,
+      "id": 420,
+      "offset": 760320,
+      "size": 512,
+      "path": "research/resources/32518-420.bin"
+    },
+    {
+      "type": 32518,
+      "id": 700,
+      "offset": 760832,
+      "size": 512,
+      "path": "research/resources/32518-700.bin"
+    },
+    {
+      "type": 32518,
+      "id": 701,
+      "offset": 761344,
+      "size": 512,
+      "path": "research/resources/32518-701.bin"
+    },
+    {
+      "type": 32518,
+      "id": 710,
+      "offset": 761856,
+      "size": 512,
+      "path": "research/resources/32518-710.bin"
+    },
+    {
+      "type": 32518,
+      "id": 711,
+      "offset": 762368,
+      "size": 1024,
+      "path": "research/resources/32518-711.bin"
+    },
+    {
+      "type": 32518,
+      "id": 712,
+      "offset": 763392,
+      "size": 512,
+      "path": "research/resources/32518-712.bin"
+    },
+    {
+      "type": 32518,
+      "id": 713,
+      "offset": 763904,
+      "size": 512,
+      "path": "research/resources/32518-713.bin"
+    },
+    {
+      "type": 32518,
+      "id": 714,
+      "offset": 764416,
+      "size": 512,
+      "path": "research/resources/32518-714.bin"
+    },
+    {
+      "type": 32518,
+      "id": 715,
+      "offset": 764928,
+      "size": 512,
+      "path": "research/resources/32518-715.bin"
+    },
+    {
+      "type": 32518,
+      "id": 716,
+      "offset": 765440,
+      "size": 512,
+      "path": "research/resources/32518-716.bin"
+    },
+    {
+      "type": 32518,
+      "id": 717,
+      "offset": 765952,
+      "size": 512,
+      "path": "research/resources/32518-717.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1000,
+      "offset": 766464,
+      "size": 512,
+      "path": "research/resources/32518-1000.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1001,
+      "offset": 766976,
+      "size": 512,
+      "path": "research/resources/32518-1001.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1002,
+      "offset": 767488,
+      "size": 512,
+      "path": "research/resources/32518-1002.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1003,
+      "offset": 768000,
+      "size": 1536,
+      "path": "research/resources/32518-1003.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1004,
+      "offset": 769536,
+      "size": 512,
+      "path": "research/resources/32518-1004.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1005,
+      "offset": 770048,
+      "size": 1024,
+      "path": "research/resources/32518-1005.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1006,
+      "offset": 771072,
+      "size": 512,
+      "path": "research/resources/32518-1006.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1007,
+      "offset": 771584,
+      "size": 512,
+      "path": "research/resources/32518-1007.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1009,
+      "offset": 772096,
+      "size": 1024,
+      "path": "research/resources/32518-1009.bin"
+    },
+    {
+      "type": 32518,
+      "id": 1010,
+      "offset": 773120,
+      "size": 512,
+      "path": "research/resources/32518-1010.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1000,
+      "offset": 773632,
+      "size": 512,
+      "path": "research/resources/32519-1000.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1001,
+      "offset": 774144,
+      "size": 512,
+      "path": "research/resources/32519-1001.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1002,
+      "offset": 774656,
+      "size": 512,
+      "path": "research/resources/32519-1002.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1003,
+      "offset": 775168,
+      "size": 512,
+      "path": "research/resources/32519-1003.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1004,
+      "offset": 775680,
+      "size": 512,
+      "path": "research/resources/32519-1004.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1005,
+      "offset": 776192,
+      "size": 512,
+      "path": "research/resources/32519-1005.bin"
+    },
+    {
+      "type": 32519,
+      "id": 1006,
+      "offset": 776704,
+      "size": 512,
+      "path": "research/resources/32519-1006.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1001,
+      "offset": 777216,
+      "size": 512,
+      "path": "research/resources/32520-1001.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1002,
+      "offset": 777728,
+      "size": 512,
+      "path": "research/resources/32520-1002.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1003,
+      "offset": 778240,
+      "size": 512,
+      "path": "research/resources/32520-1003.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1004,
+      "offset": 778752,
+      "size": 512,
+      "path": "research/resources/32520-1004.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1005,
+      "offset": 779264,
+      "size": 512,
+      "path": "research/resources/32520-1005.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1006,
+      "offset": 779776,
+      "size": 512,
+      "path": "research/resources/32520-1006.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1007,
+      "offset": 780288,
+      "size": 512,
+      "path": "research/resources/32520-1007.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1008,
+      "offset": 780800,
+      "size": 512,
+      "path": "research/resources/32520-1008.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1009,
+      "offset": 781312,
+      "size": 512,
+      "path": "research/resources/32520-1009.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1010,
+      "offset": 781824,
+      "size": 512,
+      "path": "research/resources/32520-1010.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1011,
+      "offset": 782336,
+      "size": 512,
+      "path": "research/resources/32520-1011.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1012,
+      "offset": 782848,
+      "size": 512,
+      "path": "research/resources/32520-1012.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1013,
+      "offset": 783360,
+      "size": 512,
+      "path": "research/resources/32520-1013.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1014,
+      "offset": 783872,
+      "size": 512,
+      "path": "research/resources/32520-1014.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1015,
+      "offset": 784384,
+      "size": 512,
+      "path": "research/resources/32520-1015.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1016,
+      "offset": 784896,
+      "size": 512,
+      "path": "research/resources/32520-1016.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1017,
+      "offset": 785408,
+      "size": 512,
+      "path": "research/resources/32520-1017.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1018,
+      "offset": 785920,
+      "size": 512,
+      "path": "research/resources/32520-1018.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1019,
+      "offset": 786432,
+      "size": 512,
+      "path": "research/resources/32520-1019.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1020,
+      "offset": 786944,
+      "size": 512,
+      "path": "research/resources/32520-1020.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1021,
+      "offset": 787456,
+      "size": 512,
+      "path": "research/resources/32520-1021.bin"
+    },
+    {
+      "type": 32520,
+      "id": 1022,
+      "offset": 787968,
+      "size": 512,
+      "path": "research/resources/32520-1022.bin"
+    },
+    {
+      "type": 32521,
+      "id": 128,
+      "offset": 788480,
+      "size": 2560,
+      "path": "research/resources/32521-128.bin"
+    },
+    {
+      "type": 32522,
+      "id": 1384,
+      "offset": 791040,
+      "size": 44032,
+      "path": "public/assets/sounds/1384.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1385,
+      "offset": 835072,
+      "size": 39936,
+      "path": "public/assets/sounds/1385.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1448,
+      "offset": 875008,
+      "size": 47616,
+      "path": "public/assets/sounds/1448.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1576,
+      "offset": 922624,
+      "size": 12288,
+      "path": "public/assets/sounds/1576.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1577,
+      "offset": 934912,
+      "size": 23040,
+      "path": "public/assets/sounds/1577.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1640,
+      "offset": 957952,
+      "size": 28672,
+      "path": "public/assets/sounds/1640.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1704,
+      "offset": 986624,
+      "size": 17408,
+      "path": "public/assets/sounds/1704.wav"
+    },
+    {
+      "type": 32522,
+      "id": 1705,
+      "offset": 1004032,
+      "size": 11776,
+      "path": "public/assets/sounds/1705.wav"
+    },
+    {
+      "type": 32522,
+      "id": 2280,
+      "offset": 1015808,
+      "size": 55296,
+      "path": "public/assets/sounds/2280.wav"
+    },
+    {
+      "type": 32522,
+      "id": 2856,
+      "offset": 1071104,
+      "size": 41472,
+      "path": "public/assets/sounds/2856.wav"
+    },
+    {
+      "type": 32522,
+      "id": 2984,
+      "offset": 1112576,
+      "size": 32768,
+      "path": "public/assets/sounds/2984.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5000,
+      "offset": 1145344,
+      "size": 31744,
+      "path": "public/assets/sounds/5000.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5001,
+      "offset": 1177088,
+      "size": 20992,
+      "path": "public/assets/sounds/5001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5002,
+      "offset": 1198080,
+      "size": 30208,
+      "path": "public/assets/sounds/5002.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5003,
+      "offset": 1228288,
+      "size": 36352,
+      "path": "public/assets/sounds/5003.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5004,
+      "offset": 1264640,
+      "size": 52224,
+      "path": "public/assets/sounds/5004.wav"
+    },
+    {
+      "type": 32522,
+      "id": 5005,
+      "offset": 1316864,
+      "size": 37376,
+      "path": "public/assets/sounds/5005.wav"
+    },
+    {
+      "type": 32522,
+      "id": 6000,
+      "offset": 1354240,
+      "size": 16896,
+      "path": "public/assets/sounds/6000.wav"
+    },
+    {
+      "type": 32522,
+      "id": 6001,
+      "offset": 1371136,
+      "size": 13824,
+      "path": "public/assets/sounds/6001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 6002,
+      "offset": 1384960,
+      "size": 16384,
+      "path": "public/assets/sounds/6002.wav"
+    },
+    {
+      "type": 32522,
+      "id": 7000,
+      "offset": 1401344,
+      "size": 18432,
+      "path": "public/assets/sounds/7000.wav"
+    },
+    {
+      "type": 32522,
+      "id": 7001,
+      "offset": 1419776,
+      "size": 5632,
+      "path": "public/assets/sounds/7001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 7002,
+      "offset": 1425408,
+      "size": 2048,
+      "path": "public/assets/sounds/7002.wav"
+    },
+    {
+      "type": 32522,
+      "id": 7003,
+      "offset": 1427456,
+      "size": 8704,
+      "path": "public/assets/sounds/7003.wav"
+    },
+    {
+      "type": 32522,
+      "id": 8000,
+      "offset": 1436160,
+      "size": 33792,
+      "path": "public/assets/sounds/8000.wav"
+    },
+    {
+      "type": 32522,
+      "id": 8001,
+      "offset": 1469952,
+      "size": 33792,
+      "path": "public/assets/sounds/8001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9001,
+      "offset": 1503744,
+      "size": 38400,
+      "path": "public/assets/sounds/9001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9002,
+      "offset": 1542144,
+      "size": 22528,
+      "path": "public/assets/sounds/9002.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9003,
+      "offset": 1564672,
+      "size": 46080,
+      "path": "public/assets/sounds/9003.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9004,
+      "offset": 1610752,
+      "size": 37888,
+      "path": "public/assets/sounds/9004.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9005,
+      "offset": 1648640,
+      "size": 59904,
+      "path": "public/assets/sounds/9005.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9006,
+      "offset": 1708544,
+      "size": 41984,
+      "path": "public/assets/sounds/9006.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9007,
+      "offset": 1750528,
+      "size": 48128,
+      "path": "public/assets/sounds/9007.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9008,
+      "offset": 1798656,
+      "size": 58880,
+      "path": "public/assets/sounds/9008.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9009,
+      "offset": 1857536,
+      "size": 17408,
+      "path": "public/assets/sounds/9009.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9010,
+      "offset": 1874944,
+      "size": 41472,
+      "path": "public/assets/sounds/9010.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9011,
+      "offset": 1916416,
+      "size": 63488,
+      "path": "public/assets/sounds/9011.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9012,
+      "offset": 1979904,
+      "size": 62464,
+      "path": "public/assets/sounds/9012.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9013,
+      "offset": 2042368,
+      "size": 52736,
+      "path": "public/assets/sounds/9013.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9014,
+      "offset": 2095104,
+      "size": 39424,
+      "path": "public/assets/sounds/9014.wav"
+    },
+    {
+      "type": 32522,
+      "id": 9015,
+      "offset": 2134528,
+      "size": 56320,
+      "path": "public/assets/sounds/9015.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10000,
+      "offset": 2190848,
+      "size": 11776,
+      "path": "public/assets/sounds/10000.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10001,
+      "offset": 2202624,
+      "size": 26624,
+      "path": "public/assets/sounds/10001.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10002,
+      "offset": 2229248,
+      "size": 22528,
+      "path": "public/assets/sounds/10002.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10003,
+      "offset": 2251776,
+      "size": 32256,
+      "path": "public/assets/sounds/10003.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10004,
+      "offset": 2284032,
+      "size": 26112,
+      "path": "public/assets/sounds/10004.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10005,
+      "offset": 2310144,
+      "size": 18432,
+      "path": "public/assets/sounds/10005.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10006,
+      "offset": 2328576,
+      "size": 17920,
+      "path": "public/assets/sounds/10006.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10007,
+      "offset": 2346496,
+      "size": 25088,
+      "path": "public/assets/sounds/10007.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10008,
+      "offset": 2371584,
+      "size": 20480,
+      "path": "public/assets/sounds/10008.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10009,
+      "offset": 2392064,
+      "size": 14848,
+      "path": "public/assets/sounds/10009.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10010,
+      "offset": 2406912,
+      "size": 32768,
+      "path": "public/assets/sounds/10010.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10011,
+      "offset": 2439680,
+      "size": 28160,
+      "path": "public/assets/sounds/10011.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10012,
+      "offset": 2467840,
+      "size": 22528,
+      "path": "public/assets/sounds/10012.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10013,
+      "offset": 2490368,
+      "size": 5632,
+      "path": "public/assets/sounds/10013.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10014,
+      "offset": 2496000,
+      "size": 11264,
+      "path": "public/assets/sounds/10014.wav"
+    },
+    {
+      "type": 32522,
+      "id": 10015,
+      "offset": 2507264,
+      "size": 9728,
+      "path": "public/assets/sounds/10015.wav"
+    },
+    {
+      "type": 32522,
+      "id": 20000,
+      "offset": 2516992,
+      "size": 50688,
+      "path": "public/assets/sounds/20000.wav"
+    },
+    {
+      "type": 32523,
+      "id": 1000,
+      "offset": 2567680,
+      "size": 512,
+      "path": "research/resources/32523-1000.bin"
+    },
+    {
+      "type": 32523,
+      "id": 1001,
+      "offset": 2568192,
+      "size": 512,
+      "path": "research/resources/32523-1001.bin"
+    },
+    {
+      "type": 32523,
+      "id": 1002,
+      "offset": 2568704,
+      "size": 512,
+      "path": "research/resources/32523-1002.bin"
+    }
+  ]
+}

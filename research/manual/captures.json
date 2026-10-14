@@ -1,0 +1,307 @@
+{
+  "date": "2026-10-15",
+  "method": "CUA screenshot of live production UI; full-frame visibility verified. Five centered modal crops taken from preserved full CUA screenshots with Pillow to avoid browser clipping artifacts.",
+  "rendering": "Default waifu2x rendering; bitmap-backed dialogs and title use original resources",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "records": [
+    {
+      "file": "tutorial.jpg",
+      "scene": "starter",
+      "action": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "office.jpg",
+      "scene": "mixed",
+      "action": "office",
+      "clip": {
+        "height": 277,
+        "width": 294,
+        "x": 493,
+        "y": 221
+      }
+    },
+    {
+      "file": "condo.jpg",
+      "scene": "mixed",
+      "action": "condo",
+      "clip": {
+        "height": 277,
+        "width": 310,
+        "x": 485,
+        "y": 221
+      },
+      "source_capture": "research/screenshots/manual-raw-condo.jpg",
+      "crop_processing": "Pillow crop of full CUA screenshot; no scaling, recoloring or redrawing"
+    },
+    {
+      "file": "hotel.jpg",
+      "scene": "mixed",
+      "action": "suite",
+      "clip": {
+        "height": 278,
+        "width": 306,
+        "x": 487,
+        "y": 221
+      },
+      "source_capture": "research/screenshots/manual-raw-hotel.jpg",
+      "crop_processing": "Pillow crop of full CUA screenshot; no scaling, recoloring or redrawing"
+    },
+    {
+      "file": "food.jpg",
+      "scene": "mixed",
+      "action": "fastfood",
+      "clip": {
+        "height": 291,
+        "width": 299,
+        "x": 490,
+        "y": 214
+      },
+      "source_capture": "research/screenshots/manual-raw-food.jpg",
+      "crop_processing": "Pillow crop of full CUA screenshot; no scaling, recoloring or redrawing"
+    },
+    {
+      "file": "cinema.jpg",
+      "scene": "cinema",
+      "action": "cinema",
+      "clip": {
+        "height": 372,
+        "width": 292,
+        "x": 494,
+        "y": 174
+      }
+    },
+    {
+      "file": "person.jpg",
+      "scene": "mixed",
+      "action": "person",
+      "clip": {
+        "x": 484,
+        "y": 252,
+        "width": 312,
+        "height": 216
+      }
+    },
+    {
+      "file": "find-person.jpg",
+      "scene": "mixed",
+      "action": "find-person",
+      "clip": {
+        "height": 223,
+        "width": 312,
+        "x": 484,
+        "y": 248
+      },
+      "source_capture": "research/screenshots/manual-raw-find-person.jpg",
+      "crop_processing": "Pillow crop of full CUA screenshot; no scaling, recoloring or redrawing"
+    },
+    {
+      "file": "movie-selection.jpg",
+      "scene": "cinema",
+      "action": "movie",
+      "clip": {
+        "height": 170,
+        "width": 294,
+        "x": 493,
+        "y": 275
+      }
+    },
+    {
+      "file": "elevator.jpg",
+      "scene": "mixed",
+      "action": "elevator",
+      "clip": {
+        "height": 462,
+        "width": 214,
+        "x": 533,
+        "y": 0
+      }
+    },
+    {
+      "file": "finance.jpg",
+      "scene": "mixed",
+      "action": "finance",
+      "clip": {
+        "height": 376,
+        "width": 355,
+        "x": 462,
+        "y": 172
+      },
+      "source_capture": "research/screenshots/manual-raw-finance.jpg",
+      "crop_processing": "Pillow crop of full CUA screenshot; no scaling, recoloring or redrawing"
+    },
+    {
+      "file": "desktop.jpg",
+      "scene": "mixed",
+      "action": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "construction.jpg",
+      "scene": "mixed",
+      "action": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "info-bar.jpg",
+      "scene": "mixed",
+      "action": "",
+      "clip": {
+        "height": 53,
+        "width": 435,
+        "x": 204,
+        "y": 4
+      }
+    },
+    {
+      "file": "evaluation.jpg",
+      "scene": "mixed",
+      "action": "",
+      "ui": "Evaluation view",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "pricing.jpg",
+      "scene": "mixed",
+      "action": "",
+      "ui": "Pricing view",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "hotel-map.jpg",
+      "scene": "hotel",
+      "action": "",
+      "ui": "Hotel view",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "services.jpg",
+      "scene": "services",
+      "action": "",
+      "ui": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "parking.jpg",
+      "scene": "services",
+      "action": "",
+      "clip": {
+        "x": 208,
+        "y": 274,
+        "width": 790,
+        "height": 248
+      }
+    },
+    {
+      "file": "fire.jpg",
+      "scene": "fire",
+      "action": "",
+      "ui": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "bomb.jpg",
+      "scene": "bomb",
+      "action": "bomb-alert",
+      "ui": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "vip.jpg",
+      "scene": "vip",
+      "action": "vip-alert",
+      "ui": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "cathedral.jpg",
+      "scene": "cathedral",
+      "action": "",
+      "ui": "",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "elevator-preview.jpg",
+      "scene": "mixed",
+      "action": "elevator",
+      "ui": "Simulate",
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1020,
+        "height": 630
+      }
+    },
+    {
+      "file": "startup.jpg",
+      "scene": null,
+      "url": "http://127.0.0.1:5173/",
+      "action": "startup",
+      "clip": {
+        "height": 488,
+        "width": 648,
+        "x": 316,
+        "y": 116
+      }
+    }
+  ],
+  "refresh": "Current native elevator spacing and full-CLUT renderer, 2026-10-15"
+}

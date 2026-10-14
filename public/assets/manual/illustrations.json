@@ -1,0 +1,127 @@
+[
+  {
+    "file": "/assets/manual/images/startup.jpg",
+    "alt": "The original SimTower title artwork behind the opening New Tower, Load Saved Tower and Quit controls.",
+    "caption": "Starting SimTower, corresponding to manual pp. 8-9. The title screen and opening controls use the original game resources."
+  },
+  {
+    "file": "/assets/manual/images/tutorial.jpg",
+    "alt": "A small tower with offices, fast food, a standard elevator and its initial Tool Bar.",
+    "caption": "The first few floors: start with a lobby, then add workplaces, food and a route between them. Recreated from manual pp. 10-13 using the current game."
+  },
+  {
+    "file": "/assets/manual/images/office.jpg",
+    "alt": "The original office inspection panel with its evaluation bar and rent selection.",
+    "caption": "Inspecting an office, as in manual pp. 11-12 and 39-40. The panel is the game's actual bitmap-backed dialog."
+  },
+  {
+    "file": "/assets/manual/images/desktop.jpg",
+    "alt": "The Edit window, Map, Info Bar and expanded Tool Bar around a developed tower.",
+    "caption": "The desktop layout, recreating the overview on manual pp. 9 and 30. The small panels can be moved independently."
+  },
+  {
+    "file": "/assets/manual/images/info-bar.jpg",
+    "alt": "The Info Bar showing the clock, weekday and quarter, rating, funds and population.",
+    "caption": "The status information described on manual pp. 24 and 33-34. The native clock, stars and field layout are reused."
+  },
+  {
+    "file": "/assets/manual/images/construction.jpg",
+    "alt": "A developed tower with its Tool Bar and native construction artwork.",
+    "caption": "Construction tools and placement context, recreating manual pp. 43-46. Floor edges retain the original emergency scaffolding."
+  },
+  {
+    "file": "/assets/manual/images/elevator.jpg",
+    "alt": "The actual Elevator window with day programs, response, departure delay and live car columns.",
+    "caption": "The controls described on manual pp. 15-16 and 34-38. Day selection and time periods retain their original layout."
+  },
+  {
+    "file": "/assets/manual/images/elevator-preview.jpg",
+    "alt": "A selected shaft in the Simulate view.",
+    "caption": "The selected-elevator preview, corresponding to manual p. 38. Resume restores the ordinary tower."
+  },
+  {
+    "file": "/assets/manual/images/condo.jpg",
+    "alt": "The condominium panel showing occupancy, evaluation and its locked sale price.",
+    "caption": "Condo inspection, recreating manual pp. 49 and 60. An occupied condo's price control is locked."
+  },
+  {
+    "file": "/assets/manual/images/hotel.jpg",
+    "alt": "A hotel Facility window using the current original room preview and guest portraits.",
+    "caption": "Hotel inspection, based on manual pp. 18-20 and 48-49. Hotel arrivals, dinner outings and checkout are separate states."
+  },
+  {
+    "file": "/assets/manual/images/food.jpg",
+    "alt": "The fast-food Facility window with patronage and daily profit.",
+    "caption": "Food business inspection, recreating manual pp. 12, 55 and 58-59. Actual admissions determine closing receipts."
+  },
+  {
+    "file": "/assets/manual/images/cinema.jpg",
+    "alt": "The actual Theatre window with title, duration and audience portraits.",
+    "caption": "Theatre management, corresponding to manual pp. 42, 50 and 60. Entrance and exit are on different levels."
+  },
+  {
+    "file": "/assets/manual/images/movie-selection.jpg",
+    "alt": "The original movie selection dialog.",
+    "caption": "Change Movie offers the original New Movie and Old Classic choices, as on manual p. 42."
+  },
+  {
+    "file": "/assets/manual/images/parking.jpg",
+    "alt": "Original parking ramps and car spaces below the lobby.",
+    "caption": "Underground parking and its ramp column, recreating manual pp. 49-50. The original ramp artwork is used."
+  },
+  {
+    "file": "/assets/manual/images/services.jpg",
+    "alt": "The underground station, recycling center and parking levels in the current game.",
+    "caption": "The service basement, replacing the facility illustrations on manual p. 51 with a captured current-game scene."
+  },
+  {
+    "file": "/assets/manual/images/person.jpg",
+    "alt": "A person inspection with portrait, home, destination and stress information.",
+    "caption": "Individual inspection, recreating manual pp. 17-18 and 40-41. Persistent identities can be named and followed."
+  },
+  {
+    "file": "/assets/manual/images/find-person.jpg",
+    "alt": "The actual Find Person dialog.",
+    "caption": "Find Person, corresponding to manual pp. 41-42. Naming an inhabitant makes the identity available for tracking."
+  },
+  {
+    "file": "/assets/manual/images/evaluation.jpg",
+    "alt": "Evaluation map and color-coded tower.",
+    "caption": "Evaluation view, recreating manual pp. 17 and 31. Diagnostic selection pauses the game."
+  },
+  {
+    "file": "/assets/manual/images/pricing.jpg",
+    "alt": "Pricing map and its four price-tier colors.",
+    "caption": "Pricing view, corresponding to manual p. 32. Price and satisfaction are separate diagnostics."
+  },
+  {
+    "file": "/assets/manual/images/hotel-map.jpg",
+    "alt": "Hotel map highlighting dirty and neglected room conditions.",
+    "caption": "Hotel view, corresponding to manual p. 32. Use it to identify cleaning failures before they spread."
+  },
+  {
+    "file": "/assets/manual/images/finance.jpg",
+    "alt": "The actual Finance window with quarter accounts and balance fields.",
+    "caption": "Quarterly finances, recreating manual pp. 13 and 38-39. The original panel's figures use its multiply-by-100 convention."
+  },
+  {
+    "file": "/assets/manual/images/vip.jpg",
+    "alt": "The original VIP announcement over the current tower.",
+    "caption": "VIP arrival, recreating manual p. 53. The selected suite and guest belong to the persistent simulation."
+  },
+  {
+    "file": "/assets/manual/images/fire.jpg",
+    "alt": "Fire and the original rescue helicopter above a captured current tower.",
+    "caption": "Emergency response, replacing the fire illustration on manual pp. 28-29 and 53 with the current game's original sprites."
+  },
+  {
+    "file": "/assets/manual/images/bomb.jpg",
+    "alt": "The original bomb-demand dialog over the current game.",
+    "caption": "The bomb decision, recreating manual p. 52. Search and the deadline are part of the simulation."
+  },
+  {
+    "file": "/assets/manual/images/cathedral.jpg",
+    "alt": "The cathedral's original five-level artwork and ceremony figures at the roof.",
+    "caption": "The 100F landmark and ceremony, recreating manual pp. 26 and 52. The art and actor resources come from the original game."
+  }
+]

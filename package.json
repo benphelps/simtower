@@ -1,0 +1,16 @@
+{
+  "name": "simtower-js",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/server.mjs",
+    "start": "node tools/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "extract": "python3 tools/extract_assets.py && python3 tools/decode_tables.py && python3 tools/decode_dialogs.py && python3 tools/decode_icons.py && python3 tools/decode_cursors.py && python3 tools/decode_lobbies.py && python3 tools/extract_scene_indices.py && python3 tools/extract_scaffold_indices.py && python3 tools/extract_native_indices.py",
+    "build": "node tools/build.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

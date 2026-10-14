@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SimTower · local upscale comparison</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eeece6;color:#252b2c;font:16px system-ui,sans-serif}header,main{max-width:1460px;margin:auto;padding:24px}header{padding-bottom:8px}h1{font-size:28px;margin:0 0 8px}p{line-height:1.5;max-width:1000px}a{color:#225e64}.controls{display:flex;gap:18px;align-items:end;flex-wrap:wrap;padding:18px 0}label{display:grid;gap:7px;font-size:13px;font-weight:650}select,button,input{font:inherit}select,button{padding:9px;border:1px solid #a7aaa6;border-radius:5px;background:white}button{cursor:pointer}.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel{background:#fff;border:1px solid #c8cbc5;border-radius:8px;overflow:hidden}.caption{padding:12px 16px;font-size:14px;font-weight:650;border-bottom:1px solid #ddd}.scene{display:block;width:100%;height:490px;touch-action:none;cursor:grab}.asset{display:block;width:100%;height:200px;background:#dedfd9}small{font-weight:400;color:#57605e}#status{color:#57605e}.hint{font-size:14px;color:#57605e}details{margin:22px 0}summary{cursor:pointer}#sheet{display:block;width:100%;height:auto;margin-top:18px}.hidden{display:none}@media(max-width:850px){.pair{grid-template-columns:1fr}.scene{height:400px}header,main{padding:16px}}
+</style>
+<header>
+<h1>SimTower, at twice the resolution</h1>
+<p>Local AI upscaling of all 259 original PNG resources. Compare the same tower and sprite frames at the same size. The game defaults to waifu2x; original pixels remain available in Options → Textures.</p>
+<p id="status" role="status">Loading original resources…</p>
+</header>
+<main>
+<div class="controls">
+<label>Upscaler<select id="model"><option value="waifu2x">waifu2x · CUnet, no denoise · 2×</option></select></label>
+<label>View<select id="view"><option value="scene">Tower scene</option><option value="asset">Resource inspector</option></select></label>
+<label>Zoom<select id="zoom"><option value="1">1× game size</option><option value="2" selected>2× game size</option><option value="3">3× game size</option><option value="4">4× game size</option></select></label>
+<label>Light<select id="light"><option value="day">Day</option><option value="night">Night</option></select></label>
+<label id="asset-control" class="hidden">Resource<select id="resource"></select></label>
+<button id="home">Reset view</button>
+</div>
+<div class="pair">
+<div class="panel"><div class="caption">Original pixels <small>· nearest-neighbor rendering</small></div><canvas id="original" class="scene"></canvas><div style="overflow:auto"><canvas id="original-asset" class="asset hidden"></canvas></div></div>
+<div class="panel"><div id="model-label" class="caption">Upscaled · 2× texture resolution</div><canvas id="enhanced" class="scene"></canvas><div style="overflow:auto"><canvas id="enhanced-asset" class="asset hidden"></canvas></div></div>
+</div>
+<p class="hint">Drag either scene to move both views. Pause is implicit: both panels show the same fixed simulation state. On a Retina screen, 1× game size maps each 2× texture pixel to one display pixel.</p>
+<p class="hint">AI changes edge shapes and can merge tiny details. White transparency uses the exact original silhouette. Animated sky colors and the minimap keep their original pixels to preserve palette cycling. Full sheets were processed together; animation consistency and frame-edge bleed need further review before adoption.</p>
+<details><summary>Original and waifu2x side by side · rooms, people and toolbar</summary><a href="comparison.png" target="_blank">Open full-resolution comparison</a><img id="sheet" src="comparison.png" loading="lazy" alt="Original and waifu2x comparisons"></details>
+<p class="hint">Tools: <a href="https://github.com/nihui/waifu2x-ncnn-vulkan">waifu2x ncnn Vulkan</a>. All inference ran locally; no game assets were uploaded.</p>
+</main>
+<script type="module">
+import {Renderer,loadAssets,loadTextureAssets} from '/src/renderer.js';
+import {demoTower} from '/src/simulation.js';
+const $=id=>document.getElementById(id);
+const status=$('status');
+try {
+const [manifest,data]=await Promise.all(['/assets/manifest.json','/assets/game-data.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error(url);return r.json()}));
+const resources=manifest.resources.filter(r=>r.path.endsWith('.png'));
+const originals=await loadAssets(manifest),tower=demoTower(data),variants=new Map();
+const original=new Renderer($('original'),document.createElement('canvas'),originals);
+const enhanced=new Renderer($('enhanced'),document.createElement('canvas'),originals);
+const renderers=[original,enhanced];
+for(const r of renderers){r.home(tower);r.camera.y=-220;r.render(tower,0)}
+for(const r of resources.sort((a,b)=>a.id-b.id)){
+  const option=document.createElement('option');option.value=r.id;option.textContent=`${r.id} · ${r.width} × ${r.height} · ${r.path.includes('graphics')?'graphics':'bitmap'}`;$('resource').append(option);
+}
+$('resource').value='1448';
+function drawAsset(canvas,image,scale){
+  const logical=originals.get(+$('resource').value),zoom=+$('zoom').value;
+  const dpr=window.devicePixelRatio||1;
+  canvas.style.width=`${logical.width*zoom+32}px`;
+  canvas.width=Math.round((logical.width*zoom+32)*dpr);canvas.height=Math.round(Math.max(140,logical.height*zoom+40)*dpr);canvas.style.height=`${canvas.height/dpr}px`;
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.imageSmoothingEnabled=false;
+  ctx.fillStyle='#dedfd9';ctx.fillRect(0,0,canvas.width/dpr,canvas.height/dpr);
+  // Full atlas at the selected zoom; overflow remains horizontally scrollable.
+  ctx.drawImage(image,0,0,logical.width*scale,logical.height*scale,16,20,logical.width*zoom,logical.height*zoom);
+}
+function draw(){
+  const asset=$('view').value==='asset';
+  $('asset-control').classList.toggle('hidden',!asset);
+  for(const id of ['original','enhanced'])$(id).classList.toggle('hidden',asset);
+  for(const id of ['original-asset','enhanced-asset'])$(id).classList.toggle('hidden',!asset);
+  const zoom=+$('zoom').value;
+  for(const r of renderers){r.zoom=zoom;if(!asset){r.resize();r.render(tower,0)}}
+  if(asset){const id=+$('resource').value;drawAsset($('original-asset'),originals.get(id),1);if(enhanced.textureAssets)drawAsset($('enhanced-asset'),enhanced.textureAssets.get(id),2)}
+}
+let request=0;
+async function selectModel(){
+  const key=$('model').value,token=++request;status.textContent='Loading 2× resources…';
+  if(!variants.has(key)){
+    const response=await fetch(`${key}/manifest.json`);if(!response.ok)throw Error(`Missing ${key} assets`);
+    const m=await response.json(),images=await loadTextureAssets(m,originals);
+    variants.set(key,{m,images});
+  }
+  if(token!==request)return;
+  const {m,images}=variants.get(key);enhanced.textureAssets=images;
+  $('model-label').textContent=m.label;
+  status.textContent=`${m.resources.length} textures loaded · ${Math.round(m.resources.reduce((s,r)=>s+r.bytes,0)/1024/1024*10)/10} MB · local inference ${m.seconds}s · display pixel ratio ${window.devicePixelRatio||1}`;draw();
+}
+$('model').addEventListener('change',()=>selectModel().catch(error=>status.textContent=error.message));
+for(const id of ['view','zoom','resource'])$(id).addEventListener('change',draw);
+$('light').addEventListener('change',()=>{tower.setClock($('light').value==='night'?1320:540);draw()});
+$('home').addEventListener('click',()=>{for(const r of renderers){r.home(tower);r.camera.y=-220}draw()});
+let drag;
+for(const canvas of [$('original'),$('enhanced')]){
+  canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,camera:{...original.camera}};canvas.setPointerCapture(e.pointerId)});
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;const zoom=+$('zoom').value;for(const r of renderers)r.camera={x:drag.camera.x-(e.clientX-drag.x)/zoom,y:drag.camera.y-(e.clientY-drag.y)/zoom};draw()});
+  canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('pointercancel',()=>drag=null);
+}
+window.addEventListener('resize',draw);
+await selectModel();
+window.upscaleLab={tower,original,enhanced,variants,draw};
+} catch(error){status.textContent=`Comparison could not load: ${error.message}`;console.error(error)}
+</script>
+</html>

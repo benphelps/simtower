@@ -1,0 +1,5697 @@
+{
+  "1": {
+    "title": "",
+    "style": 2415919170,
+    "font": {
+      "points": 10,
+      "family": "system"
+    },
+    "controls": [],
+    "templateSizeDU": [
+      154,
+      117
+    ]
+  },
+  "10000": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "New Tower",
+        "style": 1073807361,
+        "rectDU": [
+          10,
+          10,
+          40,
+          40
+        ],
+        "rect": [
+          16,
+          10,
+          228,
+          26
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Quit",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          10,
+          40,
+          40
+        ],
+        "rect": [
+          90,
+          82,
+          80,
+          26
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Load Saved Tower",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          10,
+          40,
+          40
+        ],
+        "rect": [
+          16,
+          46,
+          228,
+          26
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      50,
+      80
+    ],
+    "hotspots": {
+      "1": [
+        16,
+        10,
+        244,
+        36
+      ],
+      "2": [
+        90,
+        82,
+        170,
+        108
+      ],
+      "3": [
+        16,
+        46,
+        244,
+        72
+      ]
+    },
+    "size": [
+      260,
+      118
+    ]
+  },
+  "123": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [],
+    "templateSizeDU": [
+      215,
+      244
+    ]
+  },
+  "124": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [],
+    "templateSizeDU": [
+      215,
+      244
+    ]
+  },
+  "3000": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          72,
+          52,
+          50,
+          14
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "A VIP has made reservations for the Hotel Suite on floor ^0.",
+        "style": 1073872896,
+        "rectDU": [
+          22,
+          15,
+          150,
+          20
+        ],
+        "rect": [
+          33,
+          32,
+          258,
+          68
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      194,
+      72
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        33,
+        32,
+        291,
+        100
+      ]
+    },
+    "size": [
+      324,
+      160
+    ]
+  },
+  "3001": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Oh No!",
+        "style": 1342242816,
+        "rectDU": [
+          54,
+          49,
+          53,
+          11
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "A VIP has arrived at your Tower.",
+        "style": 1073872896,
+        "rectDU": [
+          43,
+          15,
+          75,
+          13
+        ],
+        "rect": [
+          148,
+          22,
+          128,
+          75
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      161,
+      68
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        27,
+        22,
+        10002,
+        0
+      ],
+      "3": [
+        148,
+        22,
+        276,
+        97
+      ]
+    },
+    "size": [
+      303,
+      150
+    ],
+    "icons": [
+      {
+        "id": 10002,
+        "x": 27,
+        "y": 22
+      }
+    ]
+  },
+  "3002": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Whew!",
+        "style": 1342242817,
+        "rectDU": [
+          62,
+          45,
+          50,
+          13
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 2,
+        "class": "static",
+        "text": "The VIP has checked out.",
+        "style": 1073872896,
+        "rectDU": [
+          7,
+          5,
+          160,
+          20
+        ],
+        "rect": [
+          43,
+          27,
+          257,
+          21
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "They seem to have had a comfortable stay!",
+        "style": 1073872896,
+        "rectDU": [
+          7,
+          5,
+          160,
+          20
+        ],
+        "rect": [
+          43,
+          50,
+          257,
+          40
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      175,
+      67
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        43,
+        27,
+        300,
+        48
+      ],
+      "3": [
+        43,
+        50,
+        300,
+        90
+      ]
+    },
+    "size": [
+      343,
+      155
+    ]
+  },
+  "3003": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Sorry! The VIP seems to have had an uncomfortable stay.  They are not pleased with your tower.",
+        "style": 1073873024,
+        "rectDU": [
+          28,
+          13,
+          151,
+          30
+        ],
+        "rect": [
+          60,
+          35,
+          220,
+          65
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Rats!",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        60,
+        35,
+        280,
+        100
+      ],
+      "3": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "size": [
+      340,
+      163
+    ]
+  },
+  "3010": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "SECOM has sensed a fire on floor ^0!\nEveryone should take emergency refuge!",
+        "style": 1073872896,
+        "rectDU": [
+          75,
+          11,
+          115,
+          25
+        ],
+        "rect": [
+          114,
+          21,
+          202,
+          77
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Oh No!",
+        "style": 1342242817,
+        "rectDU": [
+          65,
+          64,
+          66,
+          11
+        ],
+        "rect": [
+          117,
+          104,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      197,
+      83
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        104,
+        207,
+        124
+      ],
+      "2": [
+        28,
+        23,
+        10005,
+        0
+      ],
+      "3": [
+        114,
+        21,
+        316,
+        98
+      ]
+    },
+    "size": [
+      344,
+      145
+    ],
+    "icons": [
+      {
+        "id": 10005,
+        "x": 28,
+        "y": 23
+      }
+    ]
+  },
+  "3011": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "A fire has been reported on floor ^0!\nEveryone should take emergency refuge!",
+        "style": 1073872896,
+        "rectDU": [
+          75,
+          11,
+          145,
+          25
+        ],
+        "rect": [
+          114,
+          25,
+          202,
+          75
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Oh No!",
+        "style": 1342242817,
+        "rectDU": [
+          80,
+          64,
+          66,
+          11
+        ],
+        "rect": [
+          117,
+          111,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      227,
+      83
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        111,
+        207,
+        131
+      ],
+      "2": [
+        26,
+        25,
+        10004,
+        0
+      ],
+      "3": [
+        114,
+        25,
+        316,
+        100
+      ]
+    },
+    "size": [
+      342,
+      156
+    ],
+    "icons": [
+      {
+        "id": 10004,
+        "x": 26,
+        "y": 25
+      }
+    ]
+  },
+  "3012": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "Would you like to call an emergency fire crew?\nIt will cost $#000.",
+        "style": 1073872896,
+        "rectDU": [
+          75,
+          11,
+          105,
+          25
+        ],
+        "rect": [
+          132,
+          13,
+          180,
+          83
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Yes",
+        "style": 1342242816,
+        "rectDU": [
+          115,
+          65,
+          51,
+          11
+        ],
+        "rect": [
+          222,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "No",
+        "style": 1342242816,
+        "rectDU": [
+          20,
+          65,
+          51,
+          11
+        ],
+        "rect": [
+          119,
+          108,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      187,
+      83
+    ],
+    "hotspots": {
+      "1": [
+        119,
+        108,
+        209,
+        128
+      ],
+      "2": [
+        222,
+        108,
+        312,
+        128
+      ],
+      "3": [
+        132,
+        13,
+        312,
+        96
+      ],
+      "4": [
+        8,
+        13,
+        10001,
+        0
+      ]
+    },
+    "size": [
+      320,
+      141
+    ],
+    "icons": [
+      {
+        "id": 10001,
+        "x": 8,
+        "y": 13
+      }
+    ]
+  },
+  "3013": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "The fire was stopped.\nBecause your building has emergency stairs, no one was injured, but the tower is damaged.",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          13,
+          151,
+          40
+        ],
+        "rect": [
+          60,
+          27,
+          220,
+          66
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "I Know",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          106,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        106,
+        207,
+        126
+      ],
+      "2": [
+        60,
+        27,
+        280,
+        93
+      ]
+    },
+    "size": [
+      340,
+      153
+    ]
+  },
+  "3014": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Security is attempting to quench the fire.\n\nEveryone is taking emergency refuge.",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          13,
+          151,
+          40
+        ],
+        "rect": [
+          64,
+          30,
+          237,
+          68
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        64,
+        30,
+        301,
+        98
+      ]
+    },
+    "size": [
+      365,
+      158
+    ]
+  },
+  "3020": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Find the Bomb",
+        "style": 1342242816,
+        "rectDU": [
+          115,
+          65,
+          51,
+          11
+        ],
+        "rect": [
+          212,
+          112,
+          108,
+          20
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Pay Them",
+        "style": 1342242816,
+        "rectDU": [
+          20,
+          65,
+          51,
+          11
+        ],
+        "rect": [
+          119,
+          112,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "Blackmail from Terrorists!\nThey demand $#000 or a hidden bomb will explode at 3 o'clock.",
+        "style": 1073872896,
+        "rectDU": [
+          70,
+          5,
+          115,
+          35
+        ],
+        "rect": [
+          100,
+          26,
+          231,
+          80
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      199,
+      83
+    ],
+    "hotspots": {
+      "1": [
+        212,
+        112,
+        320,
+        132
+      ],
+      "2": [
+        119,
+        112,
+        209,
+        132
+      ],
+      "3": [
+        100,
+        26,
+        331,
+        106
+      ],
+      "4": [
+        24,
+        24,
+        10000,
+        0
+      ]
+    },
+    "size": [
+      341,
+      156
+    ],
+    "icons": [
+      {
+        "id": 10000,
+        "x": 24,
+        "y": 24
+      }
+    ]
+  },
+  "3021": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "\"Secom System Now Scanning....\"\n\nA bomb has been found on floor ^0.\nSecurity is on its way to diffuse the bomb.",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          5,
+          151,
+          48
+        ],
+        "rect": [
+          64,
+          14,
+          237,
+          86
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Great!",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        64,
+        14,
+        301,
+        100
+      ]
+    },
+    "size": [
+      365,
+      142
+    ]
+  },
+  "3022": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Security forces from your Security Offices are on their way to find the bomb.Good luck...",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          13,
+          151,
+          40
+        ],
+        "rect": [
+          64,
+          30,
+          237,
+          68
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Hurry!",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          108,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        108,
+        207,
+        128
+      ],
+      "2": [
+        64,
+        30,
+        301,
+        98
+      ]
+    },
+    "size": [
+      365,
+      158
+    ]
+  },
+  "3023": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "Because you have enough Security Offices in your tower, Security Forces found the bomb.  Good work!",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          13,
+          151,
+          40
+        ],
+        "rect": [
+          52,
+          39,
+          220,
+          51
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Thanks!",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          100,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        100,
+        207,
+        120
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        52,
+        39,
+        272,
+        90
+      ]
+    },
+    "size": [
+      324,
+      159
+    ]
+  },
+  "3024": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 3,
+        "class": "static",
+        "text": "Security was not able to find the bomb in time.  The bomb has exploded on floor ^0!",
+        "style": 1073872896,
+        "rectDU": [
+          28,
+          13,
+          151,
+          40
+        ],
+        "rect": [
+          80,
+          24,
+          240,
+          66
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Oh No!",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          117,
+          100,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        117,
+        100,
+        207,
+        120
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        80,
+        24,
+        320,
+        90
+      ]
+    },
+    "size": [
+      346,
+      144
+    ]
+  },
+  "3030": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Congratulations!\nYour tower has been given a Two Star Rating!",
+        "style": 1073872896,
+        "rectDU": [
+          80,
+          10,
+          120,
+          40
+        ],
+        "rect": [
+          138,
+          29,
+          206,
+          82
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          130,
+          144,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        130,
+        144,
+        220,
+        164
+      ],
+      "2": [
+        138,
+        29,
+        344,
+        111
+      ],
+      "3": [
+        25,
+        25,
+        10006,
+        0
+      ]
+    },
+    "size": [
+      369,
+      189
+    ],
+    "icons": [
+      {
+        "id": 10006,
+        "x": 25,
+        "y": 25
+      }
+    ]
+  },
+  "3031": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Congratulations!\nYour tower has been given a Three Star Rating!",
+        "style": 1073872896,
+        "rectDU": [
+          80,
+          10,
+          120,
+          40
+        ],
+        "rect": [
+          138,
+          29,
+          206,
+          82
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          130,
+          144,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        130,
+        144,
+        220,
+        164
+      ],
+      "2": [
+        138,
+        29,
+        344,
+        111
+      ],
+      "3": [
+        25,
+        25,
+        10006,
+        0
+      ]
+    },
+    "size": [
+      369,
+      189
+    ],
+    "icons": [
+      {
+        "id": 10006,
+        "x": 25,
+        "y": 25
+      }
+    ]
+  },
+  "3032": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Congratulations!\nYour tower has been given a Four Star Rating!",
+        "style": 1073872896,
+        "rectDU": [
+          80,
+          10,
+          120,
+          40
+        ],
+        "rect": [
+          138,
+          29,
+          206,
+          82
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          130,
+          144,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        130,
+        144,
+        220,
+        164
+      ],
+      "2": [
+        138,
+        29,
+        344,
+        111
+      ],
+      "3": [
+        25,
+        25,
+        10006,
+        0
+      ]
+    },
+    "size": [
+      369,
+      189
+    ],
+    "icons": [
+      {
+        "id": 10006,
+        "x": 25,
+        "y": 25
+      }
+    ]
+  },
+  "3033": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Congratulations!\nYour tower has been given a Five Star Rating!",
+        "style": 1073872896,
+        "rectDU": [
+          80,
+          10,
+          120,
+          40
+        ],
+        "rect": [
+          138,
+          29,
+          206,
+          82
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          130,
+          144,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        130,
+        144,
+        220,
+        164
+      ],
+      "2": [
+        138,
+        29,
+        344,
+        111
+      ],
+      "3": [
+        25,
+        25,
+        10006,
+        0
+      ]
+    },
+    "size": [
+      369,
+      189
+    ],
+    "icons": [
+      {
+        "id": 10006,
+        "x": 25,
+        "y": 25
+      }
+    ]
+  },
+  "3034": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "static",
+        "text": "Congratulations!\nYour tower has been given a \"Tower\" Rating!",
+        "style": 1073872896,
+        "rectDU": [
+          70,
+          15,
+          130,
+          40
+        ],
+        "rect": [
+          138,
+          29,
+          222,
+          29
+        ]
+      },
+      {
+        "id": 4,
+        "class": "static",
+        "text": " ",
+        "style": 1342308352,
+        "rectDU": [
+          70,
+          15,
+          130,
+          40
+        ],
+        "rect": [
+          138,
+          60,
+          206,
+          30
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1342242817,
+        "rectDU": [
+          73,
+          66,
+          60,
+          15
+        ],
+        "rect": [
+          130,
+          144,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      207,
+      87
+    ],
+    "hotspots": {
+      "1": [
+        130,
+        144,
+        220,
+        164
+      ],
+      "2": [
+        138,
+        29,
+        360,
+        58
+      ],
+      "3": [
+        25,
+        25,
+        10006,
+        0
+      ],
+      "4": [
+        138,
+        60,
+        344,
+        90
+      ]
+    },
+    "size": [
+      369,
+      189
+    ],
+    "icons": [
+      {
+        "id": 10006,
+        "x": 25,
+        "y": 25
+      }
+    ]
+  },
+  "3040": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Wow!",
+        "style": 1342242817,
+        "rectDU": [
+          92,
+          55,
+          50,
+          13
+        ],
+        "rect": [
+          180,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "During construction, workers discovered ancient buried treasure! \nIt is worth $^000",
+        "style": 1073872896,
+        "rectDU": [
+          10,
+          5,
+          85,
+          35
+        ],
+        "rect": [
+          119,
+          13,
+          211,
+          83
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      234,
+      74
+    ],
+    "hotspots": {
+      "1": [
+        180,
+        108,
+        270,
+        128
+      ],
+      "2": [
+        13,
+        13,
+        10003,
+        0
+      ],
+      "3": [
+        119,
+        13,
+        330,
+        96
+      ]
+    },
+    "size": [
+      340,
+      141
+    ],
+    "icons": [
+      {
+        "id": 10003,
+        "x": 13,
+        "y": 13
+      }
+    ]
+  },
+  "400": {
+    "title": "Elevator",
+    "style": 2462056512,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 7,
+        "class": "scrollbar",
+        "text": "",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          96,
+          8,
+          100
+        ],
+        "rect": [
+          135,
+          195,
+          16,
+          196
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      343,
+      364
+    ],
+    "hotspots": {
+      "1": [
+        115,
+        404,
+        182,
+        423
+      ],
+      "2": [
+        17,
+        404,
+        83,
+        423
+      ],
+      "3": [
+        255,
+        224,
+        334,
+        244
+      ],
+      "4": [
+        255,
+        282,
+        334,
+        302
+      ],
+      "5": [
+        161,
+        206,
+        173,
+        227
+      ],
+      "6": [
+        18,
+        195,
+        136,
+        391
+      ],
+      "7": [
+        135,
+        195,
+        151,
+        391
+      ],
+      "8": [
+        66,
+        93,
+        75,
+        104
+      ],
+      "9": [
+        66,
+        105,
+        75,
+        116
+      ],
+      "10": [
+        66,
+        148,
+        75,
+        159
+      ],
+      "11": [
+        66,
+        160,
+        75,
+        171
+      ],
+      "12": [
+        29,
+        4,
+        101,
+        20
+      ],
+      "13": [
+        102,
+        4,
+        171,
+        20
+      ],
+      "14": [
+        250,
+        191,
+        350,
+        207
+      ],
+      "15": [
+        253,
+        97,
+        335,
+        128
+      ],
+      "16": [
+        253,
+        129,
+        335,
+        154
+      ],
+      "17": [
+        29,
+        33,
+        52,
+        41
+      ],
+      "18": [
+        53,
+        33,
+        76,
+        41
+      ],
+      "19": [
+        77,
+        33,
+        100,
+        41
+      ],
+      "20": [
+        101,
+        33,
+        124,
+        41
+      ],
+      "21": [
+        125,
+        33,
+        148,
+        41
+      ],
+      "22": [
+        149,
+        33,
+        172,
+        41
+      ],
+      "23": [
+        29,
+        43,
+        52,
+        64
+      ],
+      "24": [
+        53,
+        43,
+        76,
+        64
+      ],
+      "25": [
+        77,
+        43,
+        100,
+        64
+      ],
+      "26": [
+        101,
+        43,
+        124,
+        64
+      ],
+      "27": [
+        125,
+        43,
+        148,
+        64
+      ],
+      "28": [
+        149,
+        43,
+        172,
+        64
+      ],
+      "29": [
+        228,
+        95,
+        241,
+        108
+      ],
+      "30": [
+        228,
+        114,
+        241,
+        127
+      ],
+      "31": [
+        253,
+        340,
+        266,
+        353
+      ],
+      "32": [
+        253,
+        356,
+        266,
+        369
+      ],
+      "33": [
+        253,
+        372,
+        266,
+        385
+      ],
+      "34": [
+        280,
+        340,
+        293,
+        353
+      ],
+      "35": [
+        280,
+        356,
+        293,
+        369
+      ],
+      "36": [
+        280,
+        372,
+        293,
+        385
+      ],
+      "37": [
+        308,
+        340,
+        321,
+        353
+      ],
+      "38": [
+        308,
+        356,
+        321,
+        369
+      ],
+      "39": [
+        308,
+        372,
+        321,
+        385
+      ],
+      "40": [
+        256,
+        167,
+        356,
+        183
+      ],
+      "41": [
+        76,
+        93,
+        96,
+        116
+      ],
+      "42": [
+        76,
+        148,
+        96,
+        171
+      ],
+      "43": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "44": [
+        221,
+        11,
+        258,
+        79
+      ]
+    },
+    "background": "400"
+  },
+  "4000": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "button",
+        "text": "\u306f\u3044",
+        "style": 1342242816,
+        "rectDU": [
+          92,
+          55,
+          50,
+          13
+        ],
+        "rect": [
+          242,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "\u3044\u3044\u3048",
+        "style": 1342242816,
+        "rectDU": [
+          92,
+          55,
+          50,
+          13
+        ],
+        "rect": [
+          139,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "static",
+        "text": "\u6700\u9ad8\u30b0\u30ec\u30fc\u30c9\u306b\u9054\u3057\u305f\u3053\u3068\u3092\u8a18\u5ff5\u3057\u3066\u3001\u3042\u306a\u305f\u306e\n\u3064\u304f\u3063\u305f\u30d3\u30eb\u306e\u5916\u89b3\u3092\u30a2\u30af\u30a2\u30be\u30fc\u30f3\u7528\u306e\u30a2\u30af\u30bb\u30b5\n\u30ea\u30fc\u3068\u3057\u3066\u51fa\u529b\u3057\u307e\u3059\u304b?\n\u8cbb\u7528\u304c5\u5104\u5186\u304b\u304b\u308a\u307e\u3059\u3002",
+        "style": 1073872896,
+        "rectDU": [
+          70,
+          5,
+          155,
+          35
+        ],
+        "rect": [
+          20,
+          13,
+          320,
+          83
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      234,
+      74
+    ],
+    "hotspots": {
+      "1": [
+        139,
+        108,
+        229,
+        128
+      ],
+      "2": [
+        242,
+        108,
+        332,
+        128
+      ],
+      "3": [
+        20,
+        13,
+        340,
+        96
+      ]
+    },
+    "size": [
+      360,
+      141
+    ]
+  },
+  "4001": {
+    "title": "",
+    "style": 2449473602,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "\u306f\u3044",
+        "style": 1342242817,
+        "rectDU": [
+          20,
+          65,
+          50,
+          13
+        ],
+        "rect": [
+          135,
+          108,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 2,
+        "class": "static",
+        "text": "\u3042\u306a\u305f\u306e\u30d3\u30eb\u306e\u5916\u89b3\u304c\u30a2\u30af\u30a2\u30be\u30fc\u30f3\u7528\u306e\u30a2\u30af\u30bb\u30b5\u30ea\u30fc\u30d5\u30a1\u30a4\u30eb\u3068\u3057\u3066\u51fa\u529b\u3055\u308c\u307e\u3057\u305f\u3002\n\u8cbb\u75285\u5104\u5186\u304c\u73fe\u91d1\u8cc7\u91d1\u304b\u3089\u5dee\u3057\u5f15\u304b\u308c\u307e\u3057\u305f\u3002",
+        "style": 1073872896,
+        "rectDU": [
+          70,
+          5,
+          80,
+          30
+        ],
+        "rect": [
+          20,
+          13,
+          320,
+          83
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      234,
+      74
+    ],
+    "hotspots": {
+      "1": [
+        135,
+        108,
+        225,
+        128
+      ],
+      "2": [
+        20,
+        13,
+        340,
+        96
+      ]
+    },
+    "size": [
+      360,
+      141
+    ]
+  },
+  "4002": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807360,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          189,
+          376,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "\u5225\u306e\u30d1\u30bf\u30fc\u30f3",
+        "style": 1073807360,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          10,
+          376,
+          90,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        189,
+        376,
+        279,
+        396
+      ],
+      "2": [
+        10,
+        376,
+        100,
+        396
+      ],
+      "3": [
+        10,
+        10,
+        279,
+        368
+      ]
+    },
+    "size": [
+      289,
+      406
+    ]
+  },
+  "500": {
+    "title": "",
+    "style": 2415919170,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [],
+    "templateSizeDU": [
+      343,
+      364
+    ],
+    "hotspots": {
+      "1": [
+        131,
+        326,
+        223,
+        347
+      ],
+      "2": [
+        32,
+        335,
+        96,
+        349
+      ],
+      "3": [
+        87,
+        78,
+        133,
+        210
+      ],
+      "4": [
+        133,
+        78,
+        189,
+        210
+      ],
+      "5": [
+        268,
+        78,
+        324,
+        210
+      ],
+      "6": [
+        72,
+        40,
+        153,
+        54
+      ],
+      "7": [
+        225,
+        40,
+        306,
+        54
+      ],
+      "8": [
+        98,
+        7,
+        121,
+        21
+      ],
+      "9": [
+        170,
+        7,
+        193,
+        21
+      ],
+      "10": [
+        165,
+        232,
+        246,
+        246
+      ],
+      "11": [
+        165,
+        249,
+        246,
+        263
+      ],
+      "12": [
+        165,
+        266,
+        246,
+        280
+      ],
+      "13": [
+        165,
+        283,
+        246,
+        297
+      ],
+      "14": [
+        165,
+        300,
+        246,
+        314
+      ]
+    },
+    "background": "500"
+  },
+  "510": {
+    "title": "",
+    "style": 2415919168,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          222,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Remove",
+        "style": 1208025088,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          7,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 4,
+        "class": "button",
+        "text": "Find",
+        "style": 1208025088,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          114,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 5,
+        "class": "listbox",
+        "text": "",
+        "style": 1084293441,
+        "rectDU": [
+          10,
+          10,
+          100,
+          100
+        ],
+        "rect": [
+          10,
+          10,
+          280,
+          160
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      343,
+      364
+    ],
+    "hotspots": {
+      "1": [
+        222,
+        181,
+        293,
+        204
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        7,
+        181,
+        78,
+        204
+      ],
+      "4": [
+        114,
+        181,
+        185,
+        204
+      ],
+      "5": [
+        10,
+        10,
+        290,
+        170
+      ]
+    },
+    "background": "510"
+  },
+  "520": {
+    "title": "",
+    "style": 2415919168,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          222,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Remove",
+        "style": 1208025088,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          7,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 4,
+        "class": "button",
+        "text": "Find",
+        "style": 1208025088,
+        "rectDU": [
+          70,
+          20,
+          80,
+          30
+        ],
+        "rect": [
+          114,
+          181,
+          71,
+          23
+        ]
+      },
+      {
+        "id": 5,
+        "class": "listbox",
+        "text": "",
+        "style": 1084293441,
+        "rectDU": [
+          10,
+          10,
+          100,
+          100
+        ],
+        "rect": [
+          10,
+          10,
+          280,
+          160
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      343,
+      364
+    ],
+    "hotspots": {
+      "1": [
+        222,
+        181,
+        293,
+        204
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        7,
+        181,
+        78,
+        204
+      ],
+      "4": [
+        114,
+        181,
+        185,
+        204
+      ],
+      "5": [
+        10,
+        10,
+        290,
+        170
+      ]
+    },
+    "background": "510"
+  },
+  "730": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Rename",
+        "style": 1476460544,
+        "rectDU": [
+          12,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          200,
+          90,
+          70,
+          26
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Cancel",
+        "style": 1342242817,
+        "rectDU": [
+          72,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          101,
+          90,
+          80,
+          26
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Delete",
+        "style": 1342242816,
+        "rectDU": [
+          132,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          13,
+          90,
+          70,
+          26
+        ]
+      },
+      {
+        "id": 4,
+        "class": "edit",
+        "text": "",
+        "style": 1350631424,
+        "rectDU": [
+          10,
+          10,
+          170,
+          15
+        ],
+        "rect": [
+          79,
+          40,
+          125,
+          29
+        ]
+      },
+      {
+        "id": 5,
+        "class": "static",
+        "text": "Person's name:",
+        "style": 1342308353,
+        "rectDU": [
+          12,
+          30,
+          45,
+          60
+        ],
+        "rect": [
+          80,
+          20,
+          120,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      194,
+      62
+    ],
+    "hotspots": {
+      "1": [
+        200,
+        90,
+        270,
+        116
+      ],
+      "2": [
+        101,
+        90,
+        181,
+        116
+      ],
+      "3": [
+        13,
+        90,
+        83,
+        116
+      ],
+      "4": [
+        79,
+        40,
+        204,
+        69
+      ],
+      "5": [
+        80,
+        20,
+        200,
+        36
+      ]
+    },
+    "size": [
+      283,
+      130
+    ]
+  },
+  "731": {
+    "title": "New Movie",
+    "style": 2428502082,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Cancel",
+        "style": 1073807361,
+        "rectDU": [
+          72,
+          75,
+          50,
+          14
+        ],
+        "rect": [
+          100,
+          73,
+          80,
+          20
+        ]
+      },
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Show a new movie: $300,000",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          15,
+          175,
+          15
+        ],
+        "rect": [
+          13,
+          13,
+          254,
+          20
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Show a classic: $150,000",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          40,
+          175,
+          15
+        ],
+        "rect": [
+          13,
+          43,
+          254,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      194,
+      98
+    ],
+    "hotspots": {
+      "1": [
+        13,
+        13,
+        267,
+        33
+      ],
+      "2": [
+        100,
+        73,
+        180,
+        93
+      ],
+      "3": [
+        13,
+        43,
+        267,
+        63
+      ]
+    },
+    "size": [
+      280,
+      136
+    ]
+  },
+  "732": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "Rename",
+        "style": 1208025088,
+        "rectDU": [
+          12,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          200,
+          90,
+          70,
+          26
+        ]
+      },
+      {
+        "id": 2,
+        "class": "button",
+        "text": "Cancel",
+        "style": 1073807361,
+        "rectDU": [
+          72,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          101,
+          90,
+          80,
+          26
+        ]
+      },
+      {
+        "id": 3,
+        "class": "button",
+        "text": "Delete",
+        "style": 1073807360,
+        "rectDU": [
+          132,
+          39,
+          50,
+          14
+        ],
+        "rect": [
+          13,
+          90,
+          70,
+          26
+        ]
+      },
+      {
+        "id": 4,
+        "class": "edit",
+        "text": "",
+        "style": 1350631424,
+        "rectDU": [
+          10,
+          10,
+          170,
+          15
+        ],
+        "rect": [
+          79,
+          40,
+          125,
+          29
+        ]
+      },
+      {
+        "id": 5,
+        "class": "static",
+        "text": "Tenant's name:",
+        "style": 1342308353,
+        "rectDU": [
+          12,
+          30,
+          45,
+          60
+        ],
+        "rect": [
+          80,
+          20,
+          120,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      194,
+      62
+    ],
+    "hotspots": {
+      "1": [
+        200,
+        90,
+        270,
+        116
+      ],
+      "2": [
+        101,
+        90,
+        181,
+        116
+      ],
+      "3": [
+        13,
+        90,
+        83,
+        116
+      ],
+      "4": [
+        79,
+        40,
+        204,
+        69
+      ],
+      "5": [
+        80,
+        20,
+        200,
+        36
+      ]
+    },
+    "size": [
+      283,
+      130
+    ]
+  },
+  "748": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          25,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          160,
+          232,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          90,
+          35,
+          60,
+          20
+        ],
+        "rect": [
+          150,
+          142,
+          100,
+          96
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Length",
+        "style": 1073872898,
+        "rectDU": [
+          55,
+          40,
+          30,
+          10
+        ],
+        "rect": [
+          98,
+          121,
+          49,
+          16
+        ]
+      },
+      {
+        "id": 11,
+        "class": "static",
+        "text": "Rent",
+        "style": 1073872898,
+        "rectDU": [
+          70,
+          55,
+          21,
+          9
+        ],
+        "rect": [
+          98,
+          146,
+          49,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872898,
+        "rectDU": [
+          10,
+          30,
+          20,
+          11
+        ],
+        "rect": [
+          32,
+          89,
+          31,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        160,
+        232,
+        250,
+        252
+      ],
+      "2": [
+        32,
+        40,
+        156,
+        81
+      ],
+      "3": [
+        32,
+        13,
+        250,
+        34
+      ],
+      "4": [
+        32,
+        122,
+        97,
+        158
+      ],
+      "5": [
+        167,
+        40,
+        266,
+        58
+      ],
+      "6": [
+        65,
+        88,
+        225,
+        106
+      ],
+      "7": [
+        32,
+        232,
+        132,
+        252
+      ],
+      "8": [
+        32,
+        171,
+        250,
+        225
+      ],
+      "9": [
+        150,
+        119,
+        250,
+        137
+      ],
+      "10": [
+        98,
+        121,
+        147,
+        137
+      ],
+      "11": [
+        98,
+        146,
+        147,
+        162
+      ],
+      "12": [
+        32,
+        89,
+        63,
+        105
+      ],
+      "13": [
+        150,
+        142,
+        250,
+        238
+      ]
+    },
+    "size": [
+      282,
+      265
+    ]
+  },
+  "749": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          170,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          90,
+          35,
+          60,
+          20
+        ],
+        "rect": [
+          170,
+          142,
+          100,
+          96
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "Rate",
+        "style": 1073872898,
+        "rectDU": [
+          77,
+          75,
+          25,
+          9
+        ],
+        "rect": [
+          114,
+          146,
+          52,
+          16
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872898,
+        "rectDU": [
+          8,
+          45,
+          20,
+          11
+        ],
+        "rect": [
+          32,
+          90,
+          31,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        170,
+        232,
+        270,
+        252
+      ],
+      "2": [
+        32,
+        40,
+        148,
+        83
+      ],
+      "3": [
+        32,
+        13,
+        270,
+        33
+      ],
+      "4": [
+        32,
+        122,
+        97,
+        158
+      ],
+      "5": [
+        159,
+        40,
+        270,
+        58
+      ],
+      "6": [
+        65,
+        88,
+        225,
+        106
+      ],
+      "7": [
+        32,
+        232,
+        132,
+        252
+      ],
+      "8": [
+        32,
+        171,
+        270,
+        225
+      ],
+      "9": [
+        114,
+        146,
+        166,
+        162
+      ],
+      "10": [
+        32,
+        90,
+        63,
+        106
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "13": [
+        170,
+        142,
+        270,
+        238
+      ]
+    },
+    "size": [
+      304,
+      267
+    ]
+  },
+  "750": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          170,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          90,
+          35,
+          60,
+          20
+        ],
+        "rect": [
+          170,
+          142,
+          100,
+          64
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "Rate",
+        "style": 1073872898,
+        "rectDU": [
+          77,
+          75,
+          25,
+          9
+        ],
+        "rect": [
+          114,
+          146,
+          52,
+          16
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872898,
+        "rectDU": [
+          8,
+          45,
+          20,
+          11
+        ],
+        "rect": [
+          32,
+          90,
+          31,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        170,
+        232,
+        270,
+        252
+      ],
+      "2": [
+        32,
+        39,
+        148,
+        82
+      ],
+      "3": [
+        32,
+        13,
+        270,
+        33
+      ],
+      "4": [
+        32,
+        122,
+        97,
+        158
+      ],
+      "5": [
+        159,
+        39,
+        270,
+        57
+      ],
+      "6": [
+        65,
+        88,
+        225,
+        106
+      ],
+      "7": [
+        32,
+        232,
+        132,
+        252
+      ],
+      "8": [
+        32,
+        171,
+        270,
+        225
+      ],
+      "9": [
+        114,
+        146,
+        166,
+        162
+      ],
+      "10": [
+        32,
+        90,
+        63,
+        106
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "13": [
+        170,
+        142,
+        270,
+        206
+      ]
+    },
+    "size": [
+      303,
+      265
+    ]
+  },
+  "751": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          170,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          110,
+          75,
+          58,
+          12
+        ],
+        "rect": [
+          170,
+          142,
+          100,
+          96
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "Rate",
+        "style": 1073872898,
+        "rectDU": [
+          77,
+          75,
+          25,
+          9
+        ],
+        "rect": [
+          114,
+          146,
+          52,
+          16
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872898,
+        "rectDU": [
+          8,
+          45,
+          20,
+          11
+        ],
+        "rect": [
+          32,
+          90,
+          31,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        170,
+        232,
+        270,
+        252
+      ],
+      "2": [
+        32,
+        39,
+        148,
+        82
+      ],
+      "3": [
+        32,
+        13,
+        270,
+        33
+      ],
+      "4": [
+        32,
+        122,
+        97,
+        158
+      ],
+      "5": [
+        159,
+        39,
+        270,
+        57
+      ],
+      "6": [
+        65,
+        88,
+        225,
+        106
+      ],
+      "7": [
+        32,
+        232,
+        132,
+        252
+      ],
+      "8": [
+        32,
+        171,
+        270,
+        225
+      ],
+      "9": [
+        114,
+        146,
+        166,
+        162
+      ],
+      "10": [
+        32,
+        90,
+        63,
+        106
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "13": [
+        170,
+        142,
+        270,
+        238
+      ]
+    },
+    "size": [
+      294,
+      266
+    ]
+  },
+  "752": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          188,
+          232,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          20,
+          232,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          110,
+          75,
+          58,
+          12
+        ],
+        "rect": [
+          178,
+          142,
+          100,
+          96
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Length",
+        "style": 1073872898,
+        "rectDU": [
+          75,
+          60,
+          30,
+          10
+        ],
+        "rect": [
+          126,
+          122,
+          49,
+          16
+        ]
+      },
+      {
+        "id": 11,
+        "class": "static",
+        "text": "Price",
+        "style": 1073872898,
+        "rectDU": [
+          77,
+          75,
+          21,
+          9
+        ],
+        "rect": [
+          126,
+          146,
+          49,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872898,
+        "rectDU": [
+          8,
+          45,
+          20,
+          11
+        ],
+        "rect": [
+          20,
+          91,
+          30,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        188,
+        232,
+        278,
+        252
+      ],
+      "2": [
+        20,
+        39,
+        175,
+        81
+      ],
+      "3": [
+        20,
+        13,
+        278,
+        33
+      ],
+      "4": [
+        20,
+        122,
+        89,
+        158
+      ],
+      "5": [
+        178,
+        39,
+        278,
+        57
+      ],
+      "6": [
+        60,
+        88,
+        220,
+        106
+      ],
+      "7": [
+        20,
+        232,
+        120,
+        252
+      ],
+      "8": [
+        20,
+        171,
+        278,
+        225
+      ],
+      "9": [
+        178,
+        119,
+        278,
+        137
+      ],
+      "10": [
+        126,
+        122,
+        175,
+        138
+      ],
+      "11": [
+        126,
+        146,
+        175,
+        162
+      ],
+      "12": [
+        20,
+        91,
+        50,
+        107
+      ],
+      "13": [
+        178,
+        142,
+        278,
+        238
+      ]
+    },
+    "size": [
+      298,
+      265
+    ]
+  },
+  "753": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          177,
+          246,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          20,
+          246,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "combobox",
+        "text": "",
+        "style": 1075904515,
+        "rectDU": [
+          110,
+          75,
+          58,
+          12
+        ],
+        "rect": [
+          167,
+          115,
+          100,
+          96
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "Patronage",
+        "style": 1073872898,
+        "rectDU": [
+          10,
+          45,
+          60,
+          9
+        ],
+        "rect": [
+          20,
+          89,
+          122,
+          16
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Rent",
+        "style": 1073872898,
+        "rectDU": [
+          85,
+          75,
+          20,
+          11
+        ],
+        "rect": [
+          134,
+          119,
+          30,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      132
+    ],
+    "hotspots": {
+      "1": [
+        177,
+        246,
+        267,
+        266
+      ],
+      "2": [
+        20,
+        38,
+        179,
+        83
+      ],
+      "3": [
+        20,
+        13,
+        267,
+        33
+      ],
+      "4": [
+        20,
+        141,
+        267,
+        176
+      ],
+      "5": [
+        188,
+        51,
+        267,
+        69
+      ],
+      "6": [
+        145,
+        88,
+        267,
+        106
+      ],
+      "7": [
+        20,
+        246,
+        120,
+        266
+      ],
+      "8": [
+        20,
+        185,
+        267,
+        239
+      ],
+      "9": [
+        20,
+        89,
+        142,
+        105
+      ],
+      "10": [
+        134,
+        119,
+        164,
+        135
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "13": [
+        167,
+        115,
+        267,
+        211
+      ]
+    },
+    "size": [
+      287,
+      279
+    ]
+  },
+  "754": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          160,
+          152,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          152,
+          100,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      158
+    ],
+    "hotspots": {
+      "1": [
+        160,
+        152,
+        250,
+        172
+      ],
+      "2": [
+        150,
+        40,
+        250,
+        81
+      ],
+      "3": [
+        32,
+        13,
+        250,
+        34
+      ],
+      "4": [
+        32,
+        40,
+        145,
+        76
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        32,
+        152,
+        132,
+        172
+      ],
+      "8": [
+        32,
+        91,
+        250,
+        145
+      ]
+    },
+    "size": [
+      283,
+      190
+    ]
+  },
+  "755": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          63,
+          117,
+          50,
+          10
+        ],
+        "rect": [
+          169,
+          152,
+          81,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          32,
+          152,
+          100,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      176,
+      190
+    ],
+    "hotspots": {
+      "1": [
+        169,
+        152,
+        250,
+        172
+      ],
+      "2": [
+        126,
+        40,
+        250,
+        81
+      ],
+      "3": [
+        32,
+        13,
+        250,
+        34
+      ],
+      "4": [
+        32,
+        40,
+        97,
+        76
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        32,
+        152,
+        132,
+        172
+      ],
+      "8": [
+        32,
+        91,
+        250,
+        145
+      ]
+    },
+    "size": [
+      287,
+      189
+    ]
+  },
+  "756": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          35,
+          105,
+          50,
+          10
+        ],
+        "rect": [
+          77,
+          155,
+          80,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      128,
+      124
+    ],
+    "hotspots": {
+      "1": [
+        77,
+        155,
+        157,
+        175
+      ],
+      "2": [
+        20,
+        40,
+        212,
+        85
+      ],
+      "3": [
+        20,
+        12,
+        212,
+        32
+      ],
+      "4": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "8": [
+        20,
+        94,
+        212,
+        148
+      ]
+    },
+    "size": [
+      237,
+      190
+    ]
+  },
+  "757": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          100,
+          95,
+          50,
+          14
+        ],
+        "rect": [
+          174,
+          247,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          20,
+          95,
+          50,
+          14
+        ],
+        "rect": [
+          16,
+          247,
+          100,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      119
+    ],
+    "hotspots": {
+      "1": [
+        174,
+        247,
+        264,
+        267
+      ],
+      "2": [
+        16,
+        37,
+        264,
+        97
+      ],
+      "3": [
+        16,
+        12,
+        264,
+        32
+      ],
+      "4": [
+        16,
+        102,
+        264,
+        138
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        16,
+        247,
+        116,
+        267
+      ],
+      "8": [
+        16,
+        186,
+        264,
+        240
+      ],
+      "9": [
+        16,
+        144,
+        264,
+        180
+      ]
+    },
+    "size": [
+      280,
+      281
+    ]
+  },
+  "758": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          105,
+          210,
+          50,
+          14
+        ],
+        "rect": [
+          214,
+          323,
+          50,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          122,
+          323,
+          86,
+          20
+        ]
+      },
+      {
+        "id": 13,
+        "class": "button",
+        "text": "New Movie",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          210,
+          55,
+          14
+        ],
+        "rect": [
+          16,
+          323,
+          100,
+          20
+        ]
+      },
+      {
+        "id": 11,
+        "class": "static",
+        "text": "Playing",
+        "style": 1073872898,
+        "rectDU": [
+          15,
+          45,
+          30,
+          9
+        ],
+        "rect": [
+          14,
+          110,
+          60,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Today's Income",
+        "style": 1073872898,
+        "rectDU": [
+          5,
+          60,
+          40,
+          7
+        ],
+        "rect": [
+          36,
+          134,
+          108,
+          16
+        ]
+      },
+      {
+        "id": 14,
+        "class": "static",
+        "text": "Length of Showing",
+        "style": 1073872898,
+        "rectDU": [
+          15,
+          75,
+          30,
+          9
+        ],
+        "rect": [
+          36,
+          156,
+          108,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      169,
+      233
+    ],
+    "hotspots": {
+      "1": [
+        214,
+        323,
+        264,
+        343
+      ],
+      "2": [
+        16,
+        37,
+        264,
+        97
+      ],
+      "3": [
+        16,
+        12,
+        264,
+        32
+      ],
+      "4": [
+        16,
+        178,
+        264,
+        214
+      ],
+      "5": [
+        149,
+        154,
+        264,
+        172
+      ],
+      "6": [
+        79,
+        108,
+        264,
+        126
+      ],
+      "7": [
+        122,
+        323,
+        208,
+        343
+      ],
+      "8": [
+        16,
+        262,
+        264,
+        316
+      ],
+      "9": [
+        16,
+        220,
+        264,
+        256
+      ],
+      "10": [
+        149,
+        131,
+        264,
+        149
+      ],
+      "11": [
+        14,
+        110,
+        74,
+        126
+      ],
+      "12": [
+        36,
+        134,
+        144,
+        150
+      ],
+      "13": [
+        16,
+        323,
+        116,
+        343
+      ],
+      "14": [
+        36,
+        156,
+        144,
+        172
+      ]
+    },
+    "size": [
+      280,
+      360
+    ]
+  },
+  "759": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          64,
+          95,
+          50,
+          14
+        ],
+        "rect": [
+          174,
+          247,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          16,
+          247,
+          100,
+          20
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        174,
+        247,
+        264,
+        267
+      ],
+      "2": [
+        16,
+        37,
+        264,
+        97
+      ],
+      "3": [
+        16,
+        12,
+        264,
+        32
+      ],
+      "4": [
+        16,
+        102,
+        264,
+        138
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        16,
+        247,
+        116,
+        267
+      ],
+      "8": [
+        16,
+        186,
+        264,
+        240
+      ],
+      "9": [
+        16,
+        144,
+        264,
+        180
+      ]
+    },
+    "size": [
+      280,
+      280
+    ]
+  },
+  "760": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          177,
+          246,
+          90,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          16,
+          246,
+          104,
+          20
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Today's Patronage",
+        "style": 1073872898,
+        "rectDU": [
+          13,
+          78,
+          60,
+          11
+        ],
+        "rect": [
+          16,
+          89,
+          126,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Yesterday's Profit",
+        "style": 1073872898,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          16,
+          114,
+          126,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        177,
+        246,
+        267,
+        266
+      ],
+      "2": [
+        65,
+        38,
+        224,
+        83
+      ],
+      "3": [
+        16,
+        13,
+        271,
+        33
+      ],
+      "4": [
+        16,
+        141,
+        271,
+        176
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        145,
+        88,
+        267,
+        106
+      ],
+      "7": [
+        16,
+        246,
+        120,
+        266
+      ],
+      "8": [
+        16,
+        185,
+        271,
+        239
+      ],
+      "9": [
+        145,
+        112,
+        267,
+        130
+      ],
+      "10": [
+        16,
+        89,
+        142,
+        105
+      ],
+      "11": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "12": [
+        16,
+        114,
+        142,
+        130
+      ]
+    },
+    "size": [
+      287,
+      279
+    ]
+  },
+  "761": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          111,
+          191,
+          94,
+          20
+        ]
+      },
+      {
+        "id": 7,
+        "class": "static",
+        "text": " ",
+        "style": 1073872898,
+        "rectDU": [
+          13,
+          78,
+          60,
+          11
+        ],
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": 8,
+        "class": "static",
+        "text": "Now on board",
+        "style": 1073872898,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          103,
+          60,
+          110,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        111,
+        191,
+        205,
+        211
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        20,
+        12,
+        296,
+        32
+      ],
+      "4": [
+        20,
+        101,
+        296,
+        137
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        218,
+        58,
+        296,
+        76
+      ],
+      "7": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "8": [
+        103,
+        60,
+        213,
+        76
+      ],
+      "9": [
+        20,
+        143,
+        296,
+        179
+      ]
+    },
+    "size": [
+      316,
+      229
+    ]
+  },
+  "762": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          111,
+          165,
+          94,
+          20
+        ]
+      },
+      {
+        "id": 8,
+        "class": "static",
+        "text": "Now on board",
+        "style": 1073872898,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          103,
+          60,
+          110,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        111,
+        165,
+        205,
+        185
+      ],
+      "2": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "3": [
+        20,
+        12,
+        296,
+        32
+      ],
+      "4": [
+        20,
+        101,
+        296,
+        137
+      ],
+      "5": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "6": [
+        218,
+        58,
+        296,
+        76
+      ],
+      "7": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "8": [
+        103,
+        60,
+        213,
+        76
+      ],
+      "9": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "size": [
+      316,
+      211
+    ]
+  },
+  "763": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          154,
+          167,
+          93,
+          20
+        ]
+      },
+      {
+        "id": 4,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          47,
+          167,
+          91,
+          20
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "From",
+        "style": 1073872896,
+        "rectDU": [
+          13,
+          78,
+          60,
+          11
+        ],
+        "rect": [
+          77,
+          34,
+          79,
+          14
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          12,
+          84,
+          65,
+          16
+        ]
+      },
+      {
+        "id": 11,
+        "class": "static",
+        "text": "Going To",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          12,
+          107,
+          65,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Stress",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          12,
+          130,
+          65,
+          16
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        154,
+        167,
+        247,
+        187
+      ],
+      "2": [
+        12,
+        12,
+        68,
+        68
+      ],
+      "3": [
+        77,
+        12,
+        202,
+        32
+      ],
+      "4": [
+        47,
+        167,
+        138,
+        187
+      ],
+      "5": [
+        77,
+        49,
+        284,
+        68
+      ],
+      "6": [
+        77,
+        82,
+        284,
+        100
+      ],
+      "7": [
+        77,
+        105,
+        284,
+        123
+      ],
+      "8": [
+        77,
+        128,
+        284,
+        146
+      ],
+      "9": [
+        77,
+        34,
+        156,
+        48
+      ],
+      "10": [
+        12,
+        84,
+        77,
+        100
+      ],
+      "11": [
+        12,
+        107,
+        77,
+        123
+      ],
+      "12": [
+        12,
+        130,
+        77,
+        146
+      ]
+    },
+    "size": [
+      296,
+      199
+    ]
+  },
+  "764": {
+    "title": "",
+    "style": 2449473600,
+    "font": {
+      "points": 10,
+      "family": "Arial"
+    },
+    "controls": [
+      {
+        "id": 1,
+        "class": "button",
+        "text": "OK",
+        "style": 1073807361,
+        "rectDU": [
+          60,
+          160,
+          50,
+          14
+        ],
+        "rect": [
+          154,
+          121,
+          93,
+          20
+        ]
+      },
+      {
+        "id": 4,
+        "class": "button",
+        "text": "Rename",
+        "style": 1073807360,
+        "rectDU": [
+          10,
+          70,
+          50,
+          10
+        ],
+        "rect": [
+          37,
+          121,
+          91,
+          20
+        ]
+      },
+      {
+        "id": 9,
+        "class": "static",
+        "text": "From",
+        "style": 1073872896,
+        "rectDU": [
+          13,
+          78,
+          60,
+          11
+        ],
+        "rect": [
+          77,
+          33,
+          59,
+          16
+        ]
+      },
+      {
+        "id": 10,
+        "class": "static",
+        "text": "Eval",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": 11,
+        "class": "static",
+        "text": "Going To",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          12,
+          83,
+          65,
+          16
+        ]
+      },
+      {
+        "id": 12,
+        "class": "static",
+        "text": "Stress",
+        "style": 1073872896,
+        "rectDU": [
+          15,
+          94,
+          55,
+          11
+        ],
+        "rect": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "templateSizeDU": [
+      179,
+      188
+    ],
+    "hotspots": {
+      "1": [
+        154,
+        121,
+        247,
+        141
+      ],
+      "2": [
+        12,
+        12,
+        68,
+        68
+      ],
+      "3": [
+        77,
+        12,
+        202,
+        32
+      ],
+      "4": [
+        37,
+        121,
+        128,
+        141
+      ],
+      "5": [
+        77,
+        49,
+        264,
+        68
+      ],
+      "6": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "7": [
+        77,
+        82,
+        264,
+        100
+      ],
+      "8": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "9": [
+        77,
+        33,
+        136,
+        49
+      ],
+      "10": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "11": [
+        12,
+        83,
+        77,
+        99
+      ],
+      "12": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "size": [
+      283,
+      165
+    ]
+  }
+}

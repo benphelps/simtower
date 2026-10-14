@@ -1,0 +1,26 @@
+[
+  {
+    "type": 32514,
+    "id": 4073,
+    "offset": 6195200,
+    "size": 159232,
+    "width": 4416,
+    "height": 36,
+    "format": "CGPk",
+    "path": "public/assets/graphics/4073.png",
+    "frames": 69,
+    "storeys": 3
+  },
+  {
+    "type": 32514,
+    "id": 4074,
+    "offset": 6354432,
+    "size": 211968,
+    "width": 5888,
+    "height": 36,
+    "format": "CGPk",
+    "path": "public/assets/graphics/4074.png",
+    "frames": 92,
+    "storeys": 4
+  }
+]
