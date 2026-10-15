@@ -33,6 +33,31 @@ export function nativeQueuePosition(shaft, person, earlierFrames, frame) {
   const widthCells = frame.width / 8, occupied = earlierFrames.reduce((sum, f) => sum + f.width / 8, 0);
   return person.path?.[0]?.to > person.floor ? shaft.x - 3 - occupied - (widthCells - 1) : shaft.x + shaft.width + 2 + occupied;
 }
+export function nativeQueueBounds(state, shaft, floor) {
+  // 16110 sorts every shaft covering this row, including machinery rows.
+  // 17E7B/17F01 limit the two rings to the floor edges or the neighboring
+  // shaft midpoint. The midpoint deliberately uses four cells for express
+  // shafts too. Missing floor never moves a ring to the opposite side.
+  const bounds=state.floors?.[floor];
+  if(!bounds)return {left:0,right:0,floorLeft:0,floorRight:0};
+  const shafts=state.shafts.filter(other=>floor>=other.low-1&&floor<=other.high+1||other===shaft)
+    .sort((a,b)=>a.x-b.x);
+  const index=shafts.indexOf(shaft),previous=shafts[index-1],next=shafts[index+1];
+  return {
+    left:previous&&previous.x>=bounds.x?shaft.x-Math.floor((shaft.x-previous.x-4)/2):bounds.x,
+    right:next&&next.x<=bounds.x+bounds.width?next.x-Math.floor((next.x-shaft.x-4)/2):bounds.x+bounds.width,
+    floorLeft:bounds.x,floorRight:bounds.x+bounds.width,
+  };
+}
+export function nativeQueueVisibleSpan(bounds, x, width, up=false) {
+  // 1710F/173D9 draw one eight-pixel cell at a time, so a wide portrait
+  // may retain only its shaft-facing half at the floor edge. Only the
+  // primary cell tests the ring limit; its second cell can cross a midpoint.
+  const facingX=x+(up?width-1:0);
+  if(facingX<bounds.left||facingX>=bounds.right)return null;
+  const left=Math.max(x,bounds.floorLeft),right=Math.min(x+width,bounds.floorRight);
+  return right>left?{x:left,width:right-left,sourceX:left-x}:null;
+}
 export function personFrame(person, actor, room, state, data) {
   if (person.stage === 'queue' && actor && room) return nativeQueueFrame(person, actor, room, state, data);
   const character = Math.abs(person.appearance || 0) % 5;

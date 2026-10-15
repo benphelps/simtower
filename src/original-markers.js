@@ -1,4 +1,4 @@
-import { personFrame, nativeQueuePosition } from './people-sprites.js';
+import { personFrame, nativeQueuePosition, nativeQueueBounds } from './people-sprites.js';
 
 export const FIND_ARROW_RESOURCE = 21256; // RT_BITMAP0x5308, native1D00E.
 export function findPersonTarget(state, actor, data) {
@@ -22,7 +22,11 @@ export function findPersonTarget(state, actor, data) {
       });
       const x = nativeQueuePosition(shaft, person, frames, frame);
       // 0x176A2/1777D points at the shaft-facing cell of the actual identity.
-      return { outside: false, x: x + (up ? frame.width / 8 - 1 : 0), floor: person.floor };
+      const facingX=x+(up?frame.width/8-1:0),bounds=nativeQueueBounds(state,shaft,person.floor);
+      // 16AF7 fails beyond the ring limit;1D2D9 then reports the floor
+      // through alert1003, rather than drawing an arrow or saying Outside.
+      return facingX>=bounds.left&&facingX<bounds.right?{outside:false,x:facingX,floor:person.floor}
+        :{outside:false,hidden:true,floor:person.floor};
     }
   }
   if (person?.stage === 'car') {
@@ -38,7 +42,7 @@ export function findPersonTarget(state, actor, data) {
   return { outside: false, x: person?.x ?? room.x + Math.trunc(room.width / 2), floor: person?.floor ?? room.floor };
 }
 export function createFindMarker(target, now, actor = null) {
-  if (!target || target.outside) return null;
+  if (!target || target.outside || target.hidden) return null;
   return { x: target.x, floor: target.floor, actor, started: Math.floor(now / 16) };
 }
 export function findMarkerExpired(marker, now) {

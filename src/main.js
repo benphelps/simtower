@@ -394,7 +394,14 @@ function findPersonDialog() {
     if(id===1){closeDialog();return;}
     const actor=people.find(a=>a.id===+panel.querySelector('[data-control="5"]').value);if(!actor)return;
     if(id===3){delete actor.name;findPersonDialog();}
-    if(id===4){const location=findPersonTarget(tower.state,actor,data);if(!location||location.outside){toast(`${actor.name}: ${data.strings[700][0]}`);return;}closeDialog({redraw:false});findMarkerSpeed=speed||1;setSpeed(0);renderer.camera={x:location.x*CELL,y:-(location.floor+.5)*FLOOR};renderer.findMarker=createFindMarker(location,performance.now(),actor.id);renderer.drawNativeGui(tower,{rebind:true});}
+    if(id===4){
+      const location=findPersonTarget(tower.state,actor,data);
+      if(!location||location.outside){toast(`${actor.name}: ${data.strings[700][0]}`);return;}
+      if(location.hidden){toast(data.alerts[1003].text.replace('^0',actor.name).replace('^1',location.floor<0?`B${-location.floor}`:String(location.floor+1)));return;}
+      closeDialog({redraw:false});findMarkerSpeed=speed||1;setSpeed(0);
+      renderer.camera={x:location.x*CELL,y:-(location.floor+.5)*FLOOR};
+      renderer.findMarker=createFindMarker(location,performance.now(),actor.id);renderer.drawNativeGui(tower,{rebind:true});
+    }
   }});
   ui.panel.querySelector('[data-control="5"]').ondblclick=()=>ui.panel.querySelector('[data-control="4"]').click();
   for(const id of [3,4])ui.panel.querySelector(`[data-control="${id}"]`).disabled=!people.length;

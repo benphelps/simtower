@@ -20,7 +20,7 @@ import {tenantRoomSprite} from './original-tenancy.js';
 import {OriginalEffectsClock,EFFECTS_BASE_PALETTE,collectEffectsPixels,applyEffectsPalette} from './original-effects.js';
 import {diagnosticAppearance,mapFacilityRect,mapShaftLine,mapViewportRect,mapNavigation,MAP_COLORS} from './original-map.js';
 import { CELL, FLOOR, CATALOG, TRANSPORT, LINKS, HOTELS } from './catalog.js';
-import { personFrame,nativeQueuePosition } from './people-sprites.js';
+import { personFrame,nativeQueuePosition,nativeQueueBounds,nativeQueueVisibleSpan } from './people-sprites.js';
 import { skyPalette, clockTime } from './original-clock.js';
 import { linkSprites,shaftNumberSlices,rampSprite,parkingReachable } from './original-construction.js';
 import { activeLinkCounts, linkAnimationFrame } from './original-journeys.js';
@@ -267,16 +267,24 @@ export class Renderer {
       }
       for(const part of nativeShaftEndSprites(sh))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
     }
-    const queues = new Map(),actors=new Map(s.actors.map(a=>[a.id,a])),rooms=new Map(s.rooms.map(r=>[r.id,r]));
+    const queues = new Map(),queueBounds=new Map(),actors=new Map(s.actors.map(a=>[a.id,a])),rooms=new Map(s.rooms.map(r=>[r.id,r]));
     if(redraw.queues)for (const p of [...s.people].sort((a,b)=>(a.queueOrder??a.id)-(b.queueOrder??b.id))) {
       if (p.stage === 'car'||p.stage==='link'||p.actor&&p.stage!=='queue') continue;
       let x=p.x*CELL;const y=-(p.floor+1)*FLOOR,a=actors.get(p.actor),r=rooms.get(p.room);
-      const frame = personFrame(p,a,r,s,tower.data);
+      let frame = personFrame(p,a,r,s,tower.data);
       let anchor=-8;
       if (p.stage === 'queue') {
         const key=`${p.path[0]?.id}:${p.floor}:${Number(p.path[0].to>p.floor)}`,earlier=queues.get(key)||[],sh=s.shafts.find(sh=>sh.id===p.path[0].id);
-        if(sh){x=nativeQueuePosition(sh,p,earlier,frame)*CELL;anchor=0;}
-        earlier.push(frame);queues.set(key,earlier);
+        if(sh){
+          x=nativeQueuePosition(sh,p,earlier,frame)*CELL;anchor=0;
+          const boundsKey=`${sh.id}:${p.floor}`;
+          if(!queueBounds.has(boundsKey))queueBounds.set(boundsKey,nativeQueueBounds(s,sh,p.floor));
+          const span=nativeQueueVisibleSpan(queueBounds.get(boundsKey),x/CELL,frame.width/CELL,p.path[0].to>p.floor);
+          earlier.push(frame);queues.set(key,earlier);
+          if(!span)continue;
+          x=span.x*CELL;frame={...frame,x:frame.x+span.sourceX*CELL,width:span.width*CELL};
+        }
+        else {earlier.push(frame);queues.set(key,earlier);}
       }
       ctx.save();
       ctx.translate(Math.round(x), Math.round(y + 12));

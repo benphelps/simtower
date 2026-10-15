@@ -45,6 +45,7 @@ test('native diagnostic lists include rain-day demand and preserve the three-lin
 });
 test('queue inspection selects a person on the native correct side and respects two-cell portraits', () => {
   const state = { tick: 100, star: 3, vip: null,
+    floors: {1:{x:0,width:100}},
     shafts: [{ id: 1, x: 40, width: 4 }], rooms: [{ id: 2, key: 'office' }, { id: 3, key: 'shop' }],
     actors: [{ id: 4, index: 0, room: 2 }, { id: 5, index: 5, room: 3 }, { id: 6, index: 2, room: 2 }],
     people: [{ id: 7, actor: 4, queueOrder: 0, stage: 'queue', floor: 1, path: [{ id: 1, to: 3 }] },

@@ -4,7 +4,7 @@ import { nativeHotelState } from './original-hotels.js';
 import { acceptanceEvaluation, residentStress,nativeLeaseOccupied } from './original-tenancy.js';
 import { venueBand } from './original-people.js';
 import { noisyNeighbor } from './original-systems.js';
-import { personFrame, nativeQueuePosition } from './people-sprites.js';
+import { personFrame, nativeQueuePosition, nativeQueueBounds, nativeQueueVisibleSpan } from './people-sprites.js';
 import {signedWord} from './original-actor-stats.js';
 
 export function nativeFacilityTitle(data, room) {
@@ -98,7 +98,9 @@ export function nativeQueuePersonAt(data, state, floor, x) {
     const group = `${shaft.id}:${Number(person.path[0].to > floor)}`;
     const earlier = groups.get(group) || [], left = nativeQueuePosition(shaft, person, earlier, frame);
     earlier.push(frame); groups.set(group, earlier);
-    if (x >= left && x < left + frame.width / 8) return person;
+    const bounds=nativeQueueBounds(state,shaft,floor);
+    const span=nativeQueueVisibleSpan(bounds,left,frame.width/8,person.path[0].to>floor);
+    if (span&&x>=bounds.left&&x<bounds.right&&x >= span.x && x < span.x + span.width) return person;
   }
   return null;
 }
