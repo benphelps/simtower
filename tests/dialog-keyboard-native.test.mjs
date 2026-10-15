@@ -41,3 +41,12 @@ test('resource tab flags/disabled state preserve Find and inspector tab order',(
   assert.equal(nativeDialogKeyCommand(400,'Enter','keydown',[],7),null);
   assert.equal(nativeDialogKeyCommand(400,'Escape','keydown',[],7),null);
 });
+test('schedule caption has no USER window menu and its procedure ignores default close/cancel commands',()=>{
+  const schedule=templates[400];
+  assert.equal(schedule.style&0x00c00000,0x00c00000,'the caption remains movable');
+  assert.equal(schedule.style&0x00080000,0,'WS_SYSMENU is absent');
+  assert.deepEqual(schedule.controls.map(c=>[c.id,c.class]),[[7,'scrollbar']],'OK is an application bitmap hit, not a default USER push button');
+  for(const key of ['Escape','Enter','Alt+F4'])for(const phase of ['keydown','keyup'])assert.equal(nativeDialogKeyCommand(400,key,phase,controls(400),7),null);
+  assert.equal(templates[731].style&0x00080000,0);
+  assert.equal(nativeDialogKeyCommand(731,'Escape','keydown',controls(731),2),2,'New Movie retains its actual Cancel control');
+});

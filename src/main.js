@@ -1,14 +1,18 @@
-import {nativeMenuActivation,nativeMenuStep,nativeMenuMnemonic} from './original-menus.js';
+import {NativeMenuKeyState,nativeMenuStep,nativeMenuMnemonic,nativeMenuPointerRelease} from './original-menus.js';
+import {nativeToolbarPointerAction} from './original-toolbar-pointer.js';
 import {AssetPreloader} from './asset-loading.js';
 import {nativeElevatorExtensionAt,nativeElevatorExtensionRange,nativeFingerStopAt,nativeFingerShaftAt} from './original-elevator-construction-ui.js';
 import {resizeDesktopRect,browserMaximizedRect} from './browser-window-geometry.js';
+import {nativeWindowGesture,nativeWindowGestureKey,drawNativeWindowOutline} from './native-window-gesture.js';
 import {browserSaveFilename,browserSaveTitle,browserTowerTitle,browserSaveRequest} from './original-browser-saves.js';
-import {nativeToolbarPopupRect,nativeDeparturePopupRect,nativeDeparturePopupChoice} from './original-held-popups.js';
+import {nativeToolbarPopupRect,nativeDeparturePopupRect,nativeDeparturePopupChoice,nativeClippedPopupPoint} from './original-held-popups.js';
 import {nativeGameCursor} from './original-cursors.js';
 import {nativeCarColumns} from './original-transport-slots.js';
-import {nativeScheduleControls,nativeScheduleScroll} from './original-schedule-controls.js';
+import {nativeScheduleControls,nativeScheduleScroll,nativeScheduleSimulationButton} from './original-schedule-controls.js';
 import {nativeStartupAction,nativeSaveGuardRequired,nativeSaveGuardText,nativeSaveGuardOutcome} from './original-startup.js';
 import {newNativeApplicationTower} from './original-app-random.js';
+import {nativeBufferGrid} from './original-scene.js';
+import {nativeDialogReturnRedraw,nativeFacilityInspectorAvailable} from './original-redraw-requests.js';
 import {findPersonTarget,createFindMarker,findMarkerExpired} from './original-markers.js';
 import {nativeToolAllowed,nativePopupChoice,nativeScrollCamera,nativeScrollPosition,nativeCameraScroll,nativeCameraFromScroll,nativeOpenedCamera,nativeInitialCamera,nativeScrollbarGeometry,nativeAccelerator,nativeMainWindowGeometry,NATIVE_SITE_WIDTH,NATIVE_SITE_HEIGHT,nativeConstructionAutoScroll,nativeSimulationActive,nativeViewSelection} from './original-window-controls.js';
 import {createElevatorPreview,restoreElevatorPreview} from './original-elevator-preview.js';
@@ -18,7 +22,7 @@ import {roomInteriorSprites} from './original-interiors.js';
 import {nativeFacilityStateLabel,nativePriceEnabled,nativeFacilityGraph,nativeFacilityDiagnostics,nativeQueuePersonAt,nativePersonLocation,nativeCarOccupants} from './original-inspection.js';
 import {OriginalTickScheduler} from './original-speed.js';
 import {OriginalAudioMixer,originalSoundRequest,inspectionSound,ambientSound} from './original-audio.js';
-import {financeInfo,financePopulationRows,financeTextRuns,nativeInfoBar,nativeInfoMessage,expireInfoMessage,nativeNoticeMessage,nativeConstructionErrorIndex} from './original-finance-info.js';
+import {financeInfo,financePopulationRows,financeTextRuns,nativeInfoBar,drawNativeInfoBarText,nativeInfoMessage,expireInfoMessage,nativeNoticeMessage,nativeConstructionErrorIndex} from './original-finance-info.js';
 import { Tower, demoTower } from './simulation.js';
 import { CATALOG, CELL, FLOOR, TRANSPORT, LINKS, money, price } from './catalog.js';
 import { Renderer, loadAssets, loadTextureAssets } from './renderer.js';
@@ -31,7 +35,8 @@ import {nativePersonPortrait,nativePersonRole,nativePersonMean,nativeCurrentPers
 
 const $ = id => document.getElementById(id);
 const nativeModalOpen=()=>Boolean($('dialog')?.matches(':modal')||$('native-message-box')?.matches(':modal'));
-const gameGuiCaptured=()=>nativeModalOpen()||Boolean($('construction-popup')||document.querySelector('.native-departure-menu,.menu-dropdown.open,.menu-button.active,.window-title .system.active,.native-system-menu,.native-dialog-system-menu'));
+//4A0C3 reaches4A256 only after USER returns from its modal move/size/scroll loops.
+const gameGuiCaptured=()=>nativeModalOpen()||windowCapture||scrollbarCapture||Boolean($('construction-popup')||document.querySelector('.native-departure-menu,.menu-dropdown.open,.menu-button.active,.window-title .system.active,.native-system-menu,.native-dialog-system-menu'));
 function setMenuCheck(id,checked,label){const button=$(id);button.textContent=label;button.dataset.checked=String(checked);button.setAttribute('aria-pressed',String(checked));}
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const SAVE_KEY = 'simtower-js-v1';
@@ -47,6 +52,7 @@ const soundCategories=[true,true,true]; //274D7 / suppliedSIMTOWER.INI defaults.
 const preloadedSounds=new Map();
 const tickScheduler=new OriginalTickScheduler();
 const soundMixer=new OriginalAudioMixer(id=>{const audio=new Audio(preloadedSounds.get(id)||`/assets/sounds/${id}.wav`);audio.volume=.2;return audio;},{enabled:soundCategories});
+const syncAudioActivation=()=>soundMixer.setActive(!desktopWindow.minimized&&!document.hidden&&document.hasFocus());
 
 function toast(text, error = false) { $('toast').textContent = text; $('toast').className = `toast show${error ? ' error' : ''}`; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').className = 'toast', 3300); }
 function playSound(id,force=false) {soundMixer.play(originalSoundRequest(id,2),{force:force||soundOn});}
@@ -93,7 +99,7 @@ function renderCatalog() {
   const slots = toolbarSlots(data, tower.state.sandbox ? 5 : tower.state.star, toolbarChoices);
   $('catalog').innerHTML = slots.map(slot => {
     const spec = Object.values(CATALOG).find(c => c.id === slot.type), index = slot.icon;
-    return `<button class="build-tool" data-slot="${slot.slot}" data-tool="${spec.key}" aria-label="${spec.name}${slot.group ? ' construction menu' : ''}" title="${spec.name}${slot.group ? ' — hold for choices' : ''}" aria-pressed="${tool === spec.key}"><span class="icon" style="background-position:-${index % 8 * 32}px -${Math.floor(index / 8) * 32}px"></span></button>`;
+    return `<button class="build-tool" tabindex="-1" data-slot="${slot.slot}" data-tool="${spec.key}" aria-label="${spec.name}${slot.group ? ' construction menu' : ''}" title="${spec.name}${slot.group ? ' — hold for choices' : ''}" aria-pressed="${tool === spec.key}"><span class="icon" style="background-position:-${index % 8 * 32}px -${Math.floor(index / 8) * 32}px"></span></button>`;
   }).join('');
   const openGroup = (button,event) => {
     const slot = slots[+button.dataset.slot]; if (!slot.group) return;
@@ -102,33 +108,37 @@ function renderCatalog() {
     popup.setAttribute('role', 'menu');
     popup.innerHTML = slot.icons.map(i => {
       const spec = Object.values(CATALOG).find(c => c.id === data.toolbar.iconTypes[i]);
-      return `<button role="menuitem" aria-label="${spec.name}" title="${escape(data.strings[1009][spec.id] || spec.name)}" data-choice="${spec.key}"><span class="menu-icon" style="background-position:-${i % 8 * 32}px -${Math.floor(i / 8) * 32}px"></span></button>`;
+      return `<button role="menuitem" tabindex="-1" aria-label="${spec.name}" title="${escape(data.strings[1009][spec.id] || spec.name)}" data-choice="${spec.key}"><span class="menu-icon" style="background-position:-${i % 8 * 32}px -${Math.floor(i / 8) * 32}px"></span></button>`;
     }).join('');
     document.body.append(popup);
     const rect=nativeToolbarPopupRect(button.getBoundingClientRect(),slot.icons.indexOf(slot.icon),slot.icons.length,document.body.clientHeight);
     popup.style.left=`${rect.left}px`;popup.style.top=`${rect.top}px`;
     const entries=[...popup.querySelectorAll('button')];
-    const choice=e=>nativePopupChoice({x:e.clientX-rect.left,y:e.clientY-rect.top},32,32,entries.length);
+    const choice=e=>nativePopupChoice(nativeClippedPopupPoint({x:e.clientX-rect.left,y:e.clientY-rect.top},rect.width,rect.height),32,32,entries.length);
     const highlight=index=>entries.forEach((entry,i)=>entry.classList.toggle('native-hover',i===index));highlight(slot.icons.indexOf(slot.icon));
     const finish=(e,index)=>{e.preventDefault();e.stopPropagation();popup.remove();setTool(index===null?button.dataset.tool:entries[index].dataset.choice);};
-    popup.onpointermove=e=>{const index=choice(e);if(index===null)finish(e,null);else highlight(index);};
-    popup.onpointerup=e=>finish(e,choice(e));popup.onpointercancel=e=>finish(e,null);
+    popup.onpointermove=e=>highlight(choice(e));
+    popup.onpointerup=e=>finish(e,e.button===0?choice(e):null);popup.onpointercancel=e=>finish(e,null);
     popup.onpointerdown=e=>finish(e,e.button===0?choice(e):null);
     popup.onclick=e=>{e.preventDefault();e.stopPropagation();};
     if(event)popup.setPointerCapture(event.pointerId);
   };
-  $('catalog').onpointerdown=e=>{if(e.button!==0||!nativeToolAllowed('build',{running:speed!==0,preview:Boolean(elevatorPreview),scheduleOpen:$('schedule-dialog').open}))return;const button=e.target.closest('[data-slot]');if(!button)return;if(slots[+button.dataset.slot].group)openGroup(button,e);else setTool(button.dataset.tool);};
-  $('catalog').onclick=e=>e.stopPropagation();
+  const choose=(e,phase)=>{const button=e.target.closest('[data-slot]');if(!button)return;const slot=slots[+button.dataset.slot],action=nativeToolbarPointerAction({kind:'build',key:button.dataset.tool,group:slot.group},phase,e.button,{running:speed!==0,preview:Boolean(elevatorPreview),scheduleOpen:$('schedule-dialog').open});if(!action)return;e.preventDefault();if(action.kind==='popup')openGroup(button,e);else setTool(action.key);};
+  $('catalog').onpointerdown=e=>choose(e,'down');$('catalog').onpointerup=e=>choose(e,'up');
+  $('catalog').onclick=e=>{e.preventDefault();e.stopPropagation();};
   $('catalog').oncontextmenu=e=>{e.preventDefault();e.stopPropagation();};
 }
 function updateUI() {
   const s = tower.state;
   $('call-fire-rescue').disabled=!tower.canCallFireRescue;document.querySelector('[data-map-mode="3"]').disabled=!s.sandbox&&s.star<2;
   const info=nativeInfoBar(data,s,tower.population);
-  $('funds').textContent = info.cash; $('funds').style.color = s.cash < 0 ? '#9f694e' : '';
+  $('funds').textContent = info.cash;
   $('population').textContent = info.population;
   $('rating').innerHTML=info.rating.sheet?`<img src="/assets/bitmaps/${info.rating.sheet}.png" alt="Tower">`:info.rating.map(r=>`<img src="/assets/bitmaps/${r.sheet}.png" alt="${r.sheet===322?'Star':'Empty star'}">`).join('');
   $('day').innerHTML=info.dateRuns.map(run=>`<span style="color:${run.color}">${escape(run.text)}</span>`).join('');
+  let textLayer=$('native-info-text');
+  if(!textLayer){textLayer=document.createElement('canvas');textLayer.id='native-info-text';textLayer.width=431;textLayer.height=49;textLayer.setAttribute('aria-hidden','true');document.querySelector('.statusbar').append(textLayer);}
+  drawNativeInfoBarText(textLayer.getContext('2d'),info);
   $('time').textContent = `${String(Math.floor(s.minute / 60)).padStart(2, '0')}:${String(Math.floor(s.minute % 60)).padStart(2, '0')}`;
   const clock = $('clock').getContext('2d'); clock.drawImage(renderer.assets.get(321), 0, 0); clock.fillStyle = '#000';
   for (const [endX, endY] of Object.values(clockHands(s.tick))) {
@@ -150,7 +160,7 @@ function updateUI() {
   if (s.star !== lastStar) { lastStar = s.star; renderCatalog(); updateTools(); }
 }
 function showDialog(html, title = 'SimTower') { if($('dialog').open&&$('dialog').dataset.modeless==='true')$('dialog').close();$('dialog').dataset.modeless='false';$('dialog').dataset.template=''; $('dialog').classList.remove('native-dialog','native-caption'); $('dialog').dataset.title = title; $('dialog-content').innerHTML = html; if (!$('dialog').open) $('dialog').showModal(); }
-function closeDialog() {renderer.sceneDirty=true;$('dialog').close();}
+function closeDialog({redraw=true}={}) {const plan=redraw&&nativeDialogReturnRedraw(Number($('dialog').dataset.template));$('dialog').close();if(plan)renderer.drawNativeGui(tower,plan);}
 function showPendingNativeDialog(message) {
   const respond=(control,_element,_panel,{automatic=false}={})=>{
     tower.answerEmergency(message.id,control,{automatic});updateUI();
@@ -168,8 +178,8 @@ function showPendingNativeDialog(message) {
   const button=pane.querySelector('button');button.onclick=finish;document.body.append(pane);pane.showModal();button.focus();
 }
 function setScheduleWindowInputs(enabled){for(const root of document.querySelectorAll('#native-main-window,.statusbar,.build-panel,.map-window'))root.inert=!enabled;}
-function closeScheduleDialog(){renderer.sceneDirty=true;if(elevatorPreview)endElevatorPreview();$('schedule-dialog').close();setScheduleWindowInputs(true);}
-function endElevatorPreview(){if(!elevatorPreview)return;const shaft=tower.state.shafts.find(sh=>sh.id===elevatorPreview.shaftId);restoreElevatorPreview(tower.state,elevatorPreview,shaft);elevatorPreview=null;setSpeed(previewSpeed);}
+function closeScheduleDialog(){if(elevatorPreview)endElevatorPreview();$('schedule-dialog').close();setScheduleWindowInputs(true);}
+function endElevatorPreview(){if(!elevatorPreview)return;const shaft=tower.state.shafts.find(sh=>sh.id===elevatorPreview.shaftId);restoreElevatorPreview(tower.state,elevatorPreview,shaft);elevatorPreview=null;setSpeed(previewSpeed);renderer.drawNativeGui(tower,{rebind:true});}
 function toggleElevatorPreview(sh,day,phase){if(elevatorPreview)endElevatorPreview();else {previewSpeed=speed;elevatorPreview=createElevatorPreview(data,tower.state,sh.id);setSpeed(0);}elevatorDialog(tower.state.shafts.find(s=>s.id===sh.id),day,phase);}
 function begin(next,opened=false) {
   startupLoad=false;$('native-startup-splash')?.remove();
@@ -213,7 +223,7 @@ function inspect(grid,point) {
   const s = tower.state;
   selected = s.shafts.find(sh => grid.floor >= sh.low-1 && grid.floor <= sh.high+1 && grid.x >= sh.x && grid.x < sh.x + sh.width) ||(point?linkAtPoint(s,point.x,point.y):null)|| tower.roomAt(grid.floor, grid.x);
   renderer.selected = selected;
-  if (!selected) { $('inspector').hidden = true; toast('Click a room or elevator to view its details.'); return; }
+  if (!selected||!nativeFacilityInspectorAvailable(selected.key==='secom'?45:CATALOG[selected.key]?.id)) { $('inspector').hidden = true; return; } //1FE4A: native0/45 have no inspector.
   $('inspector').hidden = true;
   if(TRANSPORT.has(selected.key)){const car=point?nativeCarAtPoint(selected,point):null;if(car)transportDialog(selected,car);else elevatorDialog(selected);}else if(LINKS.has(selected.key))transportDialog(selected);
   else {const sound=inspectionSound(s,selected,max=>tower.randomInt(max));if(sound)soundMixer.play(sound);roomDialog(selected);}
@@ -239,7 +249,8 @@ function elevatorDialog(sh, day=tower.calendar.weekend?1:0, phase=Math.min(5,Mat
   const program=sh.programs[day][phase];
   ui.hotspot(1,'OK',closeScheduleDialog);
   // 1E0A0 runs a static traffic-stress warm-up, preserving world accounting.
-  const simulate=ui.hotspot(2,elevatorPreview?'Resume':'Simulate',()=>toggleElevatorPreview(sh,day,phase));if(elevatorPreview)simulate.style.backgroundImage="url('/assets/bitmaps/406.png')";
+  const simulationButton=nativeScheduleSimulationButton(Boolean(elevatorPreview)),simulate=ui.hotspot(2,simulationButton.label,()=>toggleElevatorPreview(sh,day,phase),simulationButton.pressedSheet);
+  if(simulationButton.normalSheet)simulate.style.setProperty('--normal-image',`url('/assets/bitmaps/${simulationButton.normalSheet}.png')`);
   for(const [cid,d] of [[12,0],[13,1]]) {
     const b=ui.hotspot(cid,d?'Weekend':'Weekday',()=>elevatorDialog(sh,d,phase));
     b.style.backgroundImage="url('/assets/bitmaps/401.png')";
@@ -256,7 +267,7 @@ function elevatorDialog(sh, day=tower.calendar.weekend?1:0, phase=Math.min(5,Mat
   }
   for(const [cid,key,delta,min,max] of [[8,'response',1,1,100],[9,'response',-1,1,100],[10,'wait',1,0,3],[11,'wait',-1,0,3]]) ui.hotspot(cid,`${delta>0?'Increase':'Decrease'} ${key}`,()=>{tower.setElevatorProgram(sh.id,day,phase,{[key]:Math.max(min,Math.min(max,program[key]+delta))});elevatorDialog(sh,day,phase);});
   ui.text(41,program.response);ui.text(42,program.wait*30);
-  const show=ui.hotspot(5,'Show elevator',()=>{sh.visible=!sh.visible;elevatorDialog(sh,day,phase);},null);show.style.backgroundImage=`url('/assets/bitmaps/${sh.visible?407:408}.png')`;show.style.backgroundPosition='0 0';
+  const show=ui.hotspot(5,'Show elevator',()=>{sh.visible=!sh.visible;elevatorDialog(sh,day,phase);const display=elevatorPreview?{...tower,state:elevatorPreview.displayState,data,randomInt:max=>tower.randomInt(max)}:tower;if(elevatorPreview)display.state.shafts[0].visible=sh.visible;renderer.drawNativeGui(display,{rebind:true});},null);show.style.backgroundImage=`url('/assets/bitmaps/${sh.visible?407:408}.png')`;show.style.backgroundPosition='0 0';
   const gridControls=nativeScheduleControls(sh),grid=document.createElement('div');grid.className='native-grid native-schedule-grid';ui.place(grid,[18,195,118,196]);
   if(gridControls.blankTopRows){const blank=document.createElement('div');blank.style.height=`${gridControls.blankTopRows*13}px`;grid.append(blank);}
   for(let f=sh.high;f>=sh.low;f--) {
@@ -275,7 +286,7 @@ function elevatorDialog(sh, day=tower.calendar.weekend?1:0, phase=Math.min(5,Mat
   }
   const scrollbar=attachScheduleScrollbar(ui,sh,grid,previousScroll===null?undefined:Number(previousScroll));
   updateScheduleGrid();
-  const host=$('schedule-dialog');host.tabIndex=-1;$('schedule-system').tabIndex=-1;
+  const host=$('schedule-dialog');host.tabIndex=-1;
   (gridControls.scrollEnabled?scrollbar:host).focus();
 }
 function attachScheduleScrollbar(ui,shaft,grid,position) {
@@ -303,9 +314,9 @@ function departureMenu(ui,sh,day,phase,event) {
   const menu=document.createElement('div');menu.className='native-departure-menu';ui.place(menu,[rect.left,rect.top,rect.width,rect.height]);menu.style.backgroundImage="url('/assets/bitmaps/405.png')";
   const highlight=document.createElement('div');highlight.className='native-departure-highlight';menu.append(highlight);
   const mark=index=>{highlight.style.top=`${index*22}px`;highlight.style.backgroundPosition=`0 -${index*22}px`;};mark(previous);
-  const choice=e=>{const box=menu.getBoundingClientRect();return nativeDeparturePopupChoice({x:e.clientX-box.left,y:e.clientY-box.top},previous);};
+  const choice=e=>{const box=menu.getBoundingClientRect();return nativeDeparturePopupChoice(nativeClippedPopupPoint({x:e.clientX-box.left,y:e.clientY-box.top},rect.width,rect.height),previous);};
   const finish=(e,index)=>{e.preventDefault();e.stopPropagation();menu.remove();tower.setElevatorProgram(sh.id,day,phase,{departure:index});elevatorDialog(sh,day,phase);};
-  menu.onpointermove=e=>{const box=menu.getBoundingClientRect();if(e.clientX<box.left||e.clientX>box.right||e.clientY<box.top||e.clientY>box.bottom)finish(e,previous);else mark(choice(e));};
+  menu.onpointermove=e=>mark(choice(e));
   menu.onpointerup=e=>finish(e,e.button===0?choice(e):previous);menu.onpointercancel=e=>finish(e,previous);
   menu.onpointerdown=e=>e.preventDefault();menu.oncontextmenu=e=>e.preventDefault();
   menu.onclick=e=>{e.preventDefault();e.stopPropagation();};
@@ -327,14 +338,14 @@ function inspectorGraph(ui,cid,graph) {
   if(graph.label!==undefined){ctx.font='13px Arial';ctx.textBaseline='top';ctx.fillText(String(graph.label),2,4);} //21D94 signed%d at(2,4).
   canvas.setAttribute('aria-label',`Value ${graph.value}`);ui.place(canvas,rect);
 }
-function roomDialog(r) {
-  renderer.drawNativeGui(tower); //1FE8E invokes A1EE synchronously before DialogBox.
+function roomDialog(r,{redraw=true}={}) {
+  if(redraw)renderer.drawNativeGui(tower); //1FE8E before a fresh DialogBox, not a nested child returning.
   // 0x1FD89 selects category + 748; generic facilities use 756.
   const panel=nativeFacilityPanel(r),id=panel.dialog;
   const options={13:['High','Average','Low','Very low'].map((label,value)=>[value,`${label} ${money((data.rent[CATALOG[r.key].id]?.[value] || 0)*data.moneyScale)}`])};
   const ui=nativeUI.show(id,{fields:{13:r.price},options,command:(cid,el)=>{
     if(cid===1)closeDialog();
-    else if(cid===7)renameDialog(r,false,()=>roomDialog(r));
+    else if(cid===7)renameDialog(r,false,()=>roomDialog(r,{redraw:false}));
     else if(cid===13) {
       if(r.key==='cinema')movieDialog(r);
       else {
@@ -349,7 +360,7 @@ function roomDialog(r) {
   const ctx=preview.getContext('2d');const draw=Object.create(renderer);draw.ctx=ctx;ctx.imageSmoothingEnabled=false;ctx.translate(-crop.x,-crop.y);draw.room(r,tower,tower.state.tick>=1600);
   for(const part of roomInteriorSprites(r,renderer.interiorPoses.get(r.id)?.poses||[]))draw.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
   const [x,y,width,height]=ui.rect(2),target=nativePreviewFit(crop,{x,y,width,height});ui.place(preview,[target.x,target.y,target.width,target.height]);
-  renderNativeOccupants(ui,nativePanelOccupants(tower.state,r),()=>roomDialog(r),panel);
+  renderNativeOccupants(ui,nativePanelOccupants(tower.state,r),()=>roomDialog(r,{redraw:false}),panel);
   if(ui.rect(8)[2]>0)ui.text(8,nativeFacilityDiagnostics(data,tower.state,r,tower.route(r.floor,0,false,r.x)).join('\n'));
   const graph=nativeFacilityGraph(data,tower.state,r);if(graph)inspectorGraph(ui,6,graph.increasing?{...graph,label:graph.value}:graph);
   if(panel.stateLabel) {
@@ -383,12 +394,12 @@ function findPersonDialog() {
     if(id===1){closeDialog();return;}
     const actor=people.find(a=>a.id===+panel.querySelector('[data-control="5"]').value);if(!actor)return;
     if(id===3){delete actor.name;findPersonDialog();}
-    if(id===4){const location=findPersonTarget(tower.state,actor,data);if(!location||location.outside){toast(`${actor.name}: ${data.strings[700][0]}`);return;}closeDialog();findMarkerSpeed=speed||1;setSpeed(0);renderer.camera={x:location.x*CELL,y:-(location.floor+.5)*FLOOR};renderer.findMarker=createFindMarker(location,performance.now(),actor.id);}
+    if(id===4){const location=findPersonTarget(tower.state,actor,data);if(!location||location.outside){toast(`${actor.name}: ${data.strings[700][0]}`);return;}closeDialog({redraw:false});findMarkerSpeed=speed||1;setSpeed(0);renderer.camera={x:location.x*CELL,y:-(location.floor+.5)*FLOOR};renderer.findMarker=createFindMarker(location,performance.now(),actor.id);renderer.drawNativeGui(tower,{rebind:true});}
   }});
   ui.panel.querySelector('[data-control="5"]').ondblclick=()=>ui.panel.querySelector('[data-control="4"]').click();
   for(const id of [3,4])ui.panel.querySelector(`[data-control="${id}"]`).disabled=!people.length;
 }
-function movieDialog(r) {nativeUI.show(731,{command:cid=>{if(cid===2){roomDialog(r);return;}const result=tower.changeMovie(r.id,cid===1?'new':'classic');if(result.error){toast(result.error,true);return;}roomDialog(r);updateUI();}});}
+function movieDialog(r) {nativeUI.show(731,{command:cid=>{if(cid===2){roomDialog(r,{redraw:false});return;}const result=tower.changeMovie(r.id,cid===1?'new':'classic');if(result.error){toast(result.error,true);return;}roomDialog(r,{redraw:false});updateUI();}});}
 function findTenantDialog() {
   const rooms=tower.state.rooms.filter(r=>r.name);
   const ui=nativeUI.show(520,{options:{5:rooms.map(r=>[r.id,r.name])},command:(id,el,panel)=>{
@@ -504,7 +515,7 @@ function attachDesktopWindow() {
   const frame=$('native-main-window'),title=frame.querySelector('.window-title'),maximize=frame.querySelector('[aria-label="Maximize"]');
   const icon=document.createElement('button');icon.className='native-app-icon';icon.setAttribute('aria-label','SimTower application icon');icon.innerHTML='<img src="/assets/icons/application.png" alt=""><span>SimTower</span>';icon.hidden=true;document.body.append(icon);
   const limits=()=>nativeMainWindowGeometry(document.body.clientWidth,document.body.clientHeight);
-  desktopWindow.rect={...limits().normal};let gesture,systemMenu;
+  desktopWindow.rect={...limits().normal};let gesture,systemMenu,lastPointer;
   const closeSystemMenu=()=>{systemMenu?.remove();systemMenu=null;};
   const layout=()=>{
     const scroll=renderer&&nativeCameraScroll(renderer.camera,renderer.width,renderer.height),rect=desktopWindow.maximized?browserMaximizedRect(document.body.clientWidth,document.body.clientHeight):desktopWindow.rect;
@@ -513,16 +524,19 @@ function attachDesktopWindow() {
     maximize.setAttribute('aria-label',desktopWindow.maximized?'Restore':'Maximize');maximize.title=desktopWindow.maximized?'Restore':'Maximize';
     if(renderer){renderer.resize();renderer.camera=nativeCameraFromScroll(scroll,renderer.width,renderer.height);updateScrollbars();}
   };
-  const restore=()=>{closeSystemMenu();const fromMinimized=desktopWindow.minimized;desktopWindow.minimized=false;if(!fromMinimized)desktopWindow.maximized=false;soundMixer.enabled[1]=soundCategories[1];layout();};
-  const maximizeWindow=()=>{closeSystemMenu();desktopWindow.minimized=false;desktopWindow.maximized=true;soundMixer.enabled[1]=soundCategories[1];layout();};
-  const minimizeWindow=()=>{closeSystemMenu();desktopWindow.minimized=true;for(let i=0;i<soundMixer.channels.length;i++)if(soundMixer.channels[i]?.category===1)soundMixer.stopChannel(i);soundMixer.enabled[1]=false;layout();};
-  const start=(e,edge='',system=false)=>{if(desktopWindow.maximized||desktopWindow.minimized)return;gesture={startX:e.clientX,startY:e.clientY,rect:{...desktopWindow.rect},edge,system};windowCapture=true;closeSystemMenu();if(!system)e.currentTarget.setPointerCapture(e.pointerId);};
-  const stop=()=>{gesture=null;windowCapture=false;};
+  const restore=()=>{closeSystemMenu();const fromMinimized=desktopWindow.minimized;desktopWindow.minimized=false;if(!fromMinimized)desktopWindow.maximized=false;syncAudioActivation();layout();};
+  const maximizeWindow=()=>{closeSystemMenu();desktopWindow.minimized=false;desktopWindow.maximized=true;syncAudioActivation();layout();};
+  const minimizeWindow=()=>{closeSystemMenu();desktopWindow.minimized=true;syncAudioActivation();layout();};
+  const track=()=>{let outline=$('native-window-outline');if(!outline){outline=document.createElement('canvas');outline.id='native-window-outline';outline.setAttribute('aria-hidden','true');document.body.append(outline);}drawNativeWindowOutline(outline,gesture.rect);};
+  const start=(e,edge='',system=false)=>{if(desktopWindow.maximized||desktopWindow.minimized)return;const point=e.type==='click'&&e.detail===0?(lastPointer||{x:desktopWindow.rect.x+desktopWindow.rect.width/2,y:desktopWindow.rect.y+12}):{x:e.clientX,y:e.clientY};gesture={...nativeWindowGesture(desktopWindow.rect,edge?'size':'move',system?'':edge),anchor:{...desktopWindow.rect},startX:point.x,startY:point.y,system};windowCapture=true;closeSystemMenu();if(!system)e.currentTarget.setPointerCapture(e.pointerId);track();};
+  const stop=(commit=true)=>{if(gesture&&commit){desktopWindow.rect={...gesture.rect};layout();}gesture=null;windowCapture=false;$('native-window-outline')?.remove();};
   const move=e=>{
-    if(!gesture)return;const dx=e.clientX-gesture.startX,dy=e.clientY-gesture.startY,r=gesture.rect,next={...r};
-    if(!gesture.edge){next.x=Math.max(36-r.width,Math.min(document.body.clientWidth-36,r.x+dx));next.y=Math.max(0,Math.min(document.body.clientHeight-18,r.y+dy));}
+    lastPointer={x:e.clientX,y:e.clientY};if(!gesture)return;
+    if(gesture.kind==='size'&&!gesture.edge){const r=gesture.rect;gesture.edge=(e.clientX<=r.x+4?'w':e.clientX>=r.x+r.width-4?'e':'')+(e.clientY<=r.y+4?'n':e.clientY>=r.y+r.height-4?'s':'');if(gesture.edge){gesture.startX=e.clientX;gesture.startY=e.clientY;gesture.anchor={...r};}return;}
+    const dx=e.clientX-gesture.startX,dy=e.clientY-gesture.startY,r=gesture.anchor,next={...r};
+    if(gesture.kind==='move'){next.x=Math.max(36-r.width,Math.min(document.body.clientWidth-36,r.x+dx));next.y=Math.max(0,Math.min(document.body.clientHeight-18,r.y+dy));}
     else Object.assign(next,resizeDesktopRect(r,gesture.edge,dx,dy,limits().minimum));
-    desktopWindow.rect=next;layout();
+    gesture.rect=next;track();
   };
   const menu=e=>{
     closeSystemMenu();systemMenu=document.createElement('div');systemMenu.className='native-system-menu';systemMenu.setAttribute('role','menu');
@@ -530,44 +544,40 @@ function attachDesktopWindow() {
     const anchor=e.currentTarget.getBoundingClientRect();systemMenu.style.left=`${anchor.left}px`;systemMenu.style.top=`${desktopWindow.minimized?Math.max(0,anchor.top-172):anchor.bottom}px`;document.body.append(systemMenu);
     systemMenu.onclick=event=>{const command=event.target.closest('[data-window-command]')?.dataset.windowCommand;if(!command)return;event.stopPropagation();closeSystemMenu();if(command==='restore')restore();else if(command==='maximize')maximizeWindow();else if(command==='minimize')minimizeWindow();else if(command==='close')$('exit').click();else start(event,command==='size'?'se':'',true);};e.stopPropagation();
   };
-  frame.querySelector('[aria-label="System menu"]').onclick=menu;
+  const systemButton=frame.querySelector('[aria-label="System menu"]');
+  systemButton.onpointerdown=e=>{if(e.button!==0)return;const wasOpen=Boolean(systemMenu?.isConnected);e.preventDefault();menu(e);systemButton.dispatchEvent(new CustomEvent('native-system-menu-pointer-open',{bubbles:true,detail:{pointerId:e.pointerId,button:systemButton,wasOpen}}));};
+  systemButton.onclick=e=>{if(e.detail===0)menu(e);else {e.preventDefault();e.stopPropagation();}};
+  systemButton.ondblclick=e=>{e.preventDefault();closeSystemMenu();$('exit').click();};
   frame.querySelector('[aria-label="Minimize"]').onclick=minimizeWindow;maximize.onclick=()=>desktopWindow.maximized?restore():maximizeWindow();
   title.onpointerdown=e=>{if(e.button===0&&e.target.tagName!=='BUTTON'){e.preventDefault();start(e);}};title.ondblclick=e=>{if(e.target.tagName!=='BUTTON')desktopWindow.maximized?restore():maximizeWindow();};
   for(const edge of frame.querySelectorAll('[data-resize]'))edge.onpointerdown=e=>{if(e.button===0){e.preventDefault();start(e,edge.dataset.resize);}};
-  document.addEventListener('pointermove',move);document.addEventListener('pointerup',()=>{if(!gesture?.system)stop();});document.addEventListener('pointercancel',stop);
+  document.addEventListener('pointermove',move);document.addEventListener('pointerup',()=>{if(!gesture?.system)stop();});document.addEventListener('pointercancel',()=>stop(false));
   document.addEventListener('pointerdown',e=>{if(gesture?.system){stop();e.preventDefault();e.stopPropagation();}},true);
   document.addEventListener('click',closeSystemMenu);icon.onclick=menu;icon.ondblclick=restore;
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSystemMenu();if(gesture){desktopWindow.rect=gesture.rect;stop();layout();}}else if(e.key==='Enter'&&gesture?.system)stop();});
+  document.addEventListener('keydown',e=>{if(!gesture){if(e.key==='Escape')closeSystemMenu();return;}if(e.key==='Escape'||e.key==='Enter'){e.preventDefault();e.stopImmediatePropagation();stop(e.key==='Enter');return;}if(gesture.system&&nativeWindowGestureKey(gesture,e.key,limits().minimum)){e.preventDefault();e.stopImmediatePropagation();gesture.anchor={...gesture.rect};if(lastPointer){gesture.startX=lastPointer.x;gesture.startY=lastPointer.y;}track();}},true);
   window.addEventListener('resize',layout);
   layout();
 }
 function attachScheduleWindow(){
-  const dialog=$('schedule-dialog'),caption=dialog.querySelector('.native-modeless-caption'),system=$('schedule-system');let drag;
-  const closeMenu=()=>dialog.querySelector('.native-dialog-system-menu')?.remove();
+  const dialog=$('schedule-dialog'),caption=dialog.querySelector('.native-modeless-caption');let drag;
   const stop=()=>{drag=null;windowCapture=false;};
-  const start=(e,pending=false)=>{const box=dialog.getBoundingClientRect();drag={x:e.clientX,y:e.clientY,left:box.left,top:box.top,pending};if(!pending)caption.setPointerCapture(e.pointerId);windowCapture=true;};
-  caption.onpointerdown=e=>{if(e.button===0&&e.target.tagName!=='BUTTON'){e.preventDefault();start(e);}};
+  const start=e=>{const box=dialog.getBoundingClientRect();drag={x:e.clientX,y:e.clientY,left:box.left,top:box.top};caption.setPointerCapture(e.pointerId);windowCapture=true;};
+  caption.onpointerdown=e=>{if(e.button===0){e.preventDefault();start(e);}};
   document.addEventListener('pointermove',e=>{if(!drag)return;dialog.style.margin='0';dialog.style.left=`${Math.max(0,Math.min(document.body.clientWidth-dialog.offsetWidth,drag.left+e.clientX-drag.x))}px`;dialog.style.top=`${Math.max(0,Math.min(document.body.clientHeight-dialog.offsetHeight,drag.top+e.clientY-drag.y))}px`;});
   caption.onpointerup=caption.onpointercancel=stop;
-  system.onclick=e=>{closeMenu();const menu=document.createElement('div');menu.className='native-dialog-system-menu';menu.setAttribute('role','menu');menu.innerHTML='<button disabled>Restore</button><button data-schedule-move data-mnemonic="m"><u>M</u>ove</button><button disabled>Size</button><button disabled>Minimize</button><button disabled>Maximize</button><hr><button data-schedule-close data-mnemonic="c"><u>C</u>lose <span>Alt+F4</span></button>';dialog.append(menu);menu.querySelector('[data-schedule-close]').onclick=closeScheduleDialog;menu.querySelector('[data-schedule-move]').onclick=event=>{closeMenu();start(event,true);};menu.querySelector('[data-schedule-move]').focus();e.stopPropagation();};system.ondblclick=closeScheduleDialog;
-  document.addEventListener('pointerdown',e=>{if(drag?.pending){stop();e.preventDefault();e.stopImmediatePropagation();return;}if(!e.target.closest('#schedule-system,.native-dialog-system-menu'))closeMenu();},true);
   document.addEventListener('keydown',e=>{
     if(!dialog.open||nativeModalOpen())return;
-    if(e.altKey&&e.key==='F4'){e.preventDefault();e.stopImmediatePropagation();closeScheduleDialog();return;}
-    const menu=dialog.querySelector('.native-dialog-system-menu');
-    if(e.altKey&&e.key===' '||e.key==='F10'){e.preventDefault();e.stopImmediatePropagation();system.click();return;}
-    if(e.key==='Escape'&&(menu||drag)){e.preventDefault();e.stopImmediatePropagation();closeMenu();if(drag){dialog.style.margin='0';dialog.style.left=`${drag.left}px`;dialog.style.top=`${drag.top}px`;stop();}return;}
-    if(!menu)return;const buttons=[...menu.querySelectorAll('button')],current=buttons.indexOf(document.activeElement),metadata=buttons.map(button=>({disabled:button.disabled,mnemonic:button.dataset.mnemonic}));let index=-1;
-    if(['ArrowDown','ArrowUp'].includes(e.key))index=nativeMenuStep(metadata,current,e.key==='ArrowDown'?1:-1);
-    else if(e.key==='Enter'){if(current>=0&&!buttons[current].disabled)buttons[current].click();}
-    else if(e.key.length===1){index=nativeMenuMnemonic(metadata,e.key);if(index>=0){buttons[index].click();index=-1;}}
-    else return;e.preventDefault();e.stopImmediatePropagation();if(index>=0)buttons[index].focus();
+    //RT400 has WS_CAPTION without WS_SYSMENU. ELVDLOGMAIN ignores
+    //WM_COMMAND, including the IDCANCEL sent by default WM_CLOSE.
+    if(e.altKey&&['F4',' '].includes(e.key)||e.key==='F10'){e.preventDefault();e.stopImmediatePropagation();return;}
+    if(e.key==='Escape'&&drag){e.preventDefault();e.stopImmediatePropagation();dialog.style.margin='0';dialog.style.left=`${drag.left}px`;dialog.style.top=`${drag.top}px`;stop();}
   },true);
-  dialog.addEventListener('close',()=>{closeMenu();stop();if(elevatorPreview)endElevatorPreview();setScheduleWindowInputs(true);});
+  dialog.addEventListener('close',()=>{stop();if(elevatorPreview)endElevatorPreview();setScheduleWindowInputs(true);});
 }
 
 function attachNativeMenus() {
-  const topButtons=[...document.querySelectorAll('[data-menu]')],systemButton=document.querySelector('[aria-label="System menu"]'),topEntries=[systemButton,...topButtons];let barActive=false,cancelledPointer=false;
+  const menuKeys=new NativeMenuKeyState();
+  const topButtons=[...document.querySelectorAll('[data-menu]')],systemButton=document.querySelector('[aria-label="System menu"]'),topEntries=[systemButton,...topButtons];let barActive=false,cancelledPointer=false,menuPointer=null,ignorePointerClick=false;
   //USER popup menus are independent windows. Keep the menu bar inside Edit,
   //but let its open menus appear over palettes even while Edit is maximized.
   for(const menu of document.querySelectorAll('.menu-dropdown'))document.body.append(menu);
@@ -578,7 +588,15 @@ function attachNativeMenus() {
   const focusFirst=container=>{const list=items(container),index=nativeMenuStep(metadata(list),-1,1);if(index>=0)list[index].focus();};
   const open=button=>{close();barActive=true;const menu=$(`menu-${button.dataset.menu}`),anchor=button.getBoundingClientRect();menu.style.left=`${anchor.left}px`;menu.style.top=`${anchor.bottom}px`;menu.classList.add('open');button.classList.add('active');focusFirst(menu);};
   const activateBar=()=>{close();barActive=true;topButtons[0].classList.add('active');topButtons[0].focus();};
-  for(const button of topButtons){button.onclick=e=>{const wasOpen=$(`menu-${button.dataset.menu}`).classList.contains('open');if(wasOpen)close();else open(button);e.stopPropagation();};button.onpointerenter=()=>{if(document.querySelector('.menu-dropdown.open'))open(button);};}
+  document.addEventListener('keyup',e=>{if(nativeModalOpen()||$('schedule-dialog').open){menuKeys.cancel();return;}if(menuKeys.activation(e,'keyup')==='bar'){e.preventDefault();e.stopImmediatePropagation();if(barActive)close();else activateBar();}},true);
+  document.addEventListener('pointerdown',()=>menuKeys.cancel(),true);
+  window.addEventListener('blur',()=>menuKeys.cancel());
+  for(const button of topButtons){
+    button.onpointerdown=e=>{if(e.button!==0)return;menuPointer={id:e.pointerId,button,wasOpen:$(`menu-${button.dataset.menu}`).classList.contains('open')};ignorePointerClick=false;e.preventDefault();e.stopPropagation();open(button);};
+    button.onclick=e=>{if(e.detail>0){e.preventDefault();e.stopPropagation();return;}const wasOpen=$(`menu-${button.dataset.menu}`).classList.contains('open');if(wasOpen)close();else open(button);e.stopPropagation();};
+    button.onpointerenter=()=>{if(document.querySelector('.menu-dropdown.open'))open(button);};
+  }
+  document.addEventListener('native-system-menu-pointer-open',e=>{menuPointer={id:e.detail.pointerId,button:e.detail.button,wasOpen:e.detail.wasOpen};ignorePointerClick=false;});
   for(const button of document.querySelectorAll('.submenu > button'))button.onclick=e=>{const submenu=button.parentElement;submenu.classList.add('open');focusFirst(submenu.querySelector('.submenu-items'));e.stopPropagation();};
   for(const menu of document.querySelectorAll('.menu-dropdown')) {
     menu.addEventListener('focusin',e=>{const current=e.target.closest('.submenu');for(const sub of menu.querySelectorAll('.submenu.open'))if(sub!==current)sub.classList.remove('open');});
@@ -587,14 +605,25 @@ function attachNativeMenus() {
       if(button.parentElement.classList.contains('submenu')){button.parentElement.classList.add('open');focusFirst(button.parentElement.querySelector('.submenu-items'));}
     };
   }
-  document.addEventListener('pointerdown',e=>{if(!(barActive||document.querySelector('.menu-dropdown.open,.native-system-menu'))||e.target.closest('.menu-button,.menu-dropdown,.native-system-menu'))return;close();cancelledPointer=true;e.preventDefault();e.stopImmediatePropagation();},true);
-  document.addEventListener('pointercancel',()=>{cancelledPointer=false;},true);
+  document.addEventListener('pointerdown',e=>{ignorePointerClick=false;if(!(barActive||document.querySelector('.menu-dropdown.open,.native-system-menu'))||e.target.closest('.menu-button,.menu-dropdown,.native-system-menu'))return;menuPointer=null;close();cancelledPointer=true;e.preventDefault();e.stopImmediatePropagation();},true);
+  document.addEventListener('pointercancel',()=>{cancelledPointer=false;menuPointer=null;ignorePointerClick=false;},true);
+  document.addEventListener('pointerup',e=>{
+    if(!menuPointer||e.pointerId!==menuPointer.id)return;
+    const held=menuPointer;menuPointer=null;ignorePointerClick=true;e.preventDefault();e.stopImmediatePropagation();
+    const button=e.target.closest('button'),name=button?.matches('.menu-button')||button===systemButton||button?.classList.contains('native-app-icon'),inside=e.target.closest('.menu-dropdown.open,.native-system-menu'),submenu=button?.parentElement.classList.contains('submenu');
+    const action=nativeMenuPointerRelease({button:e.button,kind:name?'name':inside?button?(submenu?'submenu':'command'):'menu':'outside',disabled:button?.disabled,sameOpenedName:held.wasOpen&&button===held.button});
+    if(action==='cancel')close();
+    else if(action==='invoke'){close();button.click();}
+    else if(action==='submenu'){button.parentElement.classList.add('open');focusFirst(button.parentElement.querySelector('.submenu-items'));}
+  },true);
   document.addEventListener('pointerup',e=>{if(!cancelledPointer)return;e.preventDefault();e.stopImmediatePropagation();},true);
-  document.addEventListener('click',e=>{if(cancelledPointer){cancelledPointer=false;e.preventDefault();e.stopImmediatePropagation();return;}if(!e.target.closest('.menu-button,.submenu > button'))close();$('construction-popup')?.remove();},true);
+  document.addEventListener('click',e=>{if(cancelledPointer||ignorePointerClick&&e.detail>0){cancelledPointer=false;ignorePointerClick=false;e.preventDefault();e.stopImmediatePropagation();return;}if(!e.target.closest('.menu-button,.submenu > button'))close();$('construction-popup')?.remove();},true);
   document.addEventListener('keydown',e=>{
     if(nativeModalOpen()||$('schedule-dialog').open)return;
-    const activation=nativeMenuActivation(e);
-    if(activation){e.preventDefault();e.stopImmediatePropagation();if(activation==='system')openSystem();else if(activation==='bar'){if(barActive)close();else activateBar();}else open(topButtons.find(button=>button.dataset.menu===activation));return;}
+    menuPointer=null;ignorePointerClick=false;
+    const activation=menuKeys.activation(e);
+    if(activation){e.preventDefault();e.stopImmediatePropagation();if(activation==='close'){close();const help=document.activeElement.closest('#manual-help-window');if(help)help.querySelector('[aria-label="Close Help"]').click();else $('exit').click();}else if(activation==='system')openSystem();else if(activation==='bar'){if(barActive)close();else activateBar();}else open(topButtons.find(button=>button.dataset.menu===activation));return;}
+    if(['Alt','F10'].includes(e.key)&&!e.ctrlKey&&!e.shiftKey&&!e.metaKey)e.preventDefault();
     const system=document.querySelector('.native-system-menu'),menu=document.querySelector('.menu-dropdown.open');if(!barActive&&!system&&!menu)return;
     const focused=document.activeElement,sub=focused.closest('.submenu-items'),container=sub||system||menu,list=container?items(container):topEntries,index=list.indexOf(focused);
     const handled=()=>{e.preventDefault();e.stopImmediatePropagation();};
@@ -707,9 +736,17 @@ function attachEvents() {
     handle.onpointermove=e=>{if(!drag)return;const panel=handle.parentElement,parent=panel.offsetParent;panel.style.left=`${Math.max(0,Math.min(parent.clientWidth-panel.offsetWidth,drag.left+e.clientX-drag.x))}px`;panel.style.top=`${Math.max(0,Math.min(parent.clientHeight-panel.offsetHeight,drag.top+e.clientY-drag.y))}px`;panel.style.right='auto';};
     handle.onpointerup=handle.onpointercancel=()=>{drag=null;windowCapture=false;};
   }
-  document.querySelectorAll('[data-hide]').forEach(button=>button.onclick=()=> $(`toggle-${button.dataset.hide}`).click());
-  document.querySelectorAll('[data-mode]').forEach(el => el.onclick = () => setMode(el.dataset.mode));
-  $('time-control').onclick = () => setSpeed(speed ? 0 : 1);
+  //Tools BB1E, Info27010 and Map2BF9D hide on WM_LBUTTONDOWN.
+  for(const button of document.querySelectorAll('[data-hide]')) {
+    button.tabIndex=-1;
+    button.onpointerdown=e=>{if(e.button!==0)return;e.preventDefault();e.stopPropagation();$(`toggle-${button.dataset.hide}`).click();};
+    button.onclick=e=>{e.preventDefault();e.stopPropagation();};
+  }
+  for(const button of document.querySelectorAll('[data-mode],#time-control')) {
+    button.tabIndex=-1;
+    const choose=(e,phase)=>{const target=button.id==='time-control'?{kind:'time'}:{kind:'mode',mode:button.dataset.mode},action=nativeToolbarPointerAction(target,phase,e.button,{running:speed!==0,preview:Boolean(elevatorPreview),scheduleOpen:$('schedule-dialog').open});if(!action)return;e.preventDefault();if(action.kind==='toggle-time')setSpeed(speed?0:1);else if(action.kind==='mode')setMode(action.mode);};
+    button.onpointerdown=e=>choose(e,'down');button.onpointerup=e=>choose(e,'up');button.onclick=e=>{e.preventDefault();e.stopPropagation();};
+  }
   $('new').onclick = newTowerDialog; $('save').onclick = ()=>downloadSave(); $('load').onclick=()=>guardedTowerAction('open',()=>{closeDialog();$('save-file').click();});
   $('save-as').onclick = ()=>downloadSave({saveAs:true});
   $('exit').onclick=()=>guardedTowerAction('quit',()=>{autosave();setSpeed(0);started=false;titleDialog();});
@@ -737,7 +774,9 @@ function attachEvents() {
     if(nativeAccelerator(e)===40021){e.preventDefault();helpDialog();}
   });
   document.addEventListener('keyup',e=>{renderer.controlHeld=e.ctrlKey;});
-  window.addEventListener('blur',()=>{renderer.controlHeld=false;});
+  window.addEventListener('blur',()=>{renderer.controlHeld=false;syncAudioActivation();});
+  window.addEventListener('focus',syncAudioActivation);
+  document.addEventListener('visibilitychange',syncAudioActivation);
   window.addEventListener('pagehide', autosave);
 }
 function setSpeed(value) {
@@ -755,7 +794,7 @@ function frame(time) {
   if(started)renderer.palettePhase(tower,time); //4A30A begins after27255's startup choices return.
   if(!renderer.guiCapture&&renderer.findMarker&&findMarkerExpired(renderer.findMarker,time)){renderer.findMarker=null;setSpeed(findMarkerSpeed);}
   if (started && !manualScene && nativeSimulationActive({running:speed!==0,preview:Boolean(elevatorPreview),scrolling:windowCapture||scrollbarCapture||Boolean(dragging?.pan)||time<scrollingUntil,menuCapture:Boolean($('construction-popup')||document.querySelector('.native-departure-menu,.menu-dropdown.open,.menu-button.active,.window-title .system.active,.native-system-menu,.native-dialog-system-menu')),modalOpen:$('dialog').open||$('native-message-box')?.open}) && !document.hidden) {
-    if(!tower.state.dialogs.length)tickScheduler.frame(()=>{tower.step();const viewport={x:renderer.camera.x/CELL-renderer.width/renderer.zoom/CELL/2,width:renderer.width/renderer.zoom/CELL,topFloor:Math.floor(-(renderer.camera.y-renderer.height/renderer.zoom/2)/FLOOR),height:renderer.height/renderer.zoom/FLOOR};const sound=ambientSound(tower.state,viewport,max=>tower.randomInt(max));if(sound)soundMixer.play(sound);return tower.state.dialogs.length===0;},{fast:fastMode,paused:speed===0});
+    if(!tower.state.dialogs.length)tickScheduler.frame(()=>{tower.step();const viewport=nativeBufferGrid(renderer.facadeViewport());const sound=ambientSound(tower.state,viewport,max=>tower.randomInt(max));if(sound)soundMixer.play(sound);return tower.state.dialogs.length===0;},{fast:fastMode,paused:speed===0});
     const message=tower.state.dialogs[0];
     //Keep unanswered native prompts in saved state. Autosaving while a modal
     //is open must not silently discard its decision on the next load.

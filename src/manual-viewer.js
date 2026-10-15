@@ -59,4 +59,7 @@ if(helpSource.get('from')==='game'){
   const close=document.querySelector('.return-game');close.textContent='Close Help';close.href='#';
   close.onclick=event=>{event.preventDefault();if(helpSource.get('embedded')==='1')parent.postMessage('close-simtower-help',location.origin);else window.close();};
 }
-if(helpSource.get('embedded')==='1')document.body.classList.add('embedded-manual');
+if(helpSource.get('embedded')==='1'){
+  document.body.classList.add('embedded-manual');
+  document.addEventListener('keydown',event=>{if(event.altKey&&event.key==='F4'){event.preventDefault();event.stopImmediatePropagation();parent.postMessage('close-simtower-help',location.origin);}},true);
+}

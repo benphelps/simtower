@@ -26,21 +26,35 @@ leaves those floors and their original edge scaffolding in place.
 
 The original two-column palette starts with five buttons, grows to seven at
 two stars and eight thereafter. Hold a grouped button to
-choose a facility from its original TabM menu. Icons use the original sheets.
+choose a facility from its original TabM menu, then release to select it. Held
+popup coordinates clamp to the popup's edge rows, reproducing the selection
+effect of native ClipCursor even though the browser cannot warp the OS pointer.
+A right-button press cancels the construction-group choice. Icons use the original sheets.
 Click exactly at the existing shaft’s left edge to add a car. Use the lens to inspect facilities,
 configure weekday/weekend elevator programs, stops and parking floors, or change rents.
-Hold an elevator time-of-day control to select its departure mode.
+Hold an elevator time-of-day control to select its departure mode; primary
+release commits, and right-button release restores the previous mode.
 Weekday/weekend response, waiting and departure settings use the native
 directional dispatch and are retained in saves.
 The Finger controls elevator endpoints/stops; the bulldozer removes facilities.
+The modeless Elevator schedule disables input to the ordinary game windows
+while its live simulation continues. Its caption is draggable, but RT400 has
+no system menu. Close it through its bitmap OK button; Alt+Space/F10 do not
+open a menu, and Escape/Alt+F4 do not close it. OK also restores an active
+Simulate preview before returning to the tower.
 
 - Use the original scrollbars, map, mouse wheel or right-drag to move the view.
 - The time button pauses/resumes; paused construction tools are disabled.
 - File > Save downloads browser JSON; File > Open loads it.
 - Windows contains map, finance and person/tenant search controls.
   Click occupants in a facility panel to inspect or name them.
+- Main menus open on primary press and accept held drag/release selection.
+  Release outside ordinary menus cancels without forwarding construction input.
+- Bare Alt/F10 activates the main menu on key release. Alt+F/O/W/H opens a
+  named menu directly; arrows, Enter and Escape navigate it. Main Alt+Space
+  opens the system menu, and Alt+F4 runs the same Exit/save guard as File > Exit.
 - Floating Info, Map and Tools windows can be moved or hidden independently.
-- Normal speed is the default: one simulation tick about every 96 ms. Options > Fast Mode accelerates it to at most one tick per 16 ms (about six times normal).
+- Normal speed is the default: one simulation tick about every 96 ms. Options > Fast Mode permits at most one tick per paint with a minimum 16 ms pacing interval; actual acceleration depends on browser and display timing.
 - F1 opens the illustrated WinHelp-style manual in a movable, resizable window.
 - Tower view sizing is unrestricted above its minimum size; maximize fills the browser desktop.
 - Captions and menus use the supplied Windows System font; Help uses Microsoft Sans Serif.
@@ -84,9 +98,9 @@ dimensions, and the executable SHA-256.
 
 CGPk lobby graphics are indexed pixels arranged in vertical 8 × 36 strips.
 They are decoded with the original game palette; no pixels are painted or
-generated. The renderer performs only atlas cropping, nearest-neighbor scaling,
-the original white transparency key, and the original six-entry animated sky
-palette recovered from the CLUT resources.
+generated. Original mode uses atlas cropping, nearest-neighbor scaling,
+source indexed transparency masks, and the recovered CLUT palette with its
+original sky, rain and machinery animation cycles.
 
 `tools/decode_tables.py` reads the original Pascal strings, big-endian economic
 tables, population thresholds, toolbar/submenu tables, business receipts,

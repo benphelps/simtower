@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { financeInfo,financePopulationRows,financeTextRuns,financeIncomeCategory,financeMaintenanceCategory,FINANCE_INCOME_TYPES,FINANCE_MAINTENANCE_TYPES } from '../src/original-finance-info.js';
-import { nativeOrdinal,nativeInfoBar,NATIVE_FLOATING_WINDOWS,nativeInfoMessage,expireInfoMessage,nativeNoticeMessage } from '../src/original-finance-info.js';
+import { nativeOrdinal,nativeInfoBar,drawNativeInfoBarText,NATIVE_FLOATING_WINDOWS,nativeInfoMessage,expireInfoMessage,nativeNoticeMessage } from '../src/original-finance-info.js';
 import { readFileSync } from 'node:fs';
 const data=JSON.parse(readFileSync(new URL('../public/assets/game-data.json',import.meta.url)));
 const dialogs=JSON.parse(readFileSync(new URL('../public/assets/dialogs.json',import.meta.url)));
@@ -30,6 +30,16 @@ test('initial native floating windows use recovered desktop positions and client
   assert.deepEqual(NATIVE_FLOATING_WINDOWS.info,{x:204,y:4,width:431,height:49});
   assert.deepEqual(NATIVE_FLOATING_WINDOWS.map,{x:2,y:4,width:200,height:314});
   assert.deepEqual(NATIVE_FLOATING_WINDOWS.tools,{x:134,y:178,width:63,height:100});
+});
+test('Info Bar paints source baseline positions and retains darkgray negative funds',()=>{
+  const draws=[],ctx={clearRect(){},measureText(text){return {width:text.length*7};},fillText(text,x,y){draws.push({text,x,y,font:this.font,align:this.textAlign,baseline:this.textBaseline,color:this.fillStyle});}};
+  drawNativeInfoBarText(ctx,nativeInfoBar(data,{calendarDay:11,cash:-10000,star:1},-3));
+  assert.deepEqual(draws,[
+    {text:'WE',x:159,y:28,font:'14px Arial',align:'left',baseline:'alphabetic',color:'#b30000'},
+    {text:'/4Q/1st Year',x:173,y:28,font:'14px Arial',align:'left',baseline:'alphabetic',color:'#262626'},
+    {text:'$-10000',x:423,y:26,font:'13px Arial',align:'right',baseline:'alphabetic',color:'#262626'},
+    {text:'-3',x:423,y:43,font:'13px Arial',align:'right',baseline:'alphabetic',color:'#262626'},
+  ]);
 });
 test('native Info Bar messages preserve error/demand precedence and expire at wall-clock gate',()=>{
   const selected=nativeInfoMessage(null,data,1009,8,1600);

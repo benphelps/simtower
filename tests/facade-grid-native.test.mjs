@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {Tower} from '../src/simulation.js';
-import {OriginalFacadeGrid,nativeFacadeRecords} from '../src/original-facade-grid.js';
+import {OriginalFacadeGrid,nativeFacadeRecords,nativeRoomFacadeParts,nativeFacadeHeaderSprites,nativeRubbleSprites} from '../src/original-facade-grid.js';
 import {Renderer} from '../src/renderer.js';
 import {nativeInteriorRecord} from '../src/original-interiors.js';
 const data=JSON.parse(readFileSync(new URL('../public/assets/game-data.json',import.meta.url)));
@@ -103,4 +103,56 @@ test('source redraw callbacks synchronously finish native cohort sampling before
   renderer.bindNativeGrid(tower,{floor:1,spans:[],redraw:true,rebind:true});
   assert.deepEqual(calls,[['draw',tower,{rebind:true}]]);
   renderer.bindNativeGrid(tower,{floor:1,spans:[]});assert.equal(calls.length,1,'ordinary row mutation must not draw');
+});
+
+test('completed physical metro and recycling floor records remain in the facade grid without tenant registrations',()=>{
+  const metro={id:1,key:'metro',x:20,floor:-1,width:36,height:3,constructionRemaining:0};
+  assert.deepEqual(nativeRoomFacadeParts(metro).map(part=>part.type),[31,32,33]);
+  const state={rooms:[metro],floors:{'-1':{x:20,width:36},'-2':{x:20,width:36},'-3':{x:20,width:36}}};
+  for(const [level,type]of [31,32,33].entries())assert.equal(nativeFacadeRecords(state,-1-level)[0].type,type);
+  assert.deepEqual(nativeRoomFacadeParts({id:2,key:'recycling',x:20,floor:-1,width:25,height:2}).map(part=>part.type),[20,21]);
+});
+
+test('completed24px native facade records receive original5000 headers with per-record cinema tile restarts',()=>{
+  const manifest=JSON.parse(readFileSync(new URL('../public/assets/manifest.json',import.meta.url))),assets=new Map(manifest.resources.filter(r=>r.path.endsWith('.png')).map(r=>[r.id,r]));
+  const office={id:1,key:'office',x:88,floor:1,width:9,constructionRemaining:0,tenantState:1};
+  assert.deepEqual(nativeFacadeHeaderSprites(office,assets),[{sheet:5000,x:704,y:-72,sx:0,sy:0,width:72,height:12}]);
+  const cinema={id:2,key:'cinema',x:44,floor:4,width:31,height:2,constructionRemaining:0};
+  assert.deepEqual(nativeFacadeHeaderSprites(cinema,assets),[
+    {sheet:5000,x:352,y:-180,sx:0,sy:0,width:56,height:12},
+    {sheet:5000,x:408,y:-180,sx:0,sy:0,width:128,height:12},
+    {sheet:5000,x:536,y:-180,sx:0,sy:0,width:64,height:12}]);
+  assert.deepEqual(nativeFacadeHeaderSprites({key:'secom',x:20,width:4,floor:1},assets),[],'full36px sources have no extra ceiling');
+  assert.equal(nativeFacadeHeaderSprites({key:'recycling',x:20,width:25,floor:-1,height:2},assets).length,2,'2280 base60px format also receives the original ceiling');
+  const calls=[],renderer={assets,sprite:(...args)=>calls.push(args)};
+  Renderer.prototype.room.call(renderer,office,{state:{tick:0}},false);
+  assert.deepEqual(calls[0],[5000,704,-72,72,12,0,0,72,12]);assert.equal(calls[1][0],1448);
+});
+
+test('native retained-buffer margin samples actual pending records and consumes their dirty bytes without extending client bounds',()=>{
+  const tower=new Tower(data,{sandbox:true});tower.build('lobby',0,20,120);
+  for(const floor of [1,2,3,4,5,-1,-2])tower.build('floor',floor,20,120);
+  for(const [key,floor,x]of [['office',1,100],['recycling',-1,20],['office',5,40]])assert.equal(tower.build(key,floor,x).ok,true);
+  const grid=new OriginalFacadeGrid();grid.sync(tower.state,viewport);
+  assert.equal(grid.rows.get(1).cells.length,81,'640px client reserves81 native8px columns');
+  assert.ok(grid.rows.has(-1));assert.equal(grid.rows.has(-2),false,'180px client reserves6 native36px rows');
+  const calls=[],nativeRandom=tower.randomInt.bind(tower);tower.randomInt=max=>{calls.push(max);return nativeRandom(max);};
+  const renderer=Object.assign(Object.create(Renderer.prototype),{facadeGrid:grid,interiorPoses:new Map(),showPeople:false});
+  renderer.sampleInteriors(tower,viewport);
+  assert.deepEqual(calls,[8,6,24,6],'rightmost clipped column then bottom clipped row retain native scan order');
+  assert.deepEqual([...renderer.interiorPoses.keys()],tower.state.rooms.slice(0,2).map(room=>`${room.id}:0`));
+  for(const room of tower.state.rooms.slice(0,2))assert.equal(nativeInteriorRecord(room).dirty,0,'A933 normal margin cell consumes roomdirty');
+  assert.equal(nativeInteriorRecord(tower.state.rooms[2]).dirty,1,'outside buffer remains dirty and consumes no RNG');
+  grid.redraw(tower.state.elapsedTicks);renderer.sampleInteriors(tower,viewport);assert.equal(calls.length,4);
+  assert.deepEqual(viewport,{left:160,right:800,top:-180,bottom:0},'source sampling never changes the actual client paint rectangle');
+});
+
+
+test('native damage type47 retains physical record identity and the source5000 ceiling above4008 rubble',()=>{
+  const rubble={floor:1,x:20,width:25},state={floors:{1:{x:20,width:100}},rooms:[],rubble:[rubble]};
+  assert.deepEqual(nativeFacadeRecords(state,1)[0],{id:'rubble:1:20',start:20,end:45,type:47});
+  assert.deepEqual(nativeRubbleSprites(rubble),[
+    {sheet:5000,x:160,y:-72,sx:0,sy:0,width:128,height:12},
+    {sheet:5000,x:288,y:-72,sx:0,sy:0,width:72,height:12},
+    {sheet:4008,x:160,y:-60,sx:0,sy:0,width:200,height:24}]);
 });

@@ -4,6 +4,11 @@ export function nativeToolbarPopupRect(button,selection,count,desktopHeight) {
   if(top+height>desktopHeight)top=desktopHeight-height;
   return {left:button.left,top,width:32,height};
 }
+//BF82 ClipCursor confines screen coordinates to the popup's integer pixels;
+//right/bottom are exclusive. Browser capture retains the same logical point.
+export function nativeClippedPopupPoint(point,width,height) {
+  return {x:Math.max(0,Math.min(width-1,Math.floor(point.x))),y:Math.max(0,Math.min(height-1,Math.floor(point.y)))};
+}
 //14221 uses the current departure*floor(bitmap405.height/3) for placement.
 export function nativeDeparturePopupRect(button,departure) {
   return {left:button.left,top:button.top-departure*22,width:82,height:67};

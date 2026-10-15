@@ -4,6 +4,8 @@ A browser port of the Windows 3.x SimTower executable, with recovered simulation
 rules, original game resources and Windows 3.1-style controls. Gameplay defaults
 to waifu2x-upscaled artwork; **Options → Textures → Original** restores original pixels.
 
+**[Play in your browser](https://benphelps.github.io/simtower/)**
+
 ## Run
 
 Requires **Node.js 22+**. No npm dependencies or original installation are needed
@@ -32,6 +34,9 @@ The build produces a standalone static site in `dist/`. Serve that directory
 with any static web server. Tests run without the original executable; an
 additional cursor byte-comparison check runs when local raw resources exist.
 
+For a project subdirectory, use `BASE_PATH=/simtower/ npm run build`.
+The GitHub Actions workflow tests and deploys `main` to GitHub Pages automatically.
+
 | Directory | Contents |
 | --- | --- |
 | `src/` | Simulation, renderer and browser UI |
@@ -42,7 +47,7 @@ additional cursor byte-comparison check runs when local raw resources exist.
 
 ## Fidelity and recovery
 
-The port is playable and still undergoing direct comparison with the original.
+The port follows behavior recovered from the original executable.
 [The feature checklist](research/MANUAL_COVERAGE.md) records covered behavior,
 remaining gaps and deliberate browser adaptations. Native `.TDT` saves remain deferred.
 

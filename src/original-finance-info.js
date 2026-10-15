@@ -74,6 +74,30 @@ export function nativeInfoBar(data,state,population) {
     rating:state.star===6?{sheet:327,x:42,y:10,width:106,height:22}:Array.from({length:5},(_,i)=>({sheet:i<state.star?322:323,x:43+i*21,y:11,width:21,height:19}))};
 }
 
+//263C6 uses TA_BASELINE|TA_UPDATECP for the English calendar. After
+//MoveTo(167,29), its relative moves are (+4,+1), then (-12,-2).
+//26093's Fund rectangle adds OFFSETRECT(10,8), then uses right-1/bottom-1.
+//262D1 population uses its right edge and bottom-2 with the same baseline.
+export const NATIVE_INFO_TEXT = {
+  date:{x:159,y:28,font:14,align:'left'},
+  cash:{x:423,y:26,font:13,align:'right'},
+  population:{x:423,y:43,font:13,align:'right'},
+};
+export function drawNativeInfoBarText(ctx, info) {
+  ctx.clearRect(0,0,431,49);
+  ctx.textBaseline='alphabetic';
+  ctx.font='14px Arial';ctx.textAlign='left';
+  let x=NATIVE_INFO_TEXT.date.x;
+  for(const run of info.dateRuns) {
+    ctx.fillStyle=run.color;ctx.fillText(run.text,x,NATIVE_INFO_TEXT.date.y);
+    x+=ctx.measureText(run.text).width;
+  }
+  ctx.font='13px Arial';ctx.textAlign='right';ctx.fillStyle='#262626';
+  //26093 selects this color unconditionally, including negative funds.
+  ctx.fillText(info.cash,NATIVE_INFO_TEXT.cash.x,NATIVE_INFO_TEXT.cash.y);
+  ctx.fillText(info.population,NATIVE_INFO_TEXT.population.x,NATIVE_INFO_TEXT.population.y);
+}
+
 // 0x2777B creates these floating windows at desktop coordinates. Geometry
 // includes the eight-pixel native handle; external border metrics are separate.
 export const NATIVE_FLOATING_WINDOWS={

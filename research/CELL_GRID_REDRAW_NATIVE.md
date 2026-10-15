@@ -122,3 +122,93 @@ The default pure row capacity remains the native103 cells. The user explicitly r
 Tower build and shaft resize now compare the previous and source-derived current crane placement. After all affected row/span callbacks, a changed placement emits `nativeGridHook({rebind:true,redraw:true})`. Renderer performs the all-row rebind and synchronous explicit GUI draw. This preserves native order: `397B9→356CA→9CE0→F296`. Existing same-highest crane position remains unchanged even if the floor extends left; a narrow new highest floor with no earlier crane does not request a full refresh, while clearing an existing crane does.
 
 Nine cell-grid tests now include actual Tower callback ordering and these crane cases. A grid integration regression checks that this full rebind cancels newly marked3..6 while unpaused, but preserves them while paused. The combined cell-grid/facade-grid/construction-ring/lobby focused run passes28 tests. Indexed retained-canvas palette replay is implemented separately in Renderer; the source hook and palette tests do not imply full pixel comparison is complete.
+
+
+## Physical facade records and completed ceilings, 2026-10-15
+
+Facade binding must retain physical native records independently of tenant
+registration. Completed metro31/32 do not retain registry slots, while33 does;
+the former tenantSlotParts-only adapter therefore omitted the upper/middle
+facade spans. `nativeRoomFacadeParts` retains all physical levels, including
+recycling20/21 and SECOM45, without changing the metadata registry. Cinema
+retains its separate seven-cell booth and twenty-four-cell auditorium records.
+
+38C0A offsets24px art down12px and invokes3C972 to tile original5000 above it.
+The old completed-room renderer exposed the empty1000/frame2 top12px instead.
+Those pixels differ: source5000 contains the ceiling/beams rather than flat
+empty-floor gray. Completed24px records now receive the original128×12 tile,
+restarting at each native record boundary and clipping the last repetition.
+Cinema booth and auditorium ceilings consequently restart separately;36px
+resources receive no extra header. Pending records retain the already verified
+5000/3625 construction assembly. No generated artwork or palette/RNG changes
+are involved in this correction.
+
+## Clipped retained-buffer sampling margins
+
+Live E9CF/EA1B establish aligned8×36 scroll and ceil(client dimension/cell)+1
+columns/rows. A1EE terminates its horizontal loop against56978 atA9E4 and
+its vertical loop against5697A atA9F2, so AA87/6BC2 sees the extra clipped
+buffer margin too. The former exact-client bounds omitted those records and
+could suppress real shared RNG draws or retain dirty bytes incorrectly.
+OriginalFacadeGrid and Renderer.sampleInteriors now share
+nativeBackgroundViewport; the browser canvas and actual client paint viewport
+remain unchanged. This is source buffer sampling, not drawing outside the
+window. Extra browser repaints remain blocked by the native source-draw gate.
+
+An actual Tower regression places a pending office in the clipped rightmost
+column, pending recycling in the extra bottom row, and another office beyond
+the buffer. Source ordering yields rand(8),rand(6),rand(24),rand(6), consumes
+the first two dirty bytes, preserves the third, and repeats no calls on an
+extra browser paint. The640×180 client retains81 columns and6 rows.
+
+Damage47 audit: A6BF selects source type47/frame0 through3139F. Bitmap4008
+is24px, so38C0A stages original5000 above it through3C972 just like ordinary
+24px facilities. `nativeRubbleSprites` now draws both and the retained grid
+keeps an explicit type47 physical record instead of silently binding it as an
+empty structural type0. The25-cell regression verifies both clipped ceiling
+repetitions, the4008 body, and record identity.
+
+Final resource-format check: recycling's initial2280 DIB is60px high. Live
+38DF8..38E76 offsets every non36px source by12 and stages5000 unless it is one
+of the explicit black-header special types8/22/27. The completed facade helper
+therefore accepts both current24px and60px room sources; a manifest-backed
+regression covers2280 as well as ordinary rooms and cinema. Later2281..2285
+24px stage variants retain the same header.
+
+## Controller return requests: final binary audit
+
+Modal closure itself does not imply a newB3A3 orA1EE. All directB3A3/F2B2
+xrefs were enumerated. `nativeDialogReturnRedraw` records audited requests:
+
+| Return path | Original behavior |
+| --- | --- |
+| Facility748..760,1FD89→1FF1A | Restore scroll,E927,F296; background refresh, no explicit9CE0 |
+| Finance500,CD23 | DialogBox,FreeProcInstance,return; no world redraw |
+| Transport761/762,20B13/20E67 | DialogBox,FreeProcInstance,return; no world redraw |
+| Person763/764,1FA10→1FAF3 | No world redraw; tracking bookkeeping only |
+| Find510/520,1C842/1C992 | EndDialog,9CE0,F296,EDAD; full rebind |
+| Find with active target,1D7AF→E850 | Center scroll,E927,16110,9CE0,F296; full rebind |
+| About4CFE | DialogBox,FreeProcInstance,audio resume; no world redraw |
+| Ordinary alertD73B→47D2 | Dialog/message handling; no world redraw |
+| Schedule Close12478 case1 | Re-enable windows,DestroyWindow; no world redraw |
+| Schedule Show case5,12E32/12E37 | 9CE0,F296, including preview-specific draw plan |
+| Simulate entry1E132 | F2B2(argument0), retained background, no ordinary interiors |
+| Resume1E13C | Restore state,InvalidateRect,16110,9CE0; restored normal redraw |
+
+Emergency initialization17FE0 resets first, then checksARG0 at1803A. Only
+mode1 (bomb) invokes9CE0/F296 at18040/18045; mode0 (fire) returns without it.
+Tower emits the mode1 runtime grid callback after construction drain and all
+actor/parking/list/transport resets. An actual Tower regression verifies this
+order, fire's absence of a redraw, and no invented model RNG/cash changes.
+
+A nested person return is likewise not a new facility inspection:232C9 calls
+1FA10 at23339, then invalidates/repaints only the parent dialog HWND at23349/
+23351. The browser may recreate that parent DOM panel but must suppress its
+initial-inspectionA1EE. Rename/movie returns have the same parent-panel scope;
+world refresh belongs to final facility return, not each child dialog.
+
+The former blanket browserclose sceneDirty flag caused a real RNG mismatch
+when empty cloud slots retried after Finance/simplealerts. The controller
+integration now requests only its audited branch. A regression uses actual
+Renderer cloud gating to prove Finance/ordinaryalerts add no calls, while one
+facility return and oneFind return add exactly two four-slot background passes.

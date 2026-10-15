@@ -16,15 +16,33 @@ Recovered in IDA e36af917c304 from supplied SIMTOWER.EXE. Browser resources are 
 
 `B717` chooses one of900..903 uniformly, before checking fit. If area width≤spritewidth OR height≤spriteheight it empties that slot without rescaling. Otherwise x and y are independent random offsets in[0,areaDimension−spriteDimension−1]. Thus clouds depend on native viewport redraws and RNG, not fixed arbitrary world coordinates. The helper accepts the host's native randomInt; browser rendering cadence should avoid introducing extra regeneration calls on unchanged empty slots.
 
-Native background refresh calls are narrower than all browser renders:
-`B3A3` is called only by `F2B2` when arg0=1, reached through `F296` or
-scroll/resize code. Successful construction `397C6`, link construction
-`18F18`, elevator changes `14911/14BDA`, new/open tower `19C44/1A251` and
-inspector close `1FF1A` request this full refresh. Normal `FD4B` actor/room
-updates and palette changes do not. `nativeSceneStructureKey` catches host
-structural changes without including actor state, construction countdown,
-car position, clock or rain. Nonstructural native UI refresh commands still
-need the explicit `OriginalCloudField.update(...,{dirty:true})` hook.
+Native background refresh calls are narrower than all browser renders.
+Live xrefs find only F2B2's three arg0=1 branches callingB3A3, which calls
+B5F0 atB5D3 and35480 atB5E2. Ordinary FD4B ticks do not call it. Construction
+397B9 tests356CA: only a changed crane runs9CE0→F296 at397C6; same-highest
+construction runs35480 directly at397CD, without cloud regeneration. The
+former structural-key heuristic retried empty clouds after every room edit;
+Renderer now uses explicit full-refresh requests and actual viewport changes.
+A full GUI background request retries empty slots even with unchanged bounds;
+a pure inspector A1EE does not. Browser repaints and GUI capture add no calls.
+
+The native random rectangle includes clipped buffer margins. E9CF aligns
+scroll down to8px horizontal/36px vertical boundaries. EA1B sets columns to
+ceil(clientWidth/8)+1 and rows toceil(clientHeight/36)+1. B83F intersects that
+buffer with the cloud world rectangle. `nativeBackgroundViewport` preserves
+those dimensions before cloud fit tests/moduli; it does not demand that each
+cloud be entirely inside the exact visible client. `nativeBufferGrid` exposes
+the same cell counts/first floor for ambient36042→360CB. For client
+[100..700,−500..0], the buffer is[96..704,−504..36] and ambient grid is
+{x:12,topFloor:13,width:76,height:15}. Zoom is the browser's documented world
+coordinate adaptation; the original had no zoom.
+
+Successful Finger stop application14911 calls F296 without9CE0; transport
+removal14BDA/18F18 first rebinds through9CE0. Model callbacks preserve that
+difference via independent `backgroundRefresh` and `rebind` arguments.
+Schedule source12E32→12E37 belongs to Show checkbox case5, not Close/OK.
+The earlier interpretation of that short chain as Close was incorrect; Close
+case1 enables windows/destroys the editor and does not prove a full refresh.
 
 ## Rain palette
 
@@ -99,3 +117,45 @@ Completed SECOM type45 has an additional native column phase:9D89 stores
 absolute tower x modulo4, andA6E2→3139F copies that column from original
 3880's32×36 strip. The renderer now draws each8px column using this phase,
 including wrap from column3to0, rather than always cropping the first16px.
+
+## Bounded binary completion audit, 2026-10-15
+
+The user waived further side-by-side visual/pixel replay as an acceptance
+requirement. This audit uses executable control flow and supplied original
+resources; it does not change the user-requested Waifu presentation.
+
+The final audit found two additional translated branches:
+
+* B3A3 starts its32px source strips at retained-buffer x0. E9CF aligns this
+  buffer to8px;2B571 shifts its source rectangle by the difference between
+  actual scroll dword5A674 and aligned56970/56972 before presentation. The
+  former exact-client-left tile restart lost that remainder. Scene strips
+  now start at the aligned buffer left. A111px client-left test starts the
+  native tiles at104,136,168 and112px moves the phase to112,144,176.
+* 1E0A0 callsF2B2 with argument0 at1E132: ordinary Simulate keeps background
+  and clouds. Show checkbox5 separately callsF296(argument1), whose preview
+  branch still runsB3A3 before1E1C1. Explicit native GUI background refresh
+  can therefore regenerate cloud slots during Simulate; ordinary preview
+  browser paints cannot. No ordinary-room interior sampling belongs to that
+  preview branch. The main UI adapter must retain the preview display state
+  and bind original application RNG for the actualB717 background calls.
+
+Reviewed source/helper coverage:
+
+| Source | Translation / meaningful regression |
+| --- | --- |
+| B000/B3A3 | ordered857..849 original bands, top-only repetition, finite dirt, aligned horizontal strip crop;scene-native |
+| B0AD/B5F0/B6A5/B717/B83F | four retained cloud shapes, source fit/order/moduli and expanded buffer, explicit refresh versus extra paints;scene-native |
+| 35480/35740/357F4/358A8/35903/3594E/35998 | original edge1069, ground canopy1001 halves and highest-floor crane1002; original-lobbies/lobby-native/redraw-plan |
+| 9D89/A02E/A705 | per-record columns, lobby rating/height/phase, SECOM absolute four-cell phase;cell-grid/lobby/scene-native |
+| A1EE/AA87/6BC2/A933 | top-down/left-right buffered cohort, exactdirty consumption, native redraw gate, source3..6 scaffold masking;facade-grid/interiors-native |
+| 38C0A/3C972/3CA30 | physical multi-floor records, original completed and pending ceilings, cinema booth partition, type47 damage;facade-grid/interiors-native |
+| 49020/642B/319BF/56CB | original full CLUT versus literalUI RGB, exactFF queue ink, retained indexed palette and postInfo update withoutRNG;indexed-palette/palette-phases-native |
+
+Within these recovered scene/facade/roof/lobby assembly functions, this
+bounded audit has no remaining known untranslated branch. Native scene draw
+requests from individual modal/menu controllers remain the responsibility of
+their audited caller integration; generic browser modal close must not be
+assumed to implyF296. Ordinary schedule Close was specifically checked to
+lack that call; room-inspector return explicitly has it. No new source claim
+is made for unaudited callers merely because the renderer can service them.

@@ -22,3 +22,8 @@ export function nativeScheduleScroll(shaft,position,command,value) {
   next=Math.max(min,Math.min(max,Math.round(next)));
   return {min,max,position:next,offset:(next-min)*13,topFloor:shaft.low+(max-next)+14};
 }
+//11EB8 assembles only hotspot2 from410/411 into its normal/pressed strip.
+//The rest of the panel remains400;406 belongs to the departure popup.
+export function nativeScheduleSimulationButton(preview) {
+  return {label:preview?'Resume':'Simulate',normalSheet:preview?410:null,pressedSheet:preview?411:401,sourceRect:[17,404,66,19]};
+}

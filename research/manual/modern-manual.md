@@ -93,7 +93,9 @@ The Map's **Eval**, **Pricing** and **Hotel** views pause the simulation and swi
 
 ### Menus, animation, sound and Fast Mode {#options}
 
-Open a menu by clicking its name. Keyboard focus and the highlighted command let you choose entries without a mouse; **F1** opens help. Menu mnemonics are underlined in the game's chrome.
+Open a menu by clicking its name, or hold the primary mouse button on its name, move to a command and release to choose it. Releasing outside the ordinary menus cancels the menu without building in the tower underneath.
+
+Press and release **Alt** or **F10** to select the main menu bar. **Alt+F**, **Alt+O**, **Alt+W** and **Alt+H** open File, Options, Windows and Help directly. Arrow keys move the highlight, **Enter** chooses a command and **Escape** backs out. Underlined letters identify menu access keys. From the main tower window, **Alt+Space** opens its system menu and **Alt+F4** requests Exit through the save guard. These controls do not add a system menu to the Elevator schedule window. **F1** opens help.
 
 | Menu | Commands and purpose |
 | --- | --- |
@@ -105,6 +107,8 @@ Open a menu by clicking its name. Keyboard focus and the highlighted command let
 **People** controls periodic room-occupant animation. **Effects** controls the original machinery and rain palette animation. They are independent options; turning them off does not remove facilities or suspend gameplay. A room can still refresh when its actual state changes.
 
 **Elevators** enables lift sounds. **Background** enables environmental and active-facility sounds, including sounds when you inspect a working facility. **Events** enables construction and special-event cues. The browser may require a user interaction before audio playback is allowed.
+
+**Browser texture option.** **Options > Textures** chooses the supplied artwork's waifu2x enlargement or its original pixels. This edition starts with the enlargement selected. The texture submenu is a browser addition; it does not change facility dimensions, simulation rules or the original dialog artwork.
 
 Normal speed is the default. Enable **Options > Fast Mode** deliberately when you want to accelerate the building. **Fast Mode** accelerates the simulation. The original program ran as quickly as its computer could process it. This browser edition deliberately limits Fast Mode to one update per paint with a minimum pacing interval, so modern hardware cannot race through years in a few seconds. Its actual acceleration depends on the display and browser; it is not an exact native speed multiplier. Turn it off when you want more time to observe a rush. **Call Fire Rescue** is only available during a fire; see the emergency chapter before committing to its cost.
 
@@ -126,7 +130,7 @@ Hold **Control** while constructing the original lobby to choose a taller lobby;
 
 Select a facility on the Tool Bar. The cursor outlines its footprint, and the Info Bar identifies the choice and price. Click a legal supported position to begin construction. Some facilities span multiple levels: the outline and construction reservation include the whole footprint.
 
-Grouped Tool Bar buttons open related choices. Hold a grouped button to select the alternative, such as a different hotel or elevator type. The available groups expand at higher star ratings.
+Grouped Tool Bar buttons open related choices immediately while held. Move to an alternative, such as a different hotel or elevator type, and release to select it. While held, moving beyond the popup's edge keeps selection at the nearest edge row; it does not cancel the choice. A right-button press cancels the grouped choice and retains that group's previous facility. The available groups expand at higher star ratings.
 
 Hold the mouse button while drawing lobbies and floors to set their span. Parking places can be repeated horizontally; parking ramps can be repeated downward. The pointer and message line report collisions, floor restrictions, insufficient funds and fixed pool limits.
 
@@ -173,6 +177,10 @@ A tower can have 24 shafts in total across all elevator types. The supplied exec
 ### Program a shaft for each part of the day {#elevator-programs}
 
 Inspect a shaft or its machinery to open the **Elevator** window. Clicking a moving car opens its passenger information instead. Select **Weekday** or **Weekend**, then the time period you want to change. Programs apply to the entire shaft, rather than to one car.
+
+Hold a time-period button to open its departure choices immediately, move to the desired choice and release to apply it. Moving beyond the popup's edge keeps the nearest edge choice selected. A right-button release cancels the departure change while still selecting that time period.
+
+Drag the Elevator caption to move the window. Close it with its original **OK** button, which also restores an active Simulate preview before returning control to the tower. The schedule has no system-menu icon; **Alt+Space** and **F10** do not open a menu there, and **Escape** or **Alt+F4** leave it open.
 
 **Local** serves requests while responding to the current traffic direction. **Express to Top** and **Express to Bottom** impose a sweep toward the chosen end before the return service. These are scheduling programs for a shaft, separate from constructing the Express elevator type.
 

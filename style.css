@@ -23,19 +23,23 @@
 .build-panel .tool-modes{height:21px;padding:0}
 
 /* Original dialog layouts; DTMP coordinates are pixels, not CSS-scaled DUs. */
-dialog.native-dialog{padding:0;border:2px solid #000;max-width:98vw;max-height:98dvh;overflow:auto;background:#ccc}
+dialog.native-dialog{padding:0;border:0;max-width:98vw;max-height:98dvh;overflow:hidden;background:#ccc;box-shadow:none}
+dialog.native-dialog[data-template]:not([data-template=""]){width:var(--native-outer-width);height:var(--native-outer-height)}
+dialog.native-dialog:not(.native-caption){border:0;box-shadow:none}
 dialog.native-dialog:before,dialog.native-dialog>.dialog-close{display:none}
 dialog.native-dialog::backdrop{background:transparent}
-dialog.native-dialog.native-caption{padding-top:20px;border:3px ridge #c0c0c0}
-dialog.native-caption:before{display:block}
-.native-panel{position:relative;background-repeat:no-repeat;image-rendering:pixelated;font:var(--native-text-size,13px) Arial,sans-serif}
+dialog.native-dialog.native-caption{padding-top:18px;border:3px ridge #c0c0c0}
+dialog.native-dialog.native-caption[data-template]:not([data-template=""]){border:1px solid #000}
+dialog.native-caption:before{display:block;height:18px;padding:0 2px;font:700 13px/18px var(--system-font);background:#00007c;color:#fff}
+.native-panel{position:relative;overflow:hidden;background-repeat:no-repeat;image-rendering:pixelated;font:var(--native-text-size,13px) Arial,sans-serif}
 .native-panel>*{position:absolute;margin:0;box-sizing:border-box}
+.native-panel>.native-client-frame{left:0;top:0;pointer-events:none}
 .native-panel .native-default-button{outline:1px solid #000;outline-offset:0}
 .native-panel .native-default-button:focus-visible{outline:1px solid #000;box-shadow:inset 0 0 0 3px #c0c0c0}
 .native-panel span{white-space:pre-wrap;line-height:16px;overflow:hidden}
 .native-panel button{padding:0;font:var(--native-text-size,13px) Arial,sans-serif;border:2px outset #fff;background:#c0c0c0}
 .native-panel input,.native-panel select{padding:0 2px;border:2px inset #fff;background:#fff;font:var(--native-text-size,13px) Arial,sans-serif}
-.native-panel .native-hotspot{border:0;padding:0;background-color:transparent}
+.native-panel .native-hotspot{border:0;padding:0;background-color:transparent;background-image:var(--normal-image,none)}
 .native-panel .native-hotspot:active{background-image:var(--pressed)}
 .native-panel .native-field{padding:1px 2px}
 .native-panel .native-grid{background:#fff;border:1px solid #000;overflow-y:auto;font:10px Arial,sans-serif}
@@ -82,6 +86,10 @@ footer{display:none}
 @media(max-width:580px){.map-window{display:block}.statusbar .rating-stat{display:block}.statusbar .fund-pop{min-width:0}.statusbar .clock-face{min-width:0}.statusbar{max-width:calc(100% - 10px)}}
 .statusbar #message{position:absolute;left:41px;top:33px;width:262px;height:11px;overflow:hidden;font:12px Arial;line-height:11px;white-space:nowrap;background:#d9d9d9}
 .statusbar .fund-pop{width:86px}.statusbar .stat strong{width:86px}
+/* GDI calendar/fund/population text uses recovered baseline anchors. Keep
+   their DOM equivalents available to accessibility without double painting. */
+.statusbar #native-info-text{position:absolute;left:0;top:0;width:431px;height:49px;pointer-events:none}
+.statusbar .clock-text,.statusbar .fund-pop{clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
 .original-about{position:relative;background:#e6e6e6;border:1px outset #fff}
 .original-about>img{position:absolute;left:10px;top:10px;image-rendering:pixelated}
 .original-credits{position:absolute;right:10px;top:10px;width:240px;border:2px inset #fff;overflow:hidden;background:#e6e6e6}
@@ -96,6 +104,11 @@ footer{display:none}
 
 .construction-popup{padding:0;width:36px}.construction-popup button{width:32px;height:32px;padding:0}.construction-popup .menu-icon{display:block;width:32px;height:32px;flex:0 0 32px}.construction-popup button:hover{background:#c0c0c0;color:#000}
 .construction-popup{width:32px;border:0;box-shadow:none}.construction-popup button.native-hover .menu-icon{background-image:url('/assets/bitmaps/301.png')}
+/*4A572 registers CmdBtnWndProc with IDC_ARROW;BE B2 selects the same
+  stock cursor for its held palette. These are bitmap regions, not links. */
+.build-panel button,.construction-popup,.construction-popup button,.menu-button,.menu-dropdown button,[data-hide]{cursor:default}
+.native-main-window button,.native-panel button,.native-panel select,.native-system-menu button,.native-dialog-system-menu button,.native-app-icon,.native-window-handle{cursor:default}
+#native-window-outline{position:fixed;z-index:100;pointer-events:none;mix-blend-mode:difference}
 .native-departure-menu{z-index:30;image-rendering:pixelated}.native-departure-highlight{position:absolute;left:0;width:82px;height:22px;background-image:url('/assets/bitmaps/406.png');pointer-events:none}
 
 .native-save-guard{width:355px;padding:16px;font:12px Arial}.native-save-guard p{min-height:36px}.native-save-guard button{width:78px;height:24px}
@@ -158,15 +171,7 @@ dialog[data-modeless="true"]{position:absolute;z-index:25}
 
 /*12478: modeless schedule disables the other game windows; Win16 does not dim them. */
 dialog::backdrop{background:transparent}
-.native-modeless-caption{position:absolute;left:0;right:0;top:0;height:20px;z-index:2;touch-action:none;cursor:move}
-.native-modeless-caption button{position:absolute;left:1px;top:1px;width:18px;height:17px;padding:0;line-height:10px;border:2px outset #fff;background:#c0c0c0;color:#000}
-.native-dialog-system-menu{position:absolute;left:0;top:20px;width:160px;background:#c0c0c0;border:2px outset #fff;padding:3px;z-index:30}
-.native-dialog-system-menu button{border:0;width:100%;text-align:left;padding:3px 8px}.native-dialog-system-menu span{float:right}.native-dialog-system-menu button:hover{background:#000080;color:#fff}
-
-#schedule-dialog.native-caption:before{padding-left:24px}
-.native-dialog-system-menu button:disabled{color:#808080;background:#c0c0c0}
-.native-dialog-system-menu button:focus:enabled{outline:0;background:#000080;color:#fff}
-.native-dialog-system-menu hr{border:0;border-top:1px solid #808080;border-bottom:1px solid #fff;margin:3px}
+.native-modeless-caption{position:absolute;left:0;right:0;top:0;height:18px;z-index:2;touch-action:none;cursor:default}
 .window-title .system.active{border-style:inset}
 
 /* User-supplied Windows fonts. System is a bold face; native game dialogs

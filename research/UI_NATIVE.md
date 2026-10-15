@@ -231,6 +231,54 @@ Full ELVDLOGMAIN12478 handles WM_LBUTTONDOWN1283A and calls12AB8 for period hots
 
 For grouped construction slots, C6E1/C818→BE03 immediately calls DialogBox124 while the primary button is held. BE77 places a32×(count*32) popup at the original icon's left, top adjusted by(currentChoice-1)*32 and desktop clamping, so the active row overlays that icon. It uses original301 selected artwork, captures the pointer, commits32px-row choices on left release, and cancels on leaving or right down. Cancellation leaves that group's previous choice, but C818 still selects the pressed group's existing construction type through3987D; it does not restore the previously active different tool. Browser now uses this overlay geometry, original hover sheet, capture/release rules and paused-tool gate. Removed invented right-click and Alt+Down construction popup activation. Browser drag selected Service Elevator and outside cancellation retained that group's choice.17 focused popup/menu/window tests passed.
 
+### Toolbar press/release and USER menu tracking (2026-10-15)
+
+The complete `CmdBtnWndProc` (`B8D0..BC4E`) distinguishes native mouse messages. `BB6C` and `BBC6` both call `C6E1`, using the current pointer coordinates on press and release respectively. Therefore pressing Office and releasing over Condo selects Condo. The time region is different: `BB31..BB5C` calls `EFFE(1)` to paint its pressed bitmap, while release first calls `EFFE(0)` and then reaches `C674` through `C6E1` to toggle pause. Releasing on Time after pressing another bitmap region still toggles pause. `C72D` rejects mode and catalog selection while paused, after the time-region test. The registered toolbar cursor is stock `IDC_ARROW` (`4A56A..4A577`); `CMDBTNSUBWNDPROC` selects the same cursor at `BEB2`. Neither toolbar handler contains a keyboard command branch or child button HWND dispatch. Browser controls now follow these two mouse phases, have an arrow cursor, and do not add Tab/Enter/Space commands to the original bitmap regions.
+
+`C818` tests the currently held primary mouse button before opening a grouped popup; a release-phase selection chooses the group's current tool without opening another popup. The custom popup also accepts left-button down (`C0AC..C101`) and left-button up (`C12C..C18E`), and cancels on right-button down (`C1B8`). Existing popup geometry and pointer capture are retained. Browser drags verified Office→Condo, Remove→Finger, Lobby→Floor within its held popup, and Office→Time, the last leaving the toolbar paused with Inspect selected and construction controls disabled.
+
+The game delegates ordinary menus to USER through its original menu resources; its accelerator table still contains only F1. Standard menu behavior accepts a selected command on mouse release, including a held drag from the menu name; Microsoft's [menu interaction documentation](https://learn.microsoft.com/en-us/windows/win32/menurc/about-menus) describes Enter as the equivalent of that selected mouse release. Browser menus now open on primary press, track across names and submenu items, invoke an enabled command on held release, and consume an outside cancellation without forwarding it to construction. The same tracker accepts the system-menu opener's `native-system-menu-pointer-open` event. Browser proof pressed Windows and released over Finance, opening one native Finance dialog; pressing the system icon and releasing over Maximize maximized the tower once. Compatibility clicks are consumed separately from keyboard activation.
+
+Validation: 21 focused toolbar/menu/window/popup tests pass. Browser screenshots are `/private/tmp/simtower-held-menu-finance-qa.jpg` and `/private/tmp/simtower-toolbar-release-pause-qa.jpg`. The OS-level `ClipCursor` restriction remains a browser adaptation; these checks do not establish exact Win16 menu timing, operating-system rasterization, or byte-identical pixels.
+
+The three floating-window hide boxes also act on press, rather than waiting for release: Tools `BB1E`, Info `27010..27050`, and Map `2BF9D..2BFDD` are all `WM_LBUTTONDOWN` branches. Info and Map both test `RECT(4,1,10,7)`, clear their visibility word and call `ShowWindow(SW_HIDE)` immediately. Their release handlers do not show the window again. Browser hide boxes now hide on primary pointer down, consume the later compatibility click, and do not add a separate Tab/Enter action. Existing exact six-pixel hit geometry and Windows-menu visibility toggles are preserved.
+
+### Schedule caption has no system menu (2026-10-15 correction)
+
+RT400's style is `0x92C00040`: it contains `WS_CAPTION` but lacks `WS_SYSMENU` (`0x00080000`). `11E50..11EA7` directly creates that resource through `CreateDialogParam`, with owner HWND zero. A complete import/xref audit found no `SetWindowLong` or `SetClassLong`; the three `SetWindowWord` sites (`27825`, `2790A`, `279EF`) write extra-window offset zero for Tools/Info/Map IDs, not window styles. The schedule's `12527 SetClassWord(hwnd,-12,0)` clears its class cursor. `DD65` adjusts bitmap/control geometry, and `37DC5` positions the dialog; neither adds a system menu.
+
+The complete `ELVDLOGMAIN` switch at `13119` handles only messages `6,F,19,110,115,200,201,202` (activation, paint, control color, initialization, vertical scrolling and mouse messages). Its unhandled-message path at `130AE` returns FALSE; there is no `WM_COMMAND` or `WM_CLOSE` branch. Microsoft's [dialog-box programming documentation](https://learn.microsoft.com/en-us/windows/win32/dlgbox/dlgbox-programming-considerations) describes default `WM_CLOSE` processing as posting the `IDCANCEL` command. That command has no handler in this procedure. Its actual bitmap OK path, `12D1E..12DAE`, restores preview state, enables the four game windows and calls `DestroyWindow`.
+
+Removed the invented schedule system icon, Move/Close popup, Alt+Space/F10 popup activation and explicit Alt+F4 close action. The caption remains draggable, the bitmap OK remains the closing action, and Escape/default cancel leaves the schedule open. Browser-specific key defaults are consumed rather than closing the browser. RT731 also lacks `WS_SYSMENU`, but retains a genuine Cancel control and corresponding command handler; it is not assigned the schedule's ignored-cancel behavior. This corrects the earlier modeless-window QA note that had treated an invented schedule Alt+Space menu as native.
+
+### Logical ClipCursor confinement (2026-10-15 correction)
+
+`CMDBTNSUBWNDPROC BF6C` captures the pointer, then `BF71..BF82` converts its popup's width/height into screen-space right/bottom and calls `ClipCursor` on that exact rectangle. This is the actual construction popup, independently of the elevator departure popup. `C08C`, `C10C`, `C176`, `C199` and `C1BB` clear confinement on their respective exit paths. The departure popup independently clips its original bitmap-sized rectangle at `143CB`, after `1434F..143C1` builds and offsets its 82×67 rectangle. Its right-button **release** (`WM_RBUTTONUP`, case517) returns the previous departure via `145DB`; toolbar right-button **press** cancels via `C1B8`.
+
+Browser-held popup coordinates are now logically clamped to the same integer pixel rectangles before hit testing: construction `[0,31] × [0,count*32−1]`, departure `[0,81] × [0,66]`. Dragging beyond an edge therefore keeps the appropriate edge row selected and commits that row on primary release, matching the logical effect of native pointer confinement. It no longer triggers the outside-cancel branch using a screen position the OS would have prevented. Right-button cancellation and browser pointer-cancel retain the previous choice. The raw departure hit helper still preserves the original inclusive 82/67 test and `3*y/68` bands, independently from the narrower set of reachable confined pixels. Browser security prevents warping the physical OS cursor, but that visual restriction no longer changes selection behavior. This supersedes the earlier browser outside-cancellation QA and the earlier F38 logical-confinement limitation.
+
+### Captionless DTMP client frames (2026-10-15)
+
+`DD65` uses the original outer dimensions directly: the bitmap path calls `MoveWindow` at `DEA1` with the DIB width/height; the nonbitmap path calls it at `DF4D` with the DTMP width/height. Every captionless RT_DIALOG resource lacks `WS_BORDER`. The Finance bitmap500 is already343×364, including its original frame, and Find bitmap510 is300×211. Adding a browser border enlarged these windows and shifted all controls. Captionless native dialogs now have zero external border and no invented external shadow; their panel/control coordinates remain unchanged.
+
+For nonbitmap panels, negative `DF91` argument4 calls `DCAB` at `DFAC`. `DCAB` obtains the existing client rectangle (`DCCE`) and passes it to `3788E`. That routine draws three top/left one-pixel lines in high-byte gray `B3`, three bottom/right lines in `8C`, contracts the rectangle by3 through `3D5A9`, draws three inner top/left lines in `66` and three bottom/right lines in `E6`, contracts again by3, and fills the remaining rectangle in `CC`. It restores the rectangle at exit; it does not grow the window. `3807B→37675` converts each16-bit gray to its high byte, then finds its logical-palette entry. All five exact requested grays exist in the published original base palette (indices5,8,11,1,3 respectively).
+
+`original-dialog-frame.js` translates those GDI line coordinates into integer canvas rectangles, including `LineTo`'s excluded endpoint, and draws them behind the existing controls inside the original panel dimensions. Tests verify the full bitmap dimensions, absence of captionless USER borders, six-pixel inner geometry, endpoint behavior, client-bound containment and exact palette membership.
+
+### Captioned DTMP outer geometry (2026-10-15)
+
+The two actual captioned templates,400 and731, have `WS_CAPTION` and no `DS_MODALFRAME`. The `WS_DLGFRAME` bit contained within the combined `WS_CAPTION` value does not request a separate thick dialog frame: Microsoft's [window-style definitions](https://learn.microsoft.com/en-us/windows/win32/winmsg/window-styles) distinguish the caption/thin-border style from standalone dialog-frame style; its [dialog documentation](https://learn.microsoft.com/en-us/windows/win32/dlgbox/about-dialog-boxes) describes `DS_MODALFRAME` as the additional modal-frame request. Their browser resource chrome now uses the ordinary one-pixel black border and original18px caption, rather than a three-pixel CSS ridge.
+
+RT731 uses `DD65→DF4D` directly: its280×136 DTMP size is the **outer** window, so the client is278×116 after subtracting two one-pixel borders and the18px caption. Its actual paint procedure `MOVIETITLEDIALOGFILTER 23ED8..23EE4` negates the template ID and calls `DF91`, proving that its client also gets the same six-pixel `3788E` bevel. Existing child rectangles are already client coordinates: `DF91 E1FC..E225` copies them and calls `MoveWindow(left,top,right-left,bottom-top)` without adding a border or caption offset. Controls and the internal bevel are clipped to the existing client.
+
+RT400 has an explicit post-`DD65` override. `1256D..1257D` sets outer width to bitmap width plus twice `SM_CXBORDER`; `12580..12599` sets outer height to bitmap height plus `SM_CYCAPTION` plus once `SM_CYBORDER`; `125AD` calls `MoveWindow` with these totals. For the original200×428 bitmap and recovered1/18/1 metrics this gives202×447 outer dimensions, and200×427 client dimensions under the standard border/caption subtraction. The final bitmap row is consequently clipped; the browser preserves that literal source math instead of adding an extra pixel to make the bitmap fit. The fixed dimensions apply only to original resource dialogs, so browser file/name prompts cannot inherit a stale resource size. System font13px and caption height18px remain unchanged.
+
+### Simulate/Resume button artwork (2026-10-15)
+
+Manual illustration authoring exposed an incorrect browser-only406 overlay on the Simulate button.406 is the selected departure-popup sheet, which explains the false visible "Local" label; it is not a preview-state button. `11EB8` builds a separate200×110 button strip from original resources: normal Simulate from400 and pressed Simulate from401 occupy strip y72; `122FB..12382` copies **only hotspot2** from410 into strip y91/x0, and `1239E..12426` copies only that hotspot from411 into y91/x66. `12442` reloads400 for the full panel. Hotspot2 is `[17,404,83,423)`, or66×19 pixels.410's other white areas are never a replacement background.
+
+`12950..1296D` selects the corresponding pressed strip while the button is held; `12CA5..12CC0` selects the opposite normal label before the toggle command runs. Original410 says Resume and411 supplies its pressed state. The browser now keeps400 as the panel, overlays only the410 crop during preview, and uses411 for `:active`, with its idle art held in a CSS variable so an inline background cannot override the pressed state. A focused regression checks the source hotspot, four art states and original sheet dimensions. The manual correctly continues to call this button Resume.
+
 ### Source typography and running-reference audit (2026-10-15)
 
 The supplied manual's complete printed9/PDF14 and printed37/PDF42 pages were rendered and visually inspected: these establish the opening desktop layout and15-row elevator-grid design, but scanned/resized grayscale illustrations cannot prove original glyph rasterization. The user-selected live reference https://playclassic.games/games/simulation-dos-games-online/play-simtower-online/play/ was opened in Chrome without resetting its session. It was at original New/Load/Quit; choosing New reached an empty tower. Captured reference startup/desktop/Windows menus show original System bold nonclient/menu text and regular game-drawn Arial fields. The temporary browser viewport override was restored. Original desktop images are captured at /private/tmp/simtower-original-startup-reference.png and /private/tmp/simtower-original-native-desktop-reference.png. Screenshot tooling supplies compressed/resized page imagery, so these are visual references, not proof of byte-identical framebuffer pixels. Native640×480 canvas backing dimensions and rendered rectangles were read as visible DOM; hidden emulator state was not accessed.
@@ -388,3 +436,54 @@ Browser proof: diagnostic view omitted cars, queues and link/event overlays whil
 The full ordinary `F2B2` branch was rechecked live: `F30F..F389` draws normalfacades, fire/security, shafts, queues, links, active cars, Santa and the explicit Find marker. It has no selected-room/shaft outline call. GDI imports have only two Rectangle references (toolbar/info helper51EF and white constructionghost3C5D4); FrameRect references are GUI buttons and elevator schedule grid; DrawFocusRect references are the toolbar focusCC56 and unreferenced3C6EE helper. Persistent pale-yellow strokes were invented browser overlays and have been removed for both rooms and shafts, including the obsolete index-plane mask hole associated with the room stroke. Main inspection state and all native sprite borders remain untouched. Findbitmap21256 remains explicit1D00E output.
 
 Browser public Inspect opened the Office, OK closed it without a persistent world outline (`/private/tmp/simtower-native-inspection-without-outline-qa.jpg`). Windows→Find Person→Alex→Find still displayed the original red arrow (`/private/tmp/simtower-native-find-arrow-preserved-qa.jpg`). Six existing marker/constructionghost tests pass, renderer syntax passes, console errors were empty. No implementation-mirroring test was added for deleting the two low-impact stroke blocks.
+
+
+General pointer-floor audit:39074 Inspect and390B7 Remove both resolve3C8BD.
+At3C8DC..3C8EA it signed-divides original siteY by36, then119−quotient; the
+browser ground offset10 yields109−trunc((worldY+3960)/36). Horizontal3C8FA
+signed-divides siteX by8. Renderer.grid now reuses the same adapter already
+verified for15057/15C37. Exact y0 selectsB1 and y−36 selects1F; old floor(−y/36)
+selected the preceding screen row at those boundaries. Two production-Renderer
+tests cover neighboring pixels, site extremes, scroll and browser zoom.
+
+### Caption dragging and actual USER capture (2026-10-15)
+
+RT731 (`0x90C00042`) has a caption but no WS_SYSMENU, so its stock USER
+nonclient caption can move the New Movie dialog without an invented system
+button. The browser now captures that caption's pointer, preserves original
+bitmap/control coordinates while moving, cancels a held move on Escape and
+restores centering when the template changes or closes. Browser verification
+moved the actual cinema/New Movie fixture by70px/45px; Cancel opened the
+cinema inspector with cleared positional overrides. Proof:
+`research/screenshots/native-new-movie-caption-drag.jpg`.
+
+Main system-menu opening now starts on primary-button down and shares the
+native menu release tracker, so held movement into a command can select it.
+Double-clicking the main system box routes through the existing guarded Quit
+command. USER move/size/scroll capture also freezes visual idle processing,
+not only simulation ticks; see `AUDIO_EFFECTS_SPEED.md` for the directly
+inspected `4A0C3` message-pump boundary.
+
+### Source-driven acceptance and menu key phases (2026-10-15)
+
+The user explicitly waived further visual/screenshot comparison work. Recovered
+binary behavior, original resources and USER API contracts are the acceptance
+standard; exact glyph raster and full-frame image replay are no longer gates.
+
+Main `2AA30` delegates system-key messages to `DefWindowProc`. USER dispatches
+`SC_KEYMENU` on bare ALT/F10 release, rather than the earlier browser key-down
+activation. The menu key-state helper now consumes chord/repeat/canceled-focus
+releases, so ALT+F opens File and subsequent ALT-up leaves it open. ALT+F4
+routes through the main guarded Quit path; native dialogs route WM_CLOSE to
+IDCANCEL and retain each filter's ability to ignore that command. The browser
+Help pane handles its own Close command. The USER contract is documented in
+[Microsoft's WM_SYSKEYUP reference](https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-syskeyup).
+
+Win3.1 system Move/Size now uses a retained checker/invert tracking outline,
+committing the rectangle on primary release/Enter and discarding it on Escape.
+Running-original observations established8px steps (including CTRL), first
+Size-arrow edge selection, perpendicular-arrow corner selection, and later
+resizing of the selected edge. Opposite edges and native minima are preserved;
+the user's unrestricted maximum remains an explicit browser adaptation.
+Tests cover retained state, selection order, minimum tracking and unlimited
+maximums; browser event/DOM checks confirmed separate tracked/committed bounds.

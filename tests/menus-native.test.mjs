@@ -1,11 +1,20 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {nativeMenuActivation,nativeMenuStep,nativeMenuMnemonic,nativeDialogModeless} from '../src/original-menus.js';
+import {nativeMenuActivation,NativeMenuKeyState,nativeMenuStep,nativeMenuMnemonic,nativeDialogModeless} from '../src/original-menus.js';
 import {nativeSimulationActive,nativeToolAllowed} from '../src/original-window-controls.js';
 test('USER menu activation is distinct from the original F1 accelerator and honors top-level access keys',()=>{
   for(const [key,result] of [['f','file'],['O','options'],['w','windows'],['h','help'],[' ','system']])assert.equal(nativeMenuActivation({key,altKey:true}),result);
-  assert.equal(nativeMenuActivation({key:'F10'}),'bar');assert.equal(nativeMenuActivation({key:'F1'}),null);
-  assert.equal(nativeMenuActivation({key:'Alt'}),'bar');assert.equal(nativeMenuActivation({key:'Alt',repeat:true}),null);
+  assert.equal(nativeMenuActivation({key:'F10'},'keyup'),'bar');assert.equal(nativeMenuActivation({key:'F1'}),null);
+  assert.equal(nativeMenuActivation({key:'Alt'},'keyup'),'bar');assert.equal(nativeMenuActivation({key:'Alt',repeat:true}),null);
   assert.equal(nativeMenuActivation({key:'F10',shiftKey:true}),null);assert.equal(nativeMenuActivation({key:'s',ctrlKey:true}),null);
+});
+test('bare menu keys activate on release while chords, repeats and canceled focus do not reactivate',()=>{
+  const keys=new NativeMenuKeyState();
+  assert.equal(keys.activation({key:'Alt'}),null);assert.equal(keys.activation({key:'Alt'},'keyup'),'bar');
+  keys.activation({key:'Alt'});assert.equal(keys.activation({key:'f',altKey:true}),'file');
+  assert.equal(keys.activation({key:'Alt'},'keyup'),null);
+  keys.activation({key:'F10'});assert.equal(keys.activation({key:'F10',repeat:true}),null);assert.equal(keys.activation({key:'F10'},'keyup'),'bar');
+  keys.activation({key:'Alt'});keys.cancel();assert.equal(keys.activation({key:'Alt'},'keyup'),null);
+  assert.equal(keys.activation({key:'F4',altKey:true}),'close');
 });
 test('menu traversal skips disabled commands and wraps while access keys require an actual native marker',()=>{
   const items=[{mnemonic:'n'},{disabled:true,mnemonic:'o'},{mnemonic:'s'},{label:'Save As...'}];

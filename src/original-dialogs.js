@@ -2,17 +2,25 @@ import {nativeDialogModeless} from './original-menus.js';
 import {nativeDialogFontSize,nativeDialogField} from './original-dialog-fonts.js';
 import {nativeDialogControlState,nativeDialogInitialFocus,nativeDialogKeyCommand} from './original-dialog-keyboard.js';
 import {OriginalAlertTimer} from './original-alert-timer.js';
+import {attachNativeModalCaption} from './native-modal-caption.js';
+import {nativeDialogFrameLayout,drawNativeDialogFrame} from './original-dialog-frame.js';
 // Win16 RT_DIALOG controls positioned by DTMP, as in 0xDD65 / 0xDF91.
 // Bitmap-backed panels keep their original pixels, including button chrome.
 export class OriginalDialogs {
   constructor(element, templates, assets) {
     this.element=element;this.templates=templates;this.assets=assets;this.alertTimer=new OriginalAlertTimer();
+    this.resetCaptionPosition=attachNativeModalCaption(element);
     element.addEventListener('close',()=>this.alertTimer.stop());
     element.addEventListener('cancel',event=>{
       if(!element.dataset.template)return;
       event.preventDefault();this.dispatchKey?.('Escape','keydown');
     });
     for(const phase of ['keydown','keyup'])element.addEventListener(phase,event=>{
+      if(event.altKey&&event.key==='F4'){
+        event.preventDefault();event.stopImmediatePropagation();
+        if(phase==='keydown'){if(element.dataset.template)this.dispatchKey?.('Escape','keydown');else element.close();}
+        return;
+      }
       if(!element.dataset.template||event.altKey||event.ctrlKey||event.metaKey)return;
       const id=Number(element.dataset.template);
       if(event.key==='Escape')event.preventDefault();
@@ -28,15 +36,20 @@ export class OriginalDialogs {
     const d=this.templates[id];
     if(!d) throw new Error(`Missing original dialog ${id}`);
     const dialog=this.element, content=dialog.querySelector('[data-dialog-content],#dialog-content');
-    const background=this.assets.get(+d.background), caption=Boolean(d.style & 0x00c00000);
-    const [width,height]=background ? [background.width,background.height] : d.size;
+    const background=this.assets.get(+d.background),{width,height,outerWidth,outerHeight,caption,paintBevel}=nativeDialogFrameLayout(d,background,{id});
     const modeless=nativeDialogModeless(id);
+    if(dialog.dataset.template!==String(id))this.resetCaptionPosition();
     if(dialog.open&&modeless!==(dialog.dataset.modeless==='true'))dialog.close();
     dialog.dataset.modeless=String(modeless);
     dialog.dataset.template=String(id);dialog.classList.add('native-dialog'); dialog.classList.toggle('native-caption',caption);
     dialog.dataset.title=title ?? d.title; content.replaceChildren();
+    dialog.style.setProperty('--native-outer-width',`${outerWidth}px`);dialog.style.setProperty('--native-outer-height',`${outerHeight}px`);
     const panel=document.createElement('div');panel.className='native-panel';panel.style.width=`${width}px`;panel.style.height=`${height}px`;panel.style.setProperty('--native-text-size',`${nativeDialogFontSize(id)}px`);
     if(background) panel.style.backgroundImage=`url('/assets/bitmaps/${d.background}.png')`;
+    if(paintBevel) {
+      const frame=document.createElement('canvas');frame.width=width;frame.height=height;frame.setAttribute('aria-hidden','true');frame.className='native-client-frame';
+      drawNativeDialogFrame(frame.getContext('2d'),width,height);panel.append(frame);
+    }
     content.append(panel);
     const place=(el,rect)=>{ const [x,y,w,h]=rect;Object.assign(el.style,{left:`${x}px`,top:`${y}px`,width:`${w}px`,height:`${h}px`});panel.append(el);return el; };
     const rect=cid=>{const [x,y,right,bottom]=d.hotspots[cid];return [x,y,right-x,bottom-y];};

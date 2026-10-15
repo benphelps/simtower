@@ -57,6 +57,23 @@ test('disabling one sound category stops both native channels and blocks later d
   assert.equal(mixer.play(originalSoundRequest(1448,1)),false);
   assert.equal(mixer.play(originalSoundRequest(1448,1),{force:true}),true);
 });
+test('native inactive/iconic audio flushes both channels and rejects all priorities',()=>{
+  const {mixer,clips}=mixerScene();
+  mixer.play(originalSoundRequest(6001,0));mixer.play(originalSoundRequest(5003,2));
+  mixer.setActive(false);
+  assert.deepEqual(mixer.channels,[null,null]);
+  assert.deepEqual(clips.map(clip=>[clip.pauses,clip.onended]),[[1,null],[1,null]]);
+  for(let priority=0;priority<=5;priority++)assert.equal(mixer.play({id:6001,priority},{force:true}),false);
+  assert.equal(clips.length,2);
+});
+test('reactivating native mixer retains sound preferences and never resumes flushed clips',()=>{
+  const {mixer,clips}=mixerScene();mixer.setEnabled(1,false);
+  mixer.play(originalSoundRequest(5003,2));mixer.setActive(false);mixer.setActive(true);
+  assert.deepEqual(mixer.enabled,[true,false,true]);assert.deepEqual(mixer.channels,[null,null]);
+  assert.equal(clips[0].plays,1);assert.equal(mixer.play(originalSoundRequest(1448,1)),false);
+  assert.equal(mixer.play(originalSoundRequest(6001,0)),true);
+  assert.equal(clips.length,2);
+});
 test('facility inspection samples native active state and exact sound selection',()=>{
   const state={tick:300,actors:[{room:1,floor:2,state:0,trip:null}]};
   const office={id:1,key:'office',floor:2,tenantState:1};

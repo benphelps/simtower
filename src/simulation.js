@@ -1,5 +1,6 @@
 import {newConstructionRing,constructionRecordParts,enqueueConstructionRecord,completeConstructionHead,advanceConstructionRing,removeConstructionRoom,initializeConstructionRing,validateConstructionRing,nativeRoomHasCompletedActors} from './original-construction-ring.js';
 import {initializeNativeEmergency} from './original-emergency-entry.js';
+import {nativeEmergencyActivationRedraw} from './original-redraw-requests.js';
 import {newNativeShaftSlotTypes,loadedNativeShaftSlotTypes,nativeShaftType,nativeShaftTransportCollision} from './original-shaft-placement.js';
 import {nativeAddedFloorSpans} from './original-cell-grid.js';
 import {markInteriorDirty,validateNativeInteriors} from './original-interiors.js';
@@ -341,7 +342,11 @@ export class Tower {
       for(const p of evacuated.riders)this.constructionReplan(p,true);
       for(const p of evacuated.waiters)this.constructionReplan(p,false);
     } else sh.stops.push(floor);
-    sh.stops.sort((a,b)=>a-b);return {ok:true};
+    sh.stops.sort((a,b)=>a-b);
+    //148A0→14911 redraws F296 only after14925 actually applies the stop.
+    //Unlike shaft removal, this path does not first rebind via9CE0.
+    this.nativeGridHook?.({redraw:true,backgroundRefresh:true});
+    return {ok:true};
   }
   constructionReplan(p,rider=false) {
     const s=this.state,r=s.rooms.find(r=>r.id===p.room),a=s.actors.find(a=>a.id===p.actor);
@@ -430,7 +435,10 @@ export class Tower {
       evacuate:(mode=0)=>resetEmergencySecurity(this.state,mode),
       setTick:tick=>{this.state.tick=tick;this.state.minute=clockTime(tick).minuteOfDay;}};
   }
-  activateEmergency(mode){this.finishAllConstruction();initializeNativeEmergency(this.state);} //17FE0;mode controls only immediate native redraw.
+  activateEmergency(mode){
+    this.finishAllConstruction();initializeNativeEmergency(this.state);
+    const redraw=nativeEmergencyActivationRedraw(mode);if(redraw)this.nativeGridHook?.(redraw); //1803A..18045: bombARG1 only, after every reset.
+  }
   answerEmergency(id,control,{automatic=false}={}) {
     if(![1,2].includes(control))return false;
     if(this.state.affordabilityContinuation){
@@ -563,6 +571,8 @@ export class Tower {
     s.rooms = s.rooms.filter(r => r.id !== target.id);
     s.shafts = s.shafts.filter(sh => sh.id !== target.id);
     s.links = s.links.filter(l => l.id !== target.id);
+    //14BDA (shaft) and18F18 (link) both9CE0-rebind beforeF296.
+    this.nativeGridHook?.({rebind:true,redraw:true});
     // 0x3BF6D: ordinary removal is free; an occupied condo returns its sale.
     if(room)this.refundCondo(room);
     return { ok: true };

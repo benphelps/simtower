@@ -29,17 +29,25 @@ export class OriginalAudioMixer {
   constructor(createAudio,{enabled=[true,true,true],now=()=>performance.now()}={}) {
     this.createAudio=createAudio;this.enabled=[...enabled];this.now=now;
     this.channels=[null,null];this.lastStart=0;
+    this.active=true;
   }
   stopChannel(index) {
     const channel=this.channels[index];if(!channel)return;
     this.channels[index]=null;channel.audio.onended=null;channel.audio.pause();channel.audio.currentTime=0;
   }
   stopAll(){this.stopChannel(0);this.stopChannel(1);}
+  //36537 flushes both channels and deactivates WAVMIX16;35BB7 rejects
+  //every priority while inactive.36505 reactivates without changing options.
+  setActive(active) {
+    if(this.active&&!active)this.stopAll();
+    this.active=Boolean(active);
+  }
   setEnabled(category,enabled) {
     if(this.enabled[category]&&!enabled)this.stopAll();
     this.enabled[category]=Boolean(enabled);
   }
   play(request,{force=false,onBlocked=null}={}) {
+    if(!this.active)return false;
     const priority=request.priority??request.category??0,category=request.category??soundCategory(priority);
     if(!force&&!this.enabled[category])return false;
     if(request.stopAll)this.stopAll();

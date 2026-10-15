@@ -103,12 +103,29 @@ flag bypasses this test. `4A256` performs one simulation update per idle
 iteration and returns to the Windows message pump; speed depends on the
 machine rather than a fixed multiplier.
 
-The browser scheduler preserves normal quantized96ms gating and performs
-ungated updates in an8ms work slice in Fast Mode, then returns to the
-browser. A512tick per-frame ceiling protects responsiveness even when
-tests use a clock that does not advance. This is a host scheduling limit,
-not an8x gameplay speed. Normal mode performs at most one native update
-per frame, matching the original gate's lack of accumulated catch-up.
-Pause/hidden/modal states leave simulation untouched. A step callback can
-return false to stop a Fast Mode slice immediately when a native dialog
-or other user interaction becomes pending.
+The browser scheduler preserves normal quantized96ms gating and advances at
+most one tick per16ms unit/paint in Fast Mode, nominally six times normal.
+The user requested bounded original-era pacing after modern CPU batches
+advanced years per second. This is an explicit browser adaptation; native
+Fast is CPU-dependent and has no recovered fixed multiplier. Neither mode
+accumulates delayed ticks. See `SPEED_NATIVE.md` for New/Open gate resets.
+
+## Activation and USER modal loops (2026-10-15)
+
+Live `4A256` tests the application's `52382` activation state and `IsIconic`
+before `36505`/`36537`. Deactivation flushes **both** channels through
+`35B85(1)` and calls WAVMIX16 ordinal4 with0; activation calls ordinal4 with1.
+`35BB7` checks `4EC76` before priority/category allocation, so inactive sound
+requests of every category are rejected, even when that category is enabled.
+The browser mixer now has an independent activation gate. Minimize, browser
+blur and hidden-tab transitions deactivate it; restore/focus reactivate it
+without changing the three Sound preferences or replaying flushed samples.
+The former ambient-only minimize mute was insufficient.
+
+`4A0C3` invokes `4A256` only from the no-message `PeekMessage` branch.
+While `DispatchMessage` is inside USER's modal menu/move/size/scroll loop,
+no simulation, palette clock, ambient sampling or periodic room RNG executes.
+The browser's actual window/scrollbar gesture now gates renderer GUI capture
+as well as the simulation clock; synchronous native redraw helpers retain
+their explicit source callback behavior. Modeless elevator editing still
+allows ordinary idle updates when no window gesture is active.

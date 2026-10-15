@@ -1,15 +1,15 @@
 import {nativeCarOrder} from './original-transport-slots.js';
-import {OriginalFacadeGrid} from './original-facade-grid.js';
+import {OriginalFacadeGrid,nativeFacadeHeaderSprites,nativeRubbleSprites} from './original-facade-grid.js';
 import {nativeAnimatedPalette,nativeGameplayPalette,tintNativePersonPixels,tintNativeIndexPlane,collectIndexedPalettePixels,recolorIndexedPixels,recolorSelectedIndexedPixels,applyNativeIndexMask,applyUpscaledNativeAlpha,upscaledPaletteDetails,retainedPaletteDetails,retainPaletteDetailRect} from './original-indexed-palette.js';
 import {nativeConstructionSprites} from './original-startup.js';
 import {parkingSprite} from './original-parking-state.js';
 import {clinicSprite} from './original-clinics.js';
-import {sceneBackgroundSprites,citySprites,OriginalCloudField,nativeSceneStructureKey,secomFacadeSprites} from './original-scene.js';
+import {sceneBackgroundSprites,citySprites,OriginalCloudField,nativeBackgroundViewport,secomFacadeSprites} from './original-scene.js';
 import {OriginalRainColors,nativeSkyResetDue,nativeFullSkyResetDue,collectScenePixels,applyScenePalette} from './original-rain.js';
 import {findMarkerSprite} from './original-markers.js';
 import {nativeConstructionGhost} from './original-construction-ghost.js';
 import {nativeRedrawPlan} from './original-redraw-plan.js';
-import {nativeShaftEndSprites} from './original-elevator-construction-ui.js';
+import {nativeShaftEndSprites,nativeElevatorPointerGrid} from './original-elevator-construction-ui.js';
 import {metroSprites} from './original-metro.js';
 import {recyclingSprites} from './original-recycling.js';
 import {nativeTenantSlot} from './original-tenancy.js';
@@ -64,7 +64,9 @@ export class Renderer {
     this.camera.y = -Math.min(190, this.height / this.zoom / 2 - 65);
   }
   screenToWorld(x, y) { return { x: (x - this.width / 2) / this.zoom + this.camera.x, y: (y - this.height / 2) / this.zoom + this.camera.y }; }
-  grid(x, y) { const p = this.screenToWorld(x, y); return { x: Math.floor(p.x / CELL), floor: Math.floor(-p.y / FLOOR) }; }
+  //39074/390B7→3C8BD uses the same signed site-coordinate division as
+  //15057. Exact floor boundaries belong to the next row down the screen.
+  grid(x, y) { const p = this.screenToWorld(x, y); return nativeElevatorPointerGrid(p.x,p.y); }
   setZoom(value, anchor) {
     const before = anchor && this.screenToWorld(anchor.x, anchor.y);
     this.zoom = Math.max(0.5, Math.min(4, value));
@@ -88,7 +90,10 @@ export class Renderer {
   sampleInteriors(tower,viewport={left:this.camera.x-this.width/this.zoom/2,right:this.camera.x+this.width/this.zoom/2,top:this.camera.y-this.height/this.zoom/2,bottom:this.camera.y+this.height/this.zoom/2}) {
     const s=tower.state;if(s.elevatorPreview||this.guiCapture)return;
     if(this.facadeGrid&&!this.facadeGrid.drawDue(interiorSampleEpoch(s)))return;
-    for(const room of nativeVisibleInteriorRooms(s.rooms,viewport)){
+    //A9E1/A9EF scan56978/5697A, including the clipped extra buffer
+    //column/row. The client canvas still clips all painting to its bounds.
+    const sampleViewport=this.facadeGrid?nativeBackgroundViewport(viewport):viewport;
+    for(const room of nativeVisibleInteriorRooms(s.rooms,sampleViewport)){
       const consumesDirty=!this.facadeGrid||this.facadeGrid.hasNormalCell(room);
       if(room.constructionRemaining>0){
         //387F1 marks each pending native floor record dirty after decrement;
@@ -115,19 +120,26 @@ export class Renderer {
     }
   }
   facadeViewport(){return {left:this.camera.x-this.width/this.zoom/2,right:this.camera.x+this.width/this.zoom/2,top:this.camera.y-this.height/this.zoom/2,bottom:this.camera.y+this.height/this.zoom/2};}
-  resetNativeGrid(){this.facadeGrid=new OriginalFacadeGrid();this.facadeViewKey=null;this.skyEpoch=null;}
+  resetNativeGrid(){this.facadeGrid=new OriginalFacadeGrid();this.facadeViewKey=null;this.skyEpoch=null;this.sceneDirty=true;}
+  sceneClouds(tower,viewport,{backgroundRefresh=true}={}) {
+    if(tower.state.elevatorPreview&&!this.nativeGuiRedraw||this.guiCapture||!backgroundRefresh)return this.clouds.slots.filter(Boolean);
+    const key=[viewport.left,viewport.right,viewport.top,viewport.bottom].join(':');
+    const clouds=this.clouds.update(nativeBackgroundViewport(viewport),max=>tower.randomInt(max),{dirty:Boolean(this.sceneDirty)||key!==this.sceneViewportKey});
+    this.sceneViewportKey=key;this.sceneDirty=false;return clouds;
+  }
   bindNativeGrid(tower,event){
     this.facadeGrid.bind(tower.state,this.facadeViewport(),event,{paused:Boolean(this.nativePaused)});
-    if(event.redraw)this.drawNativeGui(tower,{rebind:Boolean(event.rebind)});
+    if(event.redraw)this.drawNativeGui(tower,{rebind:Boolean(event.rebind),...(event.backgroundRefresh!==undefined?{backgroundRefresh:event.backgroundRefresh}:{})});
     else if(event.rebind)this.refreshNativeGrid(tower,{rebind:true});
   }
   refreshNativeGrid(tower,{rebind=false}={}){this.facadeGrid.refresh(tower.state,this.facadeViewport(),{paused:Boolean(this.nativePaused),rebind});}
-  drawNativeGui(tower,{rebind=false}={}) {
+  drawNativeGui(tower,{rebind=false,backgroundRefresh=rebind}={}) {
     const previous=['guiCapture','nativeTickFrame','nativeGuiRedraw'].map(key=>({key,value:this[key],own:Object.hasOwn(this,key)}));
     try {
       this.guiCapture=false;this.nativeTickFrame=false;this.nativeGuiRedraw=true;
+      if(backgroundRefresh)this.sceneDirty=true; //F296→F2B2(arg1) always reachesB5F0.
       this.refreshNativeGrid(tower,{rebind});
-      this.render(tower,performance.now()/1000,{palette:false,sky:false,backgroundRefresh:rebind});
+      this.render(tower,performance.now()/1000,{palette:false,sky:false,backgroundRefresh});
     } finally {for(const prop of previous)if(prop.own)this[prop.key]=prop.value;else delete this[prop.key];}
   }
   retainBackground(){
@@ -192,9 +204,7 @@ export class Renderer {
     const redraw=nativeRedrawPlan(s,this.mapMode||(this.evaluation?1:0));
     if(!s.elevatorPreview)this.facadeGrid.sync(s,viewport,{paused:Boolean(this.nativePaused)});
     for(const part of sceneBackgroundSprites(viewport))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
-    const sceneKey=nativeSceneStructureKey(s),sceneDirty=sceneKey!==this.sceneKey||this.sceneDirty;
-    const clouds=s.elevatorPreview||this.guiCapture||!backgroundRefresh?this.clouds.slots.filter(Boolean):this.clouds.update(viewport,max=>tower.randomInt(max),{dirty:sceneDirty});
-    if(!s.elevatorPreview&&!this.guiCapture&&backgroundRefresh){this.sceneKey=sceneKey;this.sceneDirty=false;}
+    const clouds=this.sceneClouds(tower,viewport,{backgroundRefresh});
     for(const cloud of clouds)this.sprite(cloud.sheet,cloud.x,cloud.y,cloud.width,cloud.height);
     for(const part of citySprites(viewport))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
     // B3A3→35480 composites structural edges/canopies/crane into the
@@ -221,7 +231,7 @@ export class Renderer {
       }
 
     }
-    for(const debris of s.rubble??[])this.sprite(4008,debris.x*CELL,-(debris.floor+1)*FLOOR+12,debris.width*CELL,24,0,0,debris.width*CELL,24);
+    for(const debris of s.rubble??[])for(const part of nativeRubbleSprites(debris))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
     for (const room of s.rooms) {
       const x = room.x * CELL, y = -(room.floor + 1) * FLOOR;
       if (y > bottom || y + (room.height || 1) * FLOOR < top) continue;
@@ -318,6 +328,7 @@ export class Renderer {
       }
       return;
     }
+    for(const part of nativeFacadeHeaderSprites(r,this.assets))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);
     if(['metro','recycling'].includes(r.key)){for(const part of r.key==='metro'?metroSprites(r):recyclingSprites(r))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);return;}
     if(SHOW_TYPES.has(r.key)){for(const part of showSprites(r))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);return;}
     if(r.key==='cathedral') {for(const part of cathedralSprites(r,night))this.sprite(part.sheet,part.x,part.y,part.width,part.height,part.sx,part.sy,part.width,part.height);return;}

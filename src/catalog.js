@@ -1,5 +1,5 @@
-// Economic values come from the executable's YEN resources. Gameplay fields
-// below remain explicit reconstruction choices until their callers are mapped.
+// Economic values come from YEN resources; dimensions and facility identities
+// are shared with the source-mapped construction, facade and actor handlers.
 export const CELL = 8;
 export const FLOOR = 36;
 const entries = [

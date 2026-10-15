@@ -108,22 +108,36 @@
       "scene": "cinema",
       "action": "movie",
       "clip": {
-        "height": 170,
-        "width": 294,
-        "x": 493,
-        "y": 275
-      }
+        "x": 496,
+        "y": 288,
+        "width": 288,
+        "height": 144
+      },
+      "source_capture": "research/screenshots/manual-raw-movie-selection.jpg",
+      "crop_processing": "Direct CUA screenshot clip of current UI; no scaling, recoloring or redrawing",
+      "refresh_reason": "Source-derived caption geometry and removal of invented elevator system-menu icon",
+      "dialog_outer_size": [
+        280,
+        136
+      ]
     },
     {
       "file": "elevator.jpg",
       "scene": "mixed",
       "action": "elevator",
       "clip": {
-        "height": 462,
-        "width": 214,
-        "x": 533,
-        "y": 0
-      }
+        "x": 535,
+        "y": 0,
+        "width": 210,
+        "height": 451
+      },
+      "source_capture": "research/screenshots/manual-raw-elevator.jpg",
+      "crop_processing": "Direct CUA screenshot clip of current UI; no scaling, recoloring or redrawing",
+      "refresh_reason": "Source-derived caption geometry and removal of invented elevator system-menu icon",
+      "dialog_outer_size": [
+        202,
+        447
+      ]
     },
     {
       "file": "finance.jpg",
@@ -282,13 +296,20 @@
       "file": "elevator-preview.jpg",
       "scene": "mixed",
       "action": "elevator",
-      "ui": "Simulate",
+      "ui": "Simulate; Show off/on; move schedule caption left to expose selected shaft",
       "clip": {
-        "x": 0,
+        "x": 195,
         "y": 0,
-        "width": 1020,
-        "height": 630
-      }
+        "width": 828,
+        "height": 632
+      },
+      "source_capture": "research/screenshots/manual-raw-elevator-preview.jpg",
+      "crop_processing": "Direct CUA screenshot clip of current UI; no scaling, recoloring or redrawing",
+      "refresh_reason": "Source-derived caption geometry, no invented system-menu icon, and original410/411 Resume hotspot crop",
+      "dialog_outer_size": [
+        202,
+        447
+      ]
     },
     {
       "file": "startup.jpg",

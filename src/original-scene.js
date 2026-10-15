@@ -11,7 +11,9 @@ export function secomFacadeSprites(room) {
 }
 export function sceneBackgroundSprites(viewport) {
   // 0xB000 assembles857..849;B3A3 repeats only top857three extra times.
-  // Source horizontal phase is the viewport's left edge,32pixel columns.
+  //B3A3 starts at retained-buffer x0, which E9CF aligns to8px. 2B571
+  //then crops the scroll remainder; it does not restart at client x0.
+  viewport=nativeBackgroundViewport(viewport);
   const rows = [857,857,857,857,856,855,854,853,852,851,850,849], result = [];
   for (const [row, sheet] of rows.entries()) {
     const y = row * 360 - SCENE_GROUND;
@@ -34,6 +36,21 @@ export function cloudArea(viewport) {
   const rect = { left: Math.max(0, viewport.left), right: Math.min(3000, viewport.right),
     top: Math.max(-3600, viewport.top), bottom: Math.min(-72, viewport.bottom) };
   return rect.left >= rect.right || rect.top >= rect.bottom ? null : rect;
+}
+//E9CF rounds scroll to the retained8x36 grid. EA1B reserves one extra
+//column/row after rounding the client dimensions upward. B83F uses THIS
+//buffer rectangle for random cloud placement, including clipped margins.
+export function nativeBackgroundViewport(viewport) {
+  const left=Math.trunc(viewport.left/8)*8,top=Math.trunc((viewport.top+SCENE_GROUND)/36)*36-SCENE_GROUND;
+  return {left,top,right:left+(Math.ceil((viewport.right-viewport.left)/8)+1)*8,
+    bottom:top+(Math.ceil((viewport.bottom-viewport.top)/36)+1)*36};
+}
+//360CB converts sampled buffer row through56976, then the browser's
+//ground-floor offset10. Width/height stay cell counts for36042's SARs.
+export function nativeBufferGrid(viewport) {
+  const buffer=nativeBackgroundViewport(viewport);
+  return {x:buffer.left/8,topFloor:109-(buffer.top+SCENE_GROUND)/36,
+    width:(buffer.right-buffer.left)/8,height:(buffer.bottom-buffer.top)/36};
 }
 function inside(cloud, area) {
   return cloud && cloud.x >= area.left && cloud.y >= area.top
@@ -58,14 +75,4 @@ export class OriginalCloudField {
     }
     return this.slots.filter(Boolean).map(cloud => ({ ...cloud, sx: 0, sy: 0 }));
   }
-}
-// F296/F2B2 redraws background after structural changes; ordinary actor,
-// construction-progress and palette updates do not regenerate cloud slots.
-export function nativeSceneStructureKey(state) {
-  return JSON.stringify([
-    Object.entries(state.floors||{}).map(([floor,bounds])=>[Number(floor),bounds.x,bounds.width,Boolean(bounds.lobby)]).sort((a,b)=>a[0]-b[0]),
-    (state.rooms||[]).map(room=>[room.id,room.key,room.floor,room.x,room.width,room.height||1]),
-    (state.shafts||[]).map(shaft=>[shaft.id,shaft.key,shaft.x,shaft.low,shaft.high,shaft.visible!==false,shaft.stops,shaft.cars?.map(car=>car.id)]),
-    (state.links||[]).map(link=>[link.id,link.key,link.floor,link.x,link.span||1]),
-  ]);
 }

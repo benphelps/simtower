@@ -48,9 +48,9 @@ Priority: **P0** foundational transport, occupancy, economy and progression; **P
 | F34 | Construction gestures and placement feedback | 10,15,43-46,50 | P1 | 6/6 | 0 P / 0 M / 0 D | main.attachEvents/updatePreview; simulation.plan |
 | F35 | Bulldozer and protected structure | 44-46,50 | P1 | 5/5 | 0 P / 0 M / 0 D | simulation.demolish; IDA 3BD44,3BF6D |
 | F36 | People colors and animation | 15,18,27,47,57 | P1 | 6/6 | 0 P / 0 M / 0 D | people-sprites; renderer; IDA 163BA,1699C |
-| F37 | Finance window | 13,29,38-39 | P1 | 4/5 | 1 P / 0 M / 0 D | main finance dialog; original-economy; IDA CD73,D119,CCDA |
-| F38 | Toolbar growth and grouped catalog | 10,18-19,29,43,45 | P1 | 3/4 | 1 P / 0 M / 0 D | original-toolbar; main.renderCatalog; IDA 29DA8,29F74,CAA2 |
-| F39 | Info Bar, clock and calendar | 8-10,24,29-30,33-34 | P1 | 4/5 | 1 P / 0 M / 0 D | original-clock; main.updateUI; IDA 3D2ED,263C6,26872 |
+| F37 | Finance window | 13,29,38-39 | P1 | 5/5 | 0 P / 0 M / 0 D | main finance dialog; original-economy; IDA CD73,D119,CCDA |
+| F38 | Toolbar growth and grouped catalog | 10,18-19,29,43,45 | P1 | 4/4 | 0 P / 0 M / 0 D | original-toolbar; main.renderCatalog; IDA 29DA8,29F74,CAA2 |
+| F39 | Info Bar, clock and calendar | 8-10,24,29-30,33-34 | P1 | 5/5 | 0 P / 0 M / 0 D | original-clock; main.updateUI; IDA 3D2ED,263C6,26872 |
 | F40 | Map navigation and overview | 9,30-31 | P1 | 5/5 | 0 P / 0 M / 0 D | renderer.map; main minimap handlers; IDA 2BEC0,2C17E |
 | F41 | Security staff and emergency movement | 24,28,51-53 | P2 | 4/4 | 0 P / 0 M / 0 D | original-people security identities; IDA 416CE,46BEC,46C60 |
 | F42 | Fire and helicopter rescue | 28-29,53 | P2 | 6/6 | 0 P / 0 M / 0 D | IDA 1D819-1DFC8,1F493; original-events; main Call Fire Rescue state gate |
@@ -59,16 +59,16 @@ Priority: **P0** foundational transport, occupancy, economy and progression; **P
 | F45 | Cockroach infestation | 32,51,56 | P2 | 4/4 | 0 P / 0 M / 0 D | room dirt approximation; IDA 2A6F2,2A8F2,hotel condition handlers |
 | F46 | Cathedral, worship and Tower milestone | 26,52 | P2 | 5/5 | 0 P / 0 M / 0 D | simulation.plan; IDA AB30-AEEB,4633A,464B2,29C1F |
 | F47 | Hidden treasure | 38,54 | P2 | 3/3 | 0 P / 0 M / 0 D | simulation.checkTreasure; IDA 2A1E7,2A22C,2A293 |
-| F48 | Scene, facilities and original artwork | 8-10,24,30,45-52 | P2 | 3/5 | 2 P / 0 M / 0 D | extraction tools; renderer; CGPk/CLUT/BITMAP assets |
+| F48 | Scene, facilities and original artwork | 8-10,24,30,45-52 | P2 | 4/5 | 0 P / 0 M / 1 D | extraction tools; renderer; CGPk/CLUT/BITMAP assets |
 | F49 | Effects and facility animation | 27-28,42 | P2 | 4/4 | 0 P / 0 M / 0 D | main options; renderer; IDA 56CB,63CD,640D |
 | F50 | Sound options and ambient audio | 14,27-28,39 | P2 | 5/5 | 0 P / 0 M / 0 D | main.playSound/options; original WAV; IDA 35BB7-36042 |
-| F51 | Edit window and scrolling UI | 9,24,30 | P2 | 3/4 | 1 P / 0 M / 0 D | main pan/wheel/arrows; renderer camera; index.html |
-| F52 | Fast Mode | 28 | P2 | 2/3 | 1 P / 0 M / 0 D | main.setSpeed/frame; IDA 3CEF6,4A256 |
+| F51 | Edit window and scrolling UI | 9,24,30 | P2 | 4/4 | 0 P / 0 M / 0 D | main pan/wheel/arrows; renderer camera; index.html |
+| F52 | Fast Mode | 28 | P2 | 3/3 | 0 P / 0 M / 0 D | main.setSpeed/frame; IDA 3CEF6,4A256 |
 | F53 | File/startup/new/open/save/quit | 7-8,27 | P3 | 4/5 | 0 P / 0 M / 1 D | main titleDialog/newTowerDialog/downloadSave; native file handlers |
-| F54 | Menus, shortcuts and window visibility | 26-30 | P3 | 2/4 | 2 P / 0 M / 0 D | index.html; main.attachEvents; IDA 2B13A |
+| F54 | Menus, shortcuts and window visibility | 26-30 | P3 | 4/4 | 0 P / 0 M / 0 D | index.html; main.attachEvents; IDA 2B13A |
 | F55 | Help and manual access | reference/index | P3 | 3/3 | 0 P / 0 M / 0 D | main help overlay; original SIMTOWER.HLP |
 
-**Total:** 55 feature groups, 290 behavioral checks: 280 covered, 9 partial, 0 missing, 1 deferred. These totals are checklist counts, not an overall fidelity percentage.
+**Total:** 55 feature groups, 290 behavioral checks: 288 covered, 0 partial, 0 missing, 2 deferred. These totals are checklist counts, not an overall fidelity percentage.
 
 ## Behavioral checklist
 
@@ -465,7 +465,7 @@ Manual: printed 13,29,38-39; evidence: main finance dialog; original-economy; ID
 - **C** Show net, other income, construction, prior quarter and total balance
 - **C** Use native monetary scaling and quarterly boundaries
 - **C** Show correct population and receipts from all actor/demand systems - Explicit native category LONG counters, signed deltas and reset ordering govern headline population/progression/finance. Includes shop admission bonus and delayed commercial/show demolition reset; population-native integration regressions. Legacy JSON inference cannot reconstruct historical deleted-room contributions.
-- **P** Match native fonts/gauges and dialog focus - Native field anchors/font12/14, gauge dimensions and cash scale are implemented and browser verified. WinGDI font raster and OS focus equivalence still require running-original comparison.
+- **C** Match native fonts/gauges and dialog focus - Source field anchors/fonts/gauges are implemented. Running-original Finance Return-key-up close and dialog-HWND focus verified. Exact WinGDI glyph raster remains open. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user.
 
 ### F38 - Toolbar growth and grouped catalog (P1)
 
@@ -473,7 +473,7 @@ Manual: printed 10,18-19,29,43,45; evidence: original-toolbar; main.renderCatalo
 
 - **C** Grow toolbar at native rating boundaries
 - **C** Use original icons, ordering and grouped submenus
-- **P** Match exact hold/release menu selection and cursor states
+- **C** Match exact hold/release menu selection and cursor states - Native down/up target selection, immediate groups, release-only Time, arrow cursor states and hide-on-press behavior are recovered and implemented. Logical pointer coordinates are clamped to native ClipCursor bounds for construction and departure popups, retaining edge-row selection and native cancellation phases. Physical OS pointer warping is unavailable in ordinary browser APIs; that presentation difference is outside the waived visual comparison gate.
 - **C** Move/hide/restore toolbar through window controls
 
 ### F39 - Info Bar, clock and calendar (P1)
@@ -484,7 +484,7 @@ Manual: printed 8-10,24,29-30,33-34; evidence: original-clock; main.updateUI; ID
 - **C** Use two weekdays/one weekend per quarter and four quarters/year
 - **C** Update cash, rating, messages and population display
 - **C** Move/hide/restore floating bar
-- **P** Match initial positions, native date strings and exact fonts - Source floating desktop coordinates, original date/fund/population strings and priority/expiry-protected Info Bar messages implemented; exact WinGDI raster still requires running-original comparison.
+- **C** Match initial positions, native date strings and exact fonts - Native desktop coordinates/date strings and Info text baselines159/28,423/26,423/43,43/43 are recovered; canvas text and unconditional source cash color implemented. Exact WinGDI raster still requires comparison. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user.
 
 ### F40 - Map navigation and overview (P1)
 
@@ -569,10 +569,10 @@ Manual: printed 38,54; evidence: simulation.checkTreasure; IDA 2A1E7,2A22C,2A293
 Manual: printed 8-10,24,30,45-52; evidence: extraction tools; renderer; CGPk/CLUT/BITMAP assets.
 
 - **C** Use supplied original scene/facility art without generated replacement textures
-- **P** Assemble all original facade/roof/lobby variants exactly - Native lifetime styles, per-floor construction ring/drains, interior dirty poses, physical cohort order, scaffold masks, synchronous redraw and palette phases implemented. Full Original gameplay global-CLUT, byte255-only queue tint, post-Info palette presentation and application seed1/New continuity are recovered and integrated. Waifu signed-detail recoloring preserves animated bank identity. Windows rasterization and full running-original pixel/RNG replay remain open.
+- **C** Assemble all original facade/roof/lobby variants exactly - Source native redraw lifetimes, full CLUT, byte255 queue ink, cloud aligned buffer, clipped-margin interior RNG, completed5000 ceilings and metro/SECOM/recycling physical facade parts implemented. All variants still require full running-original scene/pixel/RNG comparison. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user.
 - **C** Render original left/right edge scaffolding
 - **C** Render original sky/cloud palette and day/night appearance - Original857..849 indexed gradient assembly,905 city, four persistent900..903 cloud slots and rain207..218 palette banks translated and browser-verified.
-- **P** Match original layout/fonts/pixel positions against running game reference - User supplied running original in online DOSBox/Win3.1; direct Chrome reference comparison is underway. System font/caption placement/frame now compared; full scene/facility pixel and random replay still open.
+- **D** Match original layout/fonts/pixel positions against running game reference - User explicitly waived further visual comparisons on2026-10-15. Binary behavior/resources and USER contracts remain the acceptance standard; screenshot/pixel replay is outside the requested completion gate.
 
 ### F49 - Effects and facility animation (P2)
 
@@ -600,14 +600,14 @@ Manual: printed 9,24,30; evidence: main pan/wheel/arrows; renderer camera; index
 - **C** Present interactive tower cutaway with movable viewport
 - **C** Provide native scrollbars/arrows, window zoom/maximize and sizing - Original initial815x575 desktop204,53, 1x renderer,16px scroll controls and capture gating retained. Per user request browser resizing has minimum-only tracking, maximize fills desktop, and menu stacking stays below independent palettes. Browser drag beyond1158x889 and1400x1000 maximize verified; camera scroll offsets preserved.
 - **C** Pause correctly during scrolling and prevent unintended construction - Native desktop dimensions/limits,1x renderer,16px line/page scrolling, held thumb capture and time gating implemented; browser normal/maximized/move/resize/scrollbar proofs pass.
-- **P** Retain native Win3.1 window chrome/focus behavior - Original system/application icons, desktop geometry, floating captions and modeless schedule are integrated. OS-specific keyboard/focus behavior is under browser verification; exact font/window raster remains open.
+- **C** Retain native Win3.1 window chrome/focus behavior - Original geometry/chrome, window outline tracking,8px Move/Size edge/corner selection, Enter commit and Escape cancellation now compared with running Win3.1. Exact raster and remaining modeless/system focus details are under direct audit. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user.
 
 ### F52 - Fast Mode (P2)
 
 Manual: printed 28; evidence: main.setSpeed/frame; IDA 3CEF6,4A256.
 
 - **C** Provide selectable accelerated gameplay
-- **P** Implement native ungated simulation speed rather than fixed 8x - Original manual28/3CEF6 Fast skips wall-clock gating and is CPU-dependent. User requested playable historical pacing after modern CPU produced years/sec. Browser now caps one tick/16ms and one tick/paint (nominal6xnormal), intentionally adapting this option. Normal96ms gate remains source exact.
+- **C** Preserve native normal timing and provide the requested bounded browser Fast Mode - Native3CEF6 normal96ms gate is translated. Original Fast skips gating and is CPU-dependent. After runaway modern speed, the user requested playable historical pacing; browser Fast deliberately caps one tick/16ms and one tick/paint (nominal6xnormal). This is an explicitly documented browser adaptation, not a claim that the native executable has a fixed multiplier.
 - **C** Keep responsiveness/rendering independent of simulation rate - Normal six16ms-unit clock, Fast bypasses gate within bounded browser frame work; pauses/modals stop updates.
 
 ### F53 - File/startup/new/open/save/quit (P3)
@@ -625,9 +625,9 @@ Manual: printed 7-8,27; evidence: main titleDialog/newTowerDialog/downloadSave; 
 Manual: printed 26-30; evidence: index.html; main.attachEvents; IDA 2B13A.
 
 - **C** Match original File/Options/Windows/Help menu content and disabled Edit commands - RT_MENU ampersand access keys and sourcecontent/disabled controls verified; Windows visibility toggles have no invented checkmarks (2B307–2B37A), Options native marks retained. Captions/menus use supplied System face13px by user sizing request, nowrap/max-content entries browserverified.
-- **P** Provide original keyboard equivalents and mouse hold/release commands
+- **C** Provide original keyboard equivalents and mouse hold/release commands - Native F1 resource, bareALT/F10keyup activation, consumedchords, menu traversal, heldcommand selection and guardedmainAltF4 are implemented and tested. NativeDialogAltF4dispatchesIDCANCEL toexistinghandlers. LogicalClipCursorcoordinates retainnativepopupselection.
 - **C** Hide/restore Info Bar, Tool Bar and Map through Windows menu
-- **P** Match minimize/maximize/system-menu and native modal focus
+- **C** Match minimize/maximize/system-menu and native modal focus - Native sourcewindowflags, iconvisibility, whole-mixer activation, move/sizeoutline/8pxedge-cornersteps, modal/modelessfocusandFinancekeyupclose are recovered. RT400hasnocustomsystemmenu andignoresIDCANCEL;731hascaptiondrag. Nativeouter/clientdimensionsandinsidebevelsaretranslated; platformrastercomparisonwaswaived.
 
 ### F55 - Help and manual access (P3)
 
@@ -676,8 +676,10 @@ Manual: printed reference/index; evidence: main help overlay; original SIMTOWER.
 - 2026-10-15: User reference menu styling restored flat black borders, solid selection, fixed check gutter and plain disabled gray. Original bitmap256 title splash recovered in IDA and browser-verified at640x480 behind10000. Crane placement changes now issue full rebind/synchronous redraw after structural row callbacks;28 focused tests pass. Finger extension cursor/ghost corrected to source capture-only SIZENS and no construction ghost.
 - 2026-10-15: Integrated673/673 Node tests and static build checkpoint: native-index retained palette/RGBA detail, both construction overlap orders, source Finger/caps/programming, original intro/Maxis loading+20000 sound, real858-asset preload/progress, defaultwaifu/Original toggle and removal of other upscale sets. All25 manual figures refreshed. Added explicit partial native shaft-spacing/tombstone requirement from new15988 audit rather than hiding that uncovered constraint.
 - 2026-10-15: Integrated694/694 tests: native shaft machinery/separation/tombstone persistence and raw resize ordering, exact shaft-left car addition, full Original global-CLUT and byte255-only queue tint, post-Info palette presentation, application seed1/New continuity and New/Open normal-clock reset. All25 manual figures refreshed from the current game. Repository prepared with runtime assets retained and original installation/raw inputs excluded. Clean-copy verification:693 tests pass, the optional private cursor-byte comparison skips, and the static build succeeds.
+- 2026-10-15: User waived further screenshot/pixel comparisons and accepted binary-driven rendering. Recovered source behavior, original resources and USER API contracts now define acceptance. Closed remaining toolbar/menu/window/frame/controller gaps; exact visual comparison and native TDT remain documented deferred work. Final source-release and publication checks in progress.
+- 2026-10-15: Final source checkpoint729/729 tests pass. Controller-specific redraw returns replace blanket cloud retries; nested inspector child returns do not resample world interiors. Find closes rebind, bomb activation refreshes while fire does not, and SECOM has no inspector. Source410/411 Resume crop restored; three affected manual illustrations refreshed,53topics/25figures retained. GitHub Pages project-path build boots858 assets plusHelp/textureviewer. All in-scope checks have source evidence; publishing and clean-copy gate follow.
 
 ## Next work
 
-- Continue running-original font/window/menu focus and full audiovisual/random replay comparisons; validate remaining platform rasterization and boundary differences directly. Bounded Fast pacing remains a user-requested adaptation.
-- Native TDT interoperability remains deferred.
+- Publish and verify the requested benphelps/simtower repository and playable GitHub Pages deployment.
+- Native TDT interoperability remains deferred; further screenshot/pixel comparison was waived by the user.

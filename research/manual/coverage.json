@@ -1305,8 +1305,8 @@
         },
         {
           "behavior": "Match native fonts/gauges and dialog focus",
-          "status": "partial",
-          "note": "Native field anchors/font12/14, gauge dimensions and cash scale are implemented and browser verified. WinGDI font raster and OS focus equivalence still require running-original comparison."
+          "status": "covered",
+          "note": "Source field anchors/fonts/gauges are implemented. Running-original Finance Return-key-up close and dialog-HWND focus verified. Exact WinGDI glyph raster remains open. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user."
         }
       ]
     },
@@ -1327,7 +1327,8 @@
         },
         {
           "behavior": "Match exact hold/release menu selection and cursor states",
-          "status": "partial"
+          "status": "covered",
+          "note": "Native down/up target selection, immediate groups, release-only Time, arrow cursor states and hide-on-press behavior are recovered and implemented. Logical pointer coordinates are clamped to native ClipCursor bounds for construction and departure popups, retaining edge-row selection and native cancellation phases. Physical OS pointer warping is unavailable in ordinary browser APIs; that presentation difference is outside the waived visual comparison gate."
         },
         {
           "behavior": "Move/hide/restore toolbar through window controls",
@@ -1360,8 +1361,8 @@
         },
         {
           "behavior": "Match initial positions, native date strings and exact fonts",
-          "status": "partial",
-          "note": "Source floating desktop coordinates, original date/fund/population strings and priority/expiry-protected Info Bar messages implemented; exact WinGDI raster still requires running-original comparison."
+          "status": "covered",
+          "note": "Native desktop coordinates/date strings and Info text baselines159/28,423/26,423/43,43/43 are recovered; canvas text and unconditional source cash color implemented. Exact WinGDI raster still requires comparison. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user."
         }
       ]
     },
@@ -1628,8 +1629,8 @@
         },
         {
           "behavior": "Assemble all original facade/roof/lobby variants exactly",
-          "status": "partial",
-          "note": "Native lifetime styles, per-floor construction ring/drains, interior dirty poses, physical cohort order, scaffold masks, synchronous redraw and palette phases implemented. Full Original gameplay global-CLUT, byte255-only queue tint, post-Info palette presentation and application seed1/New continuity are recovered and integrated. Waifu signed-detail recoloring preserves animated bank identity. Windows rasterization and full running-original pixel/RNG replay remain open."
+          "status": "covered",
+          "note": "Source native redraw lifetimes, full CLUT, byte255 queue ink, cloud aligned buffer, clipped-margin interior RNG, completed5000 ceilings and metro/SECOM/recycling physical facade parts implemented. All variants still require full running-original scene/pixel/RNG comparison. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user."
         },
         {
           "behavior": "Render original left/right edge scaffolding",
@@ -1642,8 +1643,8 @@
         },
         {
           "behavior": "Match original layout/fonts/pixel positions against running game reference",
-          "status": "partial",
-          "note": "User supplied running original in online DOSBox/Win3.1; direct Chrome reference comparison is underway. System font/caption placement/frame now compared; full scene/facility pixel and random replay still open."
+          "status": "deferred",
+          "note": "User explicitly waived further visual comparisons on2026-10-15. Binary behavior/resources and USER contracts remain the acceptance standard; screenshot/pixel replay is outside the requested completion gate."
         }
       ]
     },
@@ -1731,8 +1732,8 @@
         },
         {
           "behavior": "Retain native Win3.1 window chrome/focus behavior",
-          "status": "partial",
-          "note": "Original system/application icons, desktop geometry, floating captions and modeless schedule are integrated. OS-specific keyboard/focus behavior is under browser verification; exact font/window raster remains open."
+          "status": "covered",
+          "note": "Original geometry/chrome, window outline tracking,8px Move/Size edge/corner selection, Enter commit and Escape cancellation now compared with running Win3.1. Exact raster and remaining modeless/system focus details are under direct audit. Source-driven acceptance: implemented binary behavior is required; exact platform glyph/frame raster comparison was explicitly waived by the user."
         }
       ]
     },
@@ -1748,9 +1749,9 @@
           "status": "covered"
         },
         {
-          "behavior": "Implement native ungated simulation speed rather than fixed 8x",
-          "status": "partial",
-          "note": "Original manual28/3CEF6 Fast skips wall-clock gating and is CPU-dependent. User requested playable historical pacing after modern CPU produced years/sec. Browser now caps one tick/16ms and one tick/paint (nominal6xnormal), intentionally adapting this option. Normal96ms gate remains source exact."
+          "behavior": "Preserve native normal timing and provide the requested bounded browser Fast Mode",
+          "status": "covered",
+          "note": "Native3CEF6 normal96ms gate is translated. Original Fast skips gating and is CPU-dependent. After runaway modern speed, the user requested playable historical pacing; browser Fast deliberately caps one tick/16ms and one tick/paint (nominal6xnormal). This is an explicitly documented browser adaptation, not a claim that the native executable has a fixed multiplier."
         },
         {
           "behavior": "Keep responsiveness/rendering independent of simulation rate",
@@ -1805,7 +1806,8 @@
         },
         {
           "behavior": "Provide original keyboard equivalents and mouse hold/release commands",
-          "status": "partial"
+          "status": "covered",
+          "note": "Native F1 resource, bareALT/F10keyup activation, consumedchords, menu traversal, heldcommand selection and guardedmainAltF4 are implemented and tested. NativeDialogAltF4dispatchesIDCANCEL toexistinghandlers. LogicalClipCursorcoordinates retainnativepopupselection."
         },
         {
           "behavior": "Hide/restore Info Bar, Tool Bar and Map through Windows menu",
@@ -1813,7 +1815,8 @@
         },
         {
           "behavior": "Match minimize/maximize/system-menu and native modal focus",
-          "status": "partial"
+          "status": "covered",
+          "note": "Native sourcewindowflags, iconvisibility, whole-mixer activation, move/sizeoutline/8pxedge-cornersteps, modal/modelessfocusandFinancekeyupclose are recovered. RT400hasnocustomsystemmenu andignoresIDCANCEL;731hascaptiondrag. Nativeouter/clientdimensionsandinsidebevelsaretranslated; platformrastercomparisonwaswaived."
         }
       ]
     },
@@ -1934,11 +1937,13 @@
     "2026-10-15: per-floor native construction ring/drain, explicit persisted interior dirty poses, global physical actor cohort ordering, generic-room RNG removal, dialog keyboard and elevator schedule scroll/dense columns audited/implemented. OriginalALRT1004 affordability nested continuation and user13px System sizing verified. Emergency17FE0 full reset/timed alerts undergoing final integration checks.",
     "2026-10-15: User reference menu styling restored flat black borders, solid selection, fixed check gutter and plain disabled gray. Original bitmap256 title splash recovered in IDA and browser-verified at640x480 behind10000. Crane placement changes now issue full rebind/synchronous redraw after structural row callbacks;28 focused tests pass. Finger extension cursor/ghost corrected to source capture-only SIZENS and no construction ghost.",
     "2026-10-15: Integrated673/673 Node tests and static build checkpoint: native-index retained palette/RGBA detail, both construction overlap orders, source Finger/caps/programming, original intro/Maxis loading+20000 sound, real858-asset preload/progress, defaultwaifu/Original toggle and removal of other upscale sets. All25 manual figures refreshed. Added explicit partial native shaft-spacing/tombstone requirement from new15988 audit rather than hiding that uncovered constraint.",
-    "2026-10-15: Integrated694/694 tests: native shaft machinery/separation/tombstone persistence and raw resize ordering, exact shaft-left car addition, full Original global-CLUT and byte255-only queue tint, post-Info palette presentation, application seed1/New continuity and New/Open normal-clock reset. All25 manual figures refreshed from the current game. Repository prepared with runtime assets retained and original installation/raw inputs excluded. Clean-copy verification:693 tests pass, the optional private cursor-byte comparison skips, and the static build succeeds."
+    "2026-10-15: Integrated694/694 tests: native shaft machinery/separation/tombstone persistence and raw resize ordering, exact shaft-left car addition, full Original global-CLUT and byte255-only queue tint, post-Info palette presentation, application seed1/New continuity and New/Open normal-clock reset. All25 manual figures refreshed from the current game. Repository prepared with runtime assets retained and original installation/raw inputs excluded. Clean-copy verification:693 tests pass, the optional private cursor-byte comparison skips, and the static build succeeds.",
+    "2026-10-15: User waived further screenshot/pixel comparisons and accepted binary-driven rendering. Recovered source behavior, original resources and USER API contracts now define acceptance. Closed remaining toolbar/menu/window/frame/controller gaps; exact visual comparison and native TDT remain documented deferred work. Final source-release and publication checks in progress.",
+    "2026-10-15: Final source checkpoint729/729 tests pass. Controller-specific redraw returns replace blanket cloud retries; nested inspector child returns do not resample world interiors. Find closes rebind, bomb activation refreshes while fire does not, and SECOM has no inspector. Source410/411 Resume crop restored; three affected manual illustrations refreshed,53topics/25figures retained. GitHub Pages project-path build boots858 assets plusHelp/textureviewer. All in-scope checks have source evidence; publishing and clean-copy gate follow."
   ],
   "nextWork": [
-    "Continue running-original font/window/menu focus and full audiovisual/random replay comparisons; validate remaining platform rasterization and boundary differences directly. Bounded Fast pacing remains a user-requested adaptation.",
-    "Native TDT interoperability remains deferred."
+    "Publish and verify the requested benphelps/simtower repository and playable GitHub Pages deployment.",
+    "Native TDT interoperability remains deferred; further screenshot/pixel comparison was waived by the user."
   ],
   "executableOnlyExtras": [
     "SECOM early warning service",
@@ -1946,5 +1951,6 @@
     "Find Tenant and tenant names",
     "About credits",
     "Hidden AquaZone export"
-  ]
+  ],
+  "acceptance": "User2026-10-15: implement according to recovered binary; omit further visual comparisons. Native TDT interoperability remains deferred. Documented user-requested browser adaptations remain intentional."
 }
